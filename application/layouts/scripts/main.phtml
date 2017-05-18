@@ -26,18 +26,6 @@
                 </h1>
             </div>
 
-            
-            <div class="search">
-                <form id="form"  method="post" action="#">
-                    <span><input name="barraricerca" type="text" id="textfield" maxlength="50" value="Cosa stai cercando?" /></span>
-                    <input  for="barraricerca" class="button" type="submit"  value=" " src="\CouponLand\public\css\images\search.gif" />
-                </form>
-                <div class="clr"></div>
-            </div>
-            
-            
-            
-            
             <nav class="accedi_registati">
                 <ul>
                   <li><a href="<?= $this->url(array('controller' => 'public',
@@ -55,9 +43,15 @@
             <nav class="menu">
                 <?= $this->render('navpubblica.phtml') ?>
             </nav>
-
             
-            
+            <div class="search">
+                <form id="form"  method="post" action="#">
+                    <span><input name="barraricerca"  type="text" id="textfield" maxlength="50" placeholder="Che cosa stai cercando?" /></span>
+                    <input class="button" type="submit"  value=" "/>
+                </form>
+                <div class="clr"></div>
+            </div>
+        
         </div>
         
         <div class="clr"></div>
