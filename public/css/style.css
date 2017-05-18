@@ -119,51 +119,30 @@ h1 a:hover {
 
 /*barra di ricerca*/
 .search {
-	padding:10px 0 0 250px;
-	margin:0;
-	width:200px;
-	float:left;
-        position: absolute;
-        top: 40px;
-}
-
-.search form {
-	float:right;
-	padding:0;
-	margin:0;
-}
-
-.search span {
-	display:block;
-	float:left;
-        background:white;
-        height:30px; 
-	width:180px;
-	padding:0 0px;
-        border-radius:2px;
         
+        float:left;
+	padding-left: 200px;
+	margin: 0px;
+        width: 270px;
 }
 
-.search form .button {
-	float:left;
-	margin:0;
-	padding:0;
-        background: url(images/search.gif);
-        height: 28px;
-        width: 30px;
+input.button {
+        margin-left:5px;
+	padding:2px;
+        background: blue;
+        height: 35px;
+        width: 35px;
 }
 
 .search form #textfield {
-	width:149px;
+	width:200px;
 	line-height:14px;
-	height:14px;
-	float:left;
-	background:none;
-	border:0;
+	height: 17px;
+	background:white;
 	padding:6px 2px;
-	margin:0;
-	font:normal 11px Arial, Helvetica, sans-serif;
-	color:#acacac;
+	margin-left:5px;
+	font:normal 15px Arial, Helvetica, serif;
+	color:black;
 }
 
 /*nav composta da home,categorie,aziende,contattaci*/
