@@ -1,0 +1,138 @@
+<?php echo $this->doctype() ?>
+
+<html>
+    <head>
+    <?= $this->headMeta(); ?>
+    <?= $this->headTitle(); ?>
+     <link href="/CouponLand/public/css/AccediRegistrati.css" rel="stylesheet" type="text/css" />
+     <link href="/CouponLand/public/css/Logo.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/CouponLand/public/js/accreg.js">  </script>
+        
+    </head>
+    <body>
+       
+        <div class="logo" >
+                 <h1>
+                 <a href=" <?= $this->url(array('controller' => 'public',
+                                                   'action'     => 'index', ), 
+                                                   'default',true ); ?>"><small>L'offerta che vuoi, quando vuoi!</small>Coupon<span>Land</span></a>
+                </h1>
+        </div>
+                
+        <div id="form">
+            
+            <div class="top-nav">
+                <a href="#" id="active"> Accedi </a>
+                <a href="#"> Registrati </a>
+            </div>
+            
+         
+         <?php $paginaScelta=$this->paginaScelta;
+             echo '$paginaScelta fefearer';  
+             ?>
+            somma(); 
+    <script>nonvisualizzaAccedi()</script>
+         
+       
+            
+    <form id="entra"  onload ="<?php if($paginaScelta != "accesso") echo 'nonvisualizzaAccedi()'?>" style="">
+            <p>		
+            <input type="text" class="form" id="inputUser" placeholder="User">
+            </p>
+            <p>
+            <input type="password" class="form" id="inputPassword" placeholder="Password">
+            </p>
+            <p>
+            <input class="button" type="submit" value="Accedi">
+            <p>
+                    
+        </form> 
+         
+         
+         
+    
+            
+         
+            
+            
+            
+    <form method="POST" action="" id="registra" onload ="<?php if($paginaScelta != "registrazione") echo 'nonvisualizzaRegistrati()'?>" style="">
+                    
+                
+                    
+                        <!-- contenitore dell' input text del Nome -->
+                        <p>
+                            <input type="text" name="nome" class="form" placeholder="Nome">
+                        </p>
+                    
+                    
+                        <!-- contenitore dell' input text del Cognome --> 
+                  
+                        <input type="text" name="cognome" class="form" placeholder="Cognome">
+                
+                  
+                    
+                    <!-- contenitore della select del Genere -->     
+                    <p id ="genere"><label for="bv">Genere: </label>
+                <select id="bv" name="genere" size="1">
+                    <option selected>M</option>
+                    <option>F</option>
+                </select>
+                    </p>
+                  
+                    
+                     <!-- contenitore dell' input date della data di nascita --> 
+                     <p>
+                         <input type="input" name="eta" class="form" max="3" placeholder="Eta'">
+                     </p>
+                    
+                    
+                     <!-- contenitore dell' input date della data di nascita --> 
+                     <p>
+                         <input type="email" name="email" class="form" placeholder="Email">
+                     </p>
+                
+                    
+                 
+                    <!-- contenitore dell' input tel del telefono --> 
+                    <p>
+                        <input type="tel" name="telefono" class="form" placeholder="Telefono">
+                    </p>
+                    
+                    
+                   <!-- contenitore dell' input text del campo user --> 
+                   <p>
+                       <input type="text" name="username" class="form" placeholder="Username">
+                   </p>   
+                     
+                        <!-- contenitore dell' input tex del campo password --> 
+                        <p>
+                        <input type="password" name="password" class="form" placeholder="Password">
+                      
+                        </p>  
+                     
+                
+                    
+                    
+                    <!-- contenitore dell' input bottoni per inviare e cancellare dati --> 
+                        
+                         <p>
+                      <input class="button" type="submit" value="Registrati">
+                         </p>
+                        
+                        
+                       
+                        
+                    
+                      
+                  
+                  
+              </form>
+            
+         </div>
+        
+        
+        
+        
+    </body>
+</html>

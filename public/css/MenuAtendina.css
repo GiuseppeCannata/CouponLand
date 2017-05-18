@@ -1,0 +1,50 @@
+/*Barra del Menu Principale*/
+
+#MenuPrincipale ul {
+    
+    display: none
+        
+}
+
+
+
+/*Menu a tendina*/
+ li#MenuPrincipale:hover ul{
+    
+    border: 1px solid #8fbb1b;
+    display: block;
+    position: absolute;
+    width: auto;
+    top: 140px;
+    z-index: 7;  /*priorita*/
+    list-style-type: none;
+    border-radius: 3px;
+    background-color: aliceblue;
+    
+}
+
+ li#MenuPrincipale ul a{
+    
+    display: block;
+    color: gray; 
+    text-decoration: none;
+    
+
+    
+   
+}
+
+li#MenuPrincipale ul a:hover {
+    
+    color: #afc22b;
+    text-decoration: none;
+
+}
+
+li#MenuPrincipale ul li {
+    
+    padding:0px;
+    margin:10px;
+
+}
+
