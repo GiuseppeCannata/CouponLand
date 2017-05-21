@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/public/accedi.phtml</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/models/resources/Categoria.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/models/resources/Categoria/Item.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/models/Modelbase.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/configs/application.ini</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/public/index.phtml</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/Bootstrap.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/layouts/scripts/navpubblica.phtml</file>
             <file>file:/C:/xampp/htdocs/CouponLand/application/layouts/scripts/main.phtml</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/controllers/PublicController.php</file>
         </group>
     </open-files>
 </project-private>

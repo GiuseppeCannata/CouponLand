@@ -17,9 +17,12 @@ class Application_Model_Modelbase extends App_Model_Abstract
         //-istanzia la classe Category e ne richiama il metodo getCategorie()
 	return $this->getResource('Categoria')->getCategorie();
     }
-    //estrarre specifica categoria
-    public function getCatById($id)
-    {
-        return $this->getResource('Category')->getCatById($id);
+    
+    public function getPromozioneTOP(){
+        
+        return $this->getResource('Promozione')->getPromozioneTOP();
+        
     }
+    
+    
 }

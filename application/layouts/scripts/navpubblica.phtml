@@ -1,25 +1,25 @@
 <ul id="Pricipale-a">
                     
-    <li class="left"><a href="#" id="active" class="Principale-b">Home</a></li>
+    <li class="left"><a href="#" id="active" class="Principale-b"> Home </a></li>
 
     <li id="MenuPrincipale" class="left"> <!--Lista delle Categorie -->
-        <a href="#" class="Principale-b"> Categorie </a>
-
+        <a href="#" class="Principale-b"> Promozioni per Categoria </a>
         <ul> <!-- Lista annidata: voci del sotto-menu -->
-            
-            <?php foreach ($this->CategorieTendina as $categoria) {
+            <?php 
                 
-                        echo '<li><a href='. $this->url(array('controller' => 'public',
-                                                              'action' => 'index'), 'default', true) .'>'.
-                        $categoria->Nome.'</a></li>';
+                foreach ($this->CategorieTendina as $categoria) {
+                
+                    echo '<li><a href='. $this->url(array('controller' => 'public',
+                                                          'action' => 'index'), 
+                                                          'default', true) .'>'.
+                    $categoria->Nome.'</a></li>';
                         
-                    }
+                }
             ?>
-
         </ul> <!-- Fine del sotto-menu -->
-
     </li> <!-- Chiudo il list-item -->
-
-    <li class="left"><a href="#" class="Principale-b"> Aziende </a></li>
-    <li class="left"><a href="mailto:CouponLand@libero.it" class="Principale-b" >Contattaci </a></li>
+    
+    <li class="left"><a href="#" class="Principale-b"> Promozioni per Azienda </a></li>
+    <li class="left"><a href="mailto:CouponLand@libero.it" class="Principale-b"> Contattaci </a></li>
+    
 </ul>

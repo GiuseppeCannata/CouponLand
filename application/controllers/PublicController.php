@@ -7,27 +7,30 @@ class PublicController extends Zend_Controller_Action {
 	
     /*costruttore*/    
     public function init() {
+        
         $this->_helper->layout->setLayout('main'); 
         $this->_Modelbase = new Application_Model_Modelbase();
-        
     }
 
     /*Deve generare i contenuti della mia pagina, in base a come la chiamo
-      si riferisce al index.phtml (ad ogni azione corrisponde una viewscriptv )      */
+      si riferisce al index.phtml (ad ogni azione corrisponde una viewscriptv ) */
     public function indexAction() {   
         
-        //  Estrae le Categorie Top dal model   	    	
-    	   $CategorieTendina=$this->_Modelbase->getCategorie();
+        //  Estrae le Categorie dal model   	    	
+    	$CategorieTendina = $this->_Modelbase->getCategorie();
+        $PromozioniTOP    = $this->_Modelbase->getPromozioneTOP();
         
-        // Definisce le variabili per il viewer
-       //passo alla view index l array contenete le variabili
-    	$this->view->assign(array('CategorieTendina' => $CategorieTendina));
+         // Definisce le variabili per il viewer
+        //passo alla view index l array contenete le variabili
+    	$this->view->assign(array('CategorieTendina' => $CategorieTendina,
+                                  'PromozioniTOP' => $PromozioniTOP));
     
     }
 
     /*azione che permette di far vedere le pagine statiche
       Per questo nel corpo di questo metodo no ho nessuna sezione dinamica php     */
     public function viewstaticAction () {
+        
        $page = $this->_getParam('staticPage');
        $this->render($page);
         

@@ -1,29 +1,32 @@
 <div id="content"> 
+        
+        <div>
             <img src="/CouponLand/public/img/coper.png"  alt="" width="920" height="343" border="0"> 
             <a href="#prima_categoria"><div id="button"></div></a>
         </div>
           
         <div class="textarea">
-            
-            <h2 id="prima_categoria" >Elettronica</h2>
-            
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate 
-                velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa 
-                qui officia deserunt mollit anim id est laborum.
-            </p>
-        
-            <a href="#" ><img src="/CouponLand/public/img/vaialprodotto.png" id="GL" alt="" width="150" height="150" border="0" /></a>
+            <?php 
+                
+                $i =0;
+                
+                foreach ($this->PromozioniTOP as $promTOP) {
+                    $i+=1;
+                    if($i==1){
+                       echo '<h2 id="prima_categoria">'. $promTOP->Categoria .'</h2>';  
+                    }
+                    else {
+                       echo '<h2>'. $promTOP->Categoria .'</h2>';  
+                    }
+                    
+                    echo '<p>'.$promTOP->Descrizione.'</p>';
+                    echo '<img scr='.$promTOP->Immagine.'</p>';
+                    echo '<img id ="prodotto" src="/CouponLand/public/img/vaialprodotto" />';
+                        
+                }
+            ?>
             
         </div>
-          
-        <img id ="prodotto" src="/CouponLand/public/img/img_main.jpg" />
-        
-       <div class="clr"></div>
+    <div class="clr"></div>
 </div>
 

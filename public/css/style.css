@@ -121,9 +121,10 @@ h1 a:hover {
 .search {
         
         float:left;
-	padding-left: 200px;
+	padding-left: 10px;
 	margin: 0px;
-        width: 270px;
+        width: 400px;
+       
 }
 
 input.button {
@@ -135,7 +136,7 @@ input.button {
 }
 
 .search form #textfield {
-	width:200px;
+	width:300px;
 	line-height:14px;
 	height: 17px;
 	background:white;
@@ -149,11 +150,11 @@ input.button {
 .menu {
 	padding:0;
 	margin:0;
-	width:410px;
+	width:auto;
 	float:left;
 }
 
-.menu ul#Pricipale-a {
+ul#Pricipale-a {
 	padding:0;
 	margin:0;
 	list-style:none;
@@ -167,7 +168,7 @@ li.left {
 	padding:16px 6px;
 }
 
-.menu ul li a.Principale-b {
+a.Principale-b {
 	border-left:1px solid #777776;
 	float:left;
 	margin:0;
@@ -182,7 +183,7 @@ li.left {
 	color:#afc22b;
 }
 
-.menu ul li a#active {
+a#active {
 	color:#afc22b;
 }
 
