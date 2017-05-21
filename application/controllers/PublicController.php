@@ -3,21 +3,25 @@
 
 class PublicController extends Zend_Controller_Action {
        
-    protected $_logger;
+    protected $_Modelbase;
 	
     /*costruttore*/    
     public function init() {
-        
-        $this->_helper->layout->setLayout('main');
-        $this->_logger = Zend_Registry::get('log');  
+        $this->_helper->layout->setLayout('main'); 
+        $this->_Modelbase = new Application_Model_Modelbase();
         
     }
 
     /*Deve generare i contenuti della mia pagina, in base a come la chiamo
       si riferisce al index.phtml (ad ogni azione corrisponde una viewscriptv )      */
-    public function indexAction() {    
+    public function indexAction() {   
         
+        //  Estrae le Categorie Top dal model   	    	
+    	   $CategorieTendina=$this->_Modelbase->getCategorie();
         
+        // Definisce le variabili per il viewer
+       //passo alla view index l array contenete le variabili
+    	$this->view->assign(array('CategorieTendina' => $CategorieTendina));
     
     }
 
