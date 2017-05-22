@@ -1,0 +1,82 @@
+<div>
+    <div class="Titolo">
+        <h1>Elenco delle nostre aziende</h1>
+    </div>
+    
+    <div class="Testo">
+        
+        <div class="Sottotitolo">
+            <h2>A-F</h2>
+        </div>
+        
+    <?php 
+    
+        foreach ($this->listaziende as $azienda) {
+
+            $ris = substr($azienda->Nome, 0 , 1);
+           
+            if($ris === 'A' || $ris === 'B' || $ris === 'C' || $ris === 'D' || $ris === 'E' || $ris === 'F'){
+                
+                echo '<div><a href='. $this->url(array('controller' => 'public',
+                                                       'action' => 'azienda',
+                                                       'id'=> $azienda->Id_azienda), 
+                                                       'default', true) .'>'.
+                             $azienda->Nome.'</a></div>';
+            }
+        }
+        
+    ?>
+    </div> 
+    
+    <div class="Testo">
+        
+        <div class="Sottotitolo">
+            <h2>G-O</h2>
+        </div>
+        
+        <?php 
+    
+        foreach ($this->listaziende as $azienda) {
+
+            $ris = substr($azienda->Nome, 0,1);
+            
+            if($ris === 'G' || $ris === 'H' || $ris === 'I' || $ris === 'L' || $ris === 'M' || $ris === 'N'|| $ris === 'O'){
+                
+                echo '<div><a href='. $this->url(array('controller' => 'public',
+                                                       'action' => 'azienda',
+                                                       'id'=> $azienda->Id_azienda), 
+                                                       'default', true) .'>'.
+                             $azienda->Nome.'</a></div>';
+            }
+        }
+    ?>
+    </div>
+    
+    <div class="Testo">
+        
+        <div class="Sottotitolo">
+            <h2>P-Z</h2>
+        </div>
+        
+        <?php 
+    
+        foreach ($this->listaziende as $azienda) {
+
+            $ris = substr($azienda->Nome, 0,1);
+            
+            if($ris === 'P' || $ris === 'Q' || $ris === 'R' || $ris === 'S' || $ris === 'T' || $ris === 'U'|| $ris === 'V' || $ris==='Z'){
+                
+                echo '<div><a href='. $this->url(array('controller' => 'public',
+                                                       'action' => 'azienda',
+                                                       'id'=> $azienda->Id_azienda), 
+                                                       'default', true) .'>'.
+                             $azienda->Nome.'</a></div>';
+            }
+            
+        }
+    ?>
+    </div>
+
+
+</div>
+
