@@ -24,5 +24,17 @@ class Application_Model_Modelbase extends App_Model_Abstract
         
     }
     
+    public function getlistAziende(){
+        
+        return $this->getResource('Aziende')->gelistAziende();
+        
+    }
+    
+    public function getAzienda($id_azienda){
+        
+        return $this->getResource('Aziende')->getAzienda($id_azienda);
+        
+    }
+    
     
 }

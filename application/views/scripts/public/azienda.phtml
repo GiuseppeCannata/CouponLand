@@ -1,0 +1,33 @@
+<div>
+     <?php foreach ($this->azienda as $aziendascelta) :?>
+		
+        <div class="image">
+
+        </div>
+    
+        <div class="Titolo">
+         <?php echo '<h1>'. $aziendascelta->Nome . '</h1>' ?>
+        </div>
+
+        <div class="Sottotitolo">
+
+          <?php echo'<h3>Tipologia: ' . $aziendascelta->Tipologia . '</h3>' ?>
+          <?php echo '<h3>Ragione sociale: ' . $aziendascelta->Ragione_sociale . '</h3>' ?>
+          <?php echo '<h3>Localizzazione: ' . $aziendascelta->Localizzazione . '</h3>' ?>
+          <h3>Chi siamo</h3>
+
+        </div>
+        
+        <div class="Testo">
+            
+            <?php echo '<p>' . $aziendascelta->Descrizione . '</p>' ?>
+
+        </div>
+    <?php endforeach ?>
+</div>
+    
+    
+    
+    
+</div>
+

@@ -36,6 +36,25 @@ class PublicController extends Zend_Controller_Action {
         
     }
     
+    public function listaziendeAction () {
+        
+      $listaziende = $this->_Modelbase->getlistAziende();
+      
+      $this->view->assign(array('listaziende' => $listaziende));
+        
+    }
+    
+    public function aziendaAction() {
+        
+      $id_azienda = $this->_getParam('id');
+      $azienda = $this->_Modelbase->getAzienda($id_azienda);
+      
+      $this->view->assign(array('azienda' => $azienda));
+        
+    }
+    
+    
+    
     public function accediAction (){
         
         $this->_helper->layout->disableLayout();

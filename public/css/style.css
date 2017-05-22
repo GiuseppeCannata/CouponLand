@@ -121,8 +121,7 @@ h1 a:hover {
 .search {
         
         float:left;
-	padding-left: 10px;
-	margin: 0px;
+	margin: 10px;
         width: 400px;
        
 }
@@ -312,6 +311,35 @@ p.response {
 	line-height:1.8em;
 	width:auto;
 }
+
+
+div.Titolo {
+    
+        margin: 10px;
+        font:bold 30px Arial, Helvetica, sans-serif;
+	color:black;
+	padding:10px 0;
+	
+}
+
+div.Sottotitolo{
+    
+    margin:10px;
+    padding: 0;
+}
+
+div.Testo{
+    
+    margin:10px;
+    padding: 0;
+    
+}
+
+
+
+
+
+
 
 
 
