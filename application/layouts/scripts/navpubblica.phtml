@@ -1,6 +1,9 @@
 <ul id="Pricipale-a">
                     
-    <li class="left"><a href="#" id="active" class="Principale-b"> Home </a></li>
+    <li class="left"><a href=" <?= $this->url(array('controller' => 'public',
+                                                   'action'     => 'index', ), 
+                                                   'default',true ); ?>"
+        id="active" class="Principale-b"> Home </a></li>
 
     <li id="MenuPrincipale" class="left"> <!--Lista delle Categorie -->
         <a href="#" class="Principale-b"> Promozioni per Categoria </a>
