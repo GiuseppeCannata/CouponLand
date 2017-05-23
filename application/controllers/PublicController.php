@@ -2,28 +2,28 @@
 <?php
 
 class PublicController extends Zend_Controller_Action {
-       
-    protected $_Modelbase;
+     
+    /*attributi*/
+    protected $_Modelbase; //salvo il modelPubblico
+    protected $_cat;  //salvo le categorie 
 	
     /*costruttore*/    
     public function init() {
         
         $this->_helper->layout->setLayout('main'); 
         $this->_Modelbase = new Application_Model_Modelbase();
+        $this->_cat = $this->_Modelbase->getCategorie();
+        //la passo alla view
+        $this->view->assign(array('CategorieTendina' => $this->_cat ));
     }
-
-    /*Deve generare i contenuti della mia pagina, in base a come la chiamo
-      si riferisce al index.phtml (ad ogni azione corrisponde una viewscriptv ) */
+    
+    
     public function indexAction() {   
-        
-        //  Estrae le Categorie dal model   	    	
-    	$CategorieTendina = $this->_Modelbase->getCategorie();
-        $PromozioniTOP    = $this->_Modelbase->getPromozioneTOP();
-        
-         // Definisce le variabili per il viewer
+               
+        $PromozioniTOP = $this->_Modelbase->getPromozioneTOP();
+        //Definisce le variabili per il viewer
         //passo alla view index l array contenete le variabili
-    	$this->view->assign(array('CategorieTendina' => $CategorieTendina,
-                                  'PromozioniTOP' => $PromozioniTOP));
+    	$this->view->assign(array('PromozioniTOP' => $PromozioniTOP));
     
     }
 
@@ -38,8 +38,7 @@ class PublicController extends Zend_Controller_Action {
     
     public function listaziendeAction () {
         
-      $listaziende = $this->_Modelbase->getlistAziende();
-      
+      $listaziende = $this->_Modelbase->getAziende();
       $this->view->assign(array('listaziende' => $listaziende));
         
     }
@@ -47,9 +46,15 @@ class PublicController extends Zend_Controller_Action {
     public function aziendaAction() {
         
       $id_azienda = $this->_getParam('id');
-      $azienda = $this->_Modelbase->getAzienda($id_azienda);
-      
+      $azienda = $this->_Modelbase->getAziendaByID($id_azienda);
       $this->view->assign(array('azienda' => $azienda));
+        
+    }
+    
+    public function faqAction() {
+      
+      $Faq = $this->_Modelbase->getfaq();
+      $this->view->assign(array('faq' => $Faq));
         
     }
     

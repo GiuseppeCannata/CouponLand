@@ -51,12 +51,10 @@
     
     
     <div class="body">
-        
-        <div class="body_resize">
-          <?php echo $this->layout()->content; ?>
+        <div id="bodyresize"> 
+           <?php echo $this->layout()->content; ?>
         </div>
-      
-    </div>
+     </div>
     
     <!--terminato header -->
     
@@ -84,10 +82,12 @@
             <div id="Ituoidiritti">
                 
                 <h3>I tuoi diritti</h3>
-                <a href="">FAQ</a>
+                <a href=" <?= $this->url(array('controller' => 'public',
+                                                   'action' => 'faq'), 
+                                                   'default',true ); ?>"> FAQ </a>
                 <br><br>
                 <a href=" <?= $this->url(array('controller' => 'public',
-                                                   'action'     => 'listaziende'), 
+                                                   'action' => 'listaziende'), 
                                                    'default',true ); ?>"> Info Aziende </a>
                 
             </div>

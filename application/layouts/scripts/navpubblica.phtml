@@ -22,7 +22,11 @@
         </ul> <!-- Fine del sotto-menu -->
     </li> <!-- Chiudo il list-item -->
     
-    <li class="left"><a href="#" class="Principale-b"> Promozioni per Azienda </a></li>
+    <li class="left">
+        <a href= "<?= $this->url(array('controller' => 'public',
+                                        'action'    => 'listaziende', ), 
+                                        'default',true ); ?>" class="Principale-b" class="Principale-b"> Promozioni per Azienda </a>
+    </li>
     <li class="left"><a href="mailto:CouponLand@libero.it" class="Principale-b"> Contattaci </a></li>
     
 </ul>

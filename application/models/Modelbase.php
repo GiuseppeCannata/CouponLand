@@ -10,8 +10,7 @@ class Application_Model_Modelbase extends App_Model_Abstract
             
     }
 
-    public function getCategorie()
-    {
+    public function getCategorie(){
         //getResource 
         //-metodo ereditato  da App_Model_Abstract
         //-istanzia la classe Category e ne richiama il metodo getCategorie()
@@ -24,17 +23,26 @@ class Application_Model_Modelbase extends App_Model_Abstract
         
     }
     
-    public function getlistAziende(){
+    public function getAziende(){
         
-        return $this->getResource('Aziende')->gelistAziende();
+        return $this->getResource('Azienda')->getAziende();
         
     }
     
-    public function getAzienda($id_azienda){
+    public function getAziendaByID($id_azienda){
         
-        return $this->getResource('Aziende')->getAzienda($id_azienda);
+        return $this->getResource('Azienda')->getAziendaByID($id_azienda);
         
     }
+    
+    public function getfaq(){
+        
+        return $this->getResource('Faq')->getfaq();
+        
+    }
+    
+    
+    
     
     
 }

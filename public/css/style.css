@@ -191,11 +191,13 @@ a#active {
    ==========================================================================
 */
 
-.body_resize {
+#bodyresize {
+    
 	margin:0 auto;
 	padding:0px 0 20px 0px;
 	width:930px;
-        background-color: white;
+        background-color: white
+            
 }
 
 .body {
@@ -205,13 +207,13 @@ a#active {
 }
 
 /*immagine di presentazione*/
-.body_resize img {
+#bodyresize img {
 	float:left;
 	margin:5px;
 	
 }
 
-.body_resize #button{
+#bodyresize #button{
         width:100px;
         height:50px;
         background:url(images/freccia.png);
@@ -313,23 +315,26 @@ p.response {
 }
 
 
-div.Titolo {
+.Titolo {
     
-        margin: 10px;
-        font:bold 30px Arial, Helvetica, sans-serif;
-	color:black;
-	padding:10px 0;
+    font-family: Hind,sans-serif;
+    margin: 10px;
+    color:black;
+    padding:10px 0;
 	
 }
 
-div.Sottotitolo{
+.Sottotitolo{
     
     margin:10px;
     padding: 0;
 }
 
-div.Testo{
+.Testo{
     
+    color: #75787b;
+    font-family: Arial  serif;
+    font-size: 1.4rem;
     margin:10px;
     padding: 0;
     
