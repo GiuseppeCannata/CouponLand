@@ -20,5 +20,26 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
         e quidi ritorno i dati cosi come sono */
         return $this->fetchAll($select);
     }  
+    
+     public function getPromozioniByCat($NomeCat, $paged ,$order){
+         
+         /*Definisco l oggetto stringa che raffigura il comando sql*/
+        $select = $this->select()
+                       ->where('Categoria'.$NomeCat)
+                       ->order($order);
+        
+        if (null !== $paged) {
+            
+            $adapter = new Zend_Paginator_Adapter_DbTableSelect($select);
+            $paginator = new Zend_Paginator($adapter);
+            $paginator->setItemCountPerPage(1)
+                      ->setCurrentPageNumber((int) $paged);
+            
+            return $paginator;
+            
+        }     
+    }
+    
+    
 }
 

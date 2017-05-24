@@ -317,9 +317,9 @@ p.response {
 
 .Titolo {
     
-    font-family: Hind,sans-serif;
+    font-family: Hind, sans-serif;
     margin: 10px;
-    color:black;
+    color:#8fbb1b;
     padding:10px 0;
 	
 }
@@ -333,12 +333,12 @@ p.response {
 .Testo{
     
     color: #75787b;
-    font-family: Arial  serif;
-    font-size: 1.4rem;
-    margin:10px;
+    font-family: Arial, sans-serif;
+    margin:15px;
     padding: 0;
     
 }
+
 
 
 

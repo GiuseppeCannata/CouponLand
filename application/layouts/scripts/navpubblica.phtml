@@ -13,7 +13,8 @@
                 foreach ($this->CategorieTendina as $categoria) {
                 
                     echo '<li><a href='. $this->url(array('controller' => 'public',
-                                                          'action' => 'index'), 
+                                                          'action'     => 'catvi',
+                                                          'categoriaName'  => $categoria->Nome), 
                                                           'default', true) .'>'.
                     $categoria->Nome.'</a></li>';
                         

@@ -58,13 +58,16 @@ class PublicController extends Zend_Controller_Action {
         
     }
     
-    
-    
-    public function accediAction (){
+    public function catviAction (){
         
-        $this->_helper->layout->disableLayout();
-        $page= $this->_getParam('pagina');
-        $this->view->paginaScelta = $page;
+       
+        $Namecat = $this->view->categoriaName;
+        $paged = $this->_getParam('page',1);
+        $promozioni = $this->_Modelbase->getPromozioniByCat($Namecat, $paged ,$order=array('Fine_promozione'));
         
+        $this->view->assign(array('products'=>$promozioni));
     }
+    
+    
+    
 }
