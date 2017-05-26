@@ -122,16 +122,18 @@ h1 a:hover {
         
         float:left;
 	margin: 10px;
-        width: 400px;
+        width: 600px;
        
 }
 
 input.button {
         margin-left:5px;
 	padding:2px;
-        background: blue;
-        height: 35px;
-        width: 35px;
+        margin: 0 0 0 5px;
+        box-shadow: none;
+        font-size: 16px;
+        height: 34px;
+        width: 60px;
 }
 
 .search form #textfield {
@@ -207,13 +209,13 @@ a#active {
 }
 
 /*immagine di presentazione*/
-#bodyresize img {
+img#bodyimg {
 	float:left;
 	margin:5px;
 	
 }
 
-#bodyresize #button{
+#button{
         width:100px;
         height:50px;
         background:url(images/freccia.png);
@@ -337,6 +339,22 @@ p.response {
     margin:15px;
     padding: 0;
     
+}
+
+.imgs{
+    
+   width:  200px;
+   height: 100px;
+   margin: 30px;
+   
+}
+
+#pagination {
+	text-align :center;
+}
+
+#pagination a {
+	border-bottom:none
 }
 
 

@@ -1,33 +1,26 @@
 <div>
-     <?php foreach ($this->azienda as $aziendascelta) :?>
-		
-        <div class="image">
-
-        </div>
+    <?php foreach ($this->azienda as $aziendascelta) :?>
     
-        <div class="Titolo">
-         <?php echo '<h1>'. $aziendascelta->Nome . '</h1>' ?>
+        <div>
+          <?php echo $this->productImg($aziendascelta->Logo_aziendale, array('class' => 'imgs')) ?>
         </div>
 
         <div class="Sottotitolo">
 
-          <?php echo'<h4>Tipologia: ' . $aziendascelta->Tipologia . '</h4>' ?>
+          <?php echo '<h4>Tipologia: ' . $aziendascelta->Tipologia . '</h4>' ?>
           <?php echo '<h4>Ragione sociale: ' . $aziendascelta->Ragione_sociale . '</h4>' ?>
           <?php echo '<h4>Localizzazione: ' . $aziendascelta->Localizzazione . '</h4>' ?>
-          <h4>Chi siamo</h4>
+          <h4>Presentazione azienda:</h4>
 
         </div>
         
         <div class="Testo">
             
-            <?php echo '<p>' . $aziendascelta->Descrizione . '</p>' ?>
+          <?php echo '<p>' . $aziendascelta->Descrizione . '</p>' ?>
 
         </div>
+    
     <?php endforeach ?>
 </div>
-    
-    
-    
-    
-</div>
+
 

@@ -25,7 +25,7 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
          
          /*Definisco l oggetto stringa che raffigura il comando sql*/
         $select = $this->select()
-                       ->where('Categoria'.$NomeCat)
+                       ->where('Categoria =?' ,$NomeCat)
                        ->order($order);
         
         if (null !== $paged) {
@@ -37,8 +37,34 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
             
             return $paginator;
             
-        }     
+        } 
+        
+        return $this->fetchAll($select);
     }
+    
+    public function getPromozioniByAz($NomeAz, $paged ,$order){
+         
+         /*Definisco l oggetto stringa che raffigura il comando sql*/
+        $select = $this->select()
+                       ->where('Azienda =?' ,$NomeAz)
+                       ->order($order);
+        
+        if (null !== $paged) {
+            
+            $adapter = new Zend_Paginator_Adapter_DbTableSelect($select);
+            $paginator = new Zend_Paginator($adapter);
+            $paginator->setItemCountPerPage(1)
+                      ->setCurrentPageNumber((int) $paged);
+            
+            return $paginator;
+            
+        } 
+        
+        return $this->fetchAll($select);
+        
+    }
+    
+    
     
     
 }

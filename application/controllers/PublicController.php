@@ -39,7 +39,9 @@ class PublicController extends Zend_Controller_Action {
     public function listaziendeAction () {
         
       $listaziende = $this->_Modelbase->getAziende();
-      $this->view->assign(array('listaziende' => $listaziende));
+      $chiamante = $this->_getParam('chiamante');
+      $this->view->assign(array('listaziende' => $listaziende,
+                                'chiamante' => $chiamante));
         
     }
     
@@ -58,15 +60,43 @@ class PublicController extends Zend_Controller_Action {
         
     }
     
-    public function catviAction (){
+    
+    public function getpromozioniAction() {
         
-       
-        $Namecat = $this->view->categoriaName;
-        $paged = $this->_getParam('page',1);
-        $promozioni = $this->_Modelbase->getPromozioniByCat($Namecat, $paged ,$order=array('Fine_promozione'));
+        $chiamante = $this->_getParam('chiamante');
         
-        $this->view->assign(array('products'=>$promozioni));
+        switch($chiamante){
+            
+            case 'promCat': {
+                
+                $Namecat = $this->_getparam('categoriaName');
+                $paged = $this->_getParam('page',1);
+                $promozioni = $this->_Modelbase->getPromozioniByCat($Namecat, $paged ,$order=array('Fine_promozione'));
+                
+                break;
+                
+            }
+            
+            case 'promAz':{
+                
+                $NameAz = $this->_getparam('NomeAzienda');
+                $paged = $this->_getParam('page',1);
+                $promozioni = $this->_Modelbase->getPromozioniByAz($NameAz, $paged ,$order=array('Fine_promozione'));
+                
+                break;
+            }
+            
+        }
+        
+        $this->view->assign(array('prom' => $promozioni,
+                                  'chiamante' => $chiamante));
+        
+        
     }
+    
+    
+    
+    
     
     
     

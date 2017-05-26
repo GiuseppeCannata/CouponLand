@@ -1,7 +1,7 @@
 <div>
     
     <div class="Titolo">
-      <h1>Elenco delle nostre aziende</h1><br>
+      <h1>Le nostre aziende</h1><br>
     </div>
     
     <div class="Idlist">
@@ -18,11 +18,34 @@
 
                 if($ris === 'A' || $ris === 'B' || $ris === 'C' || $ris === 'D' || $ris === 'E' || $ris === 'F'){
 
-                    echo '<div><a href='. $this->url(array('controller' => 'public',
-                                                           'action' => 'azienda',
-                                                           'id'=> $azienda->Id_azienda), 
-                                                           'default', true) .'>'.
-                                 $azienda->Nome.'</a></div>';
+                    switch($this->chiamante){
+                        
+                        case 'nav':{
+                            
+                            echo '<div><a href='. $this->url(array('controller' => 'public',
+                                                               'action' => 'getpromozioni',
+                                                               'NomeAzienda'=> $azienda->Nome,
+                                                               'chiamante' => 'promAZ' ), 
+                                                               'default', true) .'>'.
+                                     $azienda->Nome.'</a></div>';
+                            
+                  
+                            
+                            break;
+                        }
+                        
+                        case 'footer':{
+                            
+                            echo '<div><a href='. $this->url(array('controller' => 'public',
+                                                               'action' => 'azienda',
+                                                               'id'=> $azienda->Id_azienda), 
+                                                               'default', true) .'>'.
+                                     $azienda->Nome.'</a></div>';
+                            break;
+                        }
+                    
+                    }
+                    
                 }
             }
 
@@ -43,11 +66,34 @@
             
             if($ris === 'G' || $ris === 'H' || $ris === 'I' || $ris === 'L' || $ris === 'M' || $ris === 'N'|| $ris === 'O'){
                 
-                echo '<div><a href='. $this->url(array('controller' => 'public',
-                                                       'action' => 'azienda',
-                                                       'id'=> $azienda->Id_azienda), 
-                                                       'default', true) .'>'.
-                             $azienda->Nome.'</a></div>';
+                switch($this->chiamante){
+                        
+                        case 'nav':{
+                            
+                            echo '<div><a href='. $this->url(array('controller' => 'public',
+                                                               'action' => 'getpromozioni',
+                                                               'NomeAzienda'=> $azienda->Nome,
+                                                               'chiamante' => 'promAZ' ), 
+                                                               'default', true) .'>'.
+                                     $azienda->Nome.'</a></div>';
+                            
+                  
+                            
+                            break;
+                        }
+                        
+                        case 'footer':{
+                            
+                            echo '<div><a href='. $this->url(array('controller' => 'public',
+                                                               'action' => 'azienda',
+                                                               'id'=> $azienda->Id_azienda,
+                                                               'chiamante' => 'promAZ'), 
+                                                               'default', true) .'>'.
+                                     $azienda->Nome.'</a></div>';
+                            break;
+                        }
+                    
+                    }
             }
         }
     ?>
@@ -67,11 +113,32 @@
             
             if($ris === 'P' || $ris === 'Q' || $ris === 'R' || $ris === 'S' || $ris === 'T' || $ris === 'U'|| $ris === 'V' || $ris==='Z'){
                 
-                echo '<div><a href='. $this->url(array('controller' => 'public',
-                                                       'action' => 'azienda',
-                                                       'id'=> $azienda->Id_azienda), 
-                                                       'default', true) .'>'.
-                             $azienda->Nome.'</a></div>';
+               switch($this->chiamante){
+                        
+                        case 'nav':{
+                            
+                            echo '<div><a href='. $this->url(array('controller' => 'public',
+                                                               'action' => 'getpromozioni',
+                                                               'NomeAzienda'=> $azienda->Nome), 
+                                                               'default', true) .'>'.
+                                     $azienda->Nome.'</a></div>';
+                            
+                  
+                            
+                            break;
+                        }
+                        
+                        case 'footer':{
+                            
+                            echo '<div><a href='. $this->url(array('controller' => 'public',
+                                                               'action' => 'azienda',
+                                                               'id'=> $azienda->Id_azienda), 
+                                                               'default', true) .'>'.
+                                     $azienda->Nome.'</a></div>';
+                            break;
+                        }
+                    
+                    }
             }
             
         }

@@ -46,6 +46,16 @@ class Application_Model_Modelbase extends App_Model_Abstract
         return $this->getResource('Promozione')->getPromozioniByCat($NomeCat,$paged ,$order);
         
     }
+    
+    public function getPromozioniByAz($NomeAz, $paged ,$order){
+        
+        return $this->getResource('Promozione')->getPromozioniByAz($NomeAz,$paged ,$order);
+        
+    }
+    
+    
+    
+    
         
     
     

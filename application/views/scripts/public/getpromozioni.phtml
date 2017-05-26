@@ -1,0 +1,36 @@
+<div id="content">
+    
+        <?php 
+        
+         
+           
+            foreach ($this->prom as $promozione) :?>
+    
+		<div class="prod">
+                    
+                    <div class="image">
+                      <?php echo $this->productImg($promozione->Immagine, array('class' => 'imagefrm')) ?>
+                    </div>
+
+                    <div class="info">		      
+                      <?php echo'<h1 class="Sottotitolo">' . $promozione->Nome . '</h1>' ?>
+                      <?php echo '<p class="Testo">' . $promozione->Descrizione . '</p>' ?>
+                      <?php echo '<p class="Sottotitolo">Azienda: ' . $promozione->Azienda . '</p>' ?>
+                      <?php echo '<p>Scadenza: ' . $promozione->Fine_promozione . '</p>' ?>
+                      
+                    </div>
+                
+                </div>
+    
+	<?php endforeach ?>
+	  
+	  <!-- Paginazione -->	
+         <!-- iNTRODUCE LA BARRA DI PAGINAZIONE -->
+         
+	  <?php if($this->prom instanceof Zend_Paginator) {
+                        
+                      echo $this->paginationControl($this->prom ,'Sliding','public/_paginator.phtml',array('chiamante'=>$this->chiamante));
+	        } 
+	  ?>
+
+</div>

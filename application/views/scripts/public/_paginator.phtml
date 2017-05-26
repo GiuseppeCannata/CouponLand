@@ -1,11 +1,11 @@
 <?php if ($this->pageCount > 1): ?>
 <div id="pagination">
 <?php echo $this->firstItemNumber; ?> - <?= $this->lastItemNumber; ?> di <?= $this->totalItemCount; ?> ---
-
 <!-- Link alla prima pagina -->
 <?php if (isset($this->previous)): ?>
   <a href="<?= $this->url(array('controller' => 'public', 
-                                'action' => 'index', 
+                                'action' => 'getpromozioni', 
+                                'chiamante' => $this->chiamante,
                                 'page' => $this->first)); ?>">Inizio</a> |
 <?php else: ?>
   Inizio |
@@ -15,7 +15,8 @@
 <?php if (isset($this->previous)): ?>
 <a href="_paginator.phtml"></a>
   <a href="<?= $this->url(array('controller' => 'public', 
-                                'action' => 'index', 
+                                'action' => 'getpromozioni',
+                                'chiamante' => $this->chiamante, 
                                 'page' => $this->previous)); ?>">&lt; Precedente</a> |
 <?php else: ?>
   &lt; Precedente |
@@ -23,14 +24,20 @@
 
 <!-- Link alla pagina successiva -->
 <?php if (isset($this->next)): ?>
-  <a href="<?= $this->url(array('controller' => 'public', 'action' => 'index', 'page' => $this->next)); ?>">Successivo &gt;</a> |
+  <a href="<?= $this->url(array('controller' => 'public', 
+                                'action' => 'getpromozioni', 
+                                'chiamante' => $this->chiamante,
+                                'page' => $this->next)); ?>">Successivo &gt;</a> |
 <?php else: ?>
   Successivo &gt; |
 <?php endif; ?>
 
 <!-- Link all'ultima pagina -->
 <?php if (isset($this->next)): ?>
-  <a href="<?= $this->url(array('controller' => 'public', 'action' => 'index', 'page' => $this->last)); ?>">Fine</a>
+  <a href="<?= $this->url(array('controller' => 'public', 
+                                'action' => 'getptomozioni',
+                                'chiamante' => $this->chiamante,
+                                'page' => $this->last)); ?>">Fine</a>
 <?php else: ?>
   Fine
 <?php endif; ?>

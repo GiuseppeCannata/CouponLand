@@ -83,12 +83,13 @@
                 
                 <h3>I tuoi diritti</h3>
                 <a href=" <?= $this->url(array('controller' => 'public',
-                                                   'action' => 'faq'), 
-                                                   'default',true ); ?>"> FAQ </a>
+                                               'action' => 'faq'), 
+                                               'default',true ); ?>"> FAQ </a>
                 <br><br>
                 <a href=" <?= $this->url(array('controller' => 'public',
-                                                   'action' => 'listaziende'), 
-                                                   'default',true ); ?>"> Info Aziende </a>
+                                               'action' => 'listaziende',
+                                               'chiamante' => 'footer'), 
+                                               'default',true ); ?>"> Info Aziende </a>
                 
             </div>
 

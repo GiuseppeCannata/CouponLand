@@ -1,8 +1,8 @@
 <ul id="Pricipale-a">
                     
     <li class="left"><a href=" <?= $this->url(array('controller' => 'public',
-                                                   'action'     => 'index', ), 
-                                                   'default',true ); ?>"
+                                                    'action'     => 'index', ), 
+                                                    'default',true ); ?>"
         id="active" class="Principale-b"> Home </a></li>
 
     <li id="MenuPrincipale" class="left"> <!--Lista delle Categorie -->
@@ -13,8 +13,9 @@
                 foreach ($this->CategorieTendina as $categoria) {
                 
                     echo '<li><a href='. $this->url(array('controller' => 'public',
-                                                          'action'     => 'catvi',
-                                                          'categoriaName'  => $categoria->Nome), 
+                                                          'action'     => 'getpromozioni',
+                                                          'categoriaName'  => $categoria->Nome,
+                                                          'chiamante' => 'promCat'), 
                                                           'default', true) .'>'.
                     $categoria->Nome.'</a></li>';
                         
@@ -25,7 +26,8 @@
     
     <li class="left">
         <a href= "<?= $this->url(array('controller' => 'public',
-                                        'action'    => 'listaziende', ), 
+                                        'action'    => 'listaziende',
+                                        'chiamante' => 'nav'), 
                                         'default',true ); ?>" class="Principale-b" class="Principale-b"> Promozioni per Azienda </a>
     </li>
     <li class="left"><a href="mailto:CouponLand@libero.it" class="Principale-b"> Contattaci </a></li>
