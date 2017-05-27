@@ -24,8 +24,8 @@
                             
                             echo '<div><a href='. $this->url(array('controller' => 'public',
                                                                'action' => 'getpromozioni',
-                                                               'NomeAzienda'=> $azienda->Nome,
-                                                               'chiamante' => 'promAZ' ), 
+                                                               'IBRIDO'=> $azienda->Nome,
+                                                               'chiamante' => 'promAz' ), 
                                                                'default', true) .'>'.
                                      $azienda->Nome.'</a></div>';
                             
@@ -72,7 +72,7 @@
                             
                             echo '<div><a href='. $this->url(array('controller' => 'public',
                                                                'action' => 'getpromozioni',
-                                                               'NomeAzienda'=> $azienda->Nome,
+                                                               'IBRIDO'=> $azienda->Nome,
                                                                'chiamante' => 'promAZ' ), 
                                                                'default', true) .'>'.
                                      $azienda->Nome.'</a></div>';
@@ -86,8 +86,7 @@
                             
                             echo '<div><a href='. $this->url(array('controller' => 'public',
                                                                'action' => 'azienda',
-                                                               'id'=> $azienda->Id_azienda,
-                                                               'chiamante' => 'promAZ'), 
+                                                               'id'=> $azienda->Id_azienda), 
                                                                'default', true) .'>'.
                                      $azienda->Nome.'</a></div>';
                             break;
@@ -119,7 +118,8 @@
                             
                             echo '<div><a href='. $this->url(array('controller' => 'public',
                                                                'action' => 'getpromozioni',
-                                                               'NomeAzienda'=> $azienda->Nome), 
+                                                               'IBRIDO'=> $azienda->Nome,
+                                                               'chiamante' => 'promAz'), 
                                                                'default', true) .'>'.
                                      $azienda->Nome.'</a></div>';
                             

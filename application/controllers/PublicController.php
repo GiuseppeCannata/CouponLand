@@ -64,30 +64,10 @@ class PublicController extends Zend_Controller_Action {
     public function getpromozioniAction() {
         
         $chiamante = $this->_getParam('chiamante');
-        
-        switch($chiamante){
-            
-            case 'promCat': {
+        $IBRIDO = $this->_getparam('IBRIDO');
+        $paged = $this->_getParam('page',1);
+        $promozioni = $this->_Modelbase->getPromozioniByIBRIDO($chiamante,$IBRIDO, $paged ,$order=array('Fine_promozione'));
                 
-                $Namecat = $this->_getparam('categoriaName');
-                $paged = $this->_getParam('page',1);
-                $promozioni = $this->_Modelbase->getPromozioniByCat($Namecat, $paged ,$order=array('Fine_promozione'));
-                
-                break;
-                
-            }
-            
-            case 'promAz':{
-                
-                $NameAz = $this->_getparam('NomeAzienda');
-                $paged = $this->_getParam('page',1);
-                $promozioni = $this->_Modelbase->getPromozioniByAz($NameAz, $paged ,$order=array('Fine_promozione'));
-                
-                break;
-            }
-            
-        }
-        
         $this->view->assign(array('prom' => $promozioni,
                                   'chiamante' => $chiamante));
         

@@ -47,17 +47,31 @@ class Application_Model_Modelbase extends App_Model_Abstract
         
     }
     
-    public function getPromozioniByCat($NomeCat, $paged ,$order){
+    public function getPromozioniByIBRIDO($chiamante,$IBRIDO, $paged ,$order){
         
-        return $this->getResource('Promozione')->getPromozioniByCat($NomeCat,$paged ,$order);
+        switch($chiamante){
+            
+            
+            case 'promCat':{
+                /*$IBRIDO== NomeCat*/
+                return $this->getResource('Promozione')->getPromozioniByCat($IBRIDO,$paged ,$order);
+                break;
+            }
+            
+            case 'promAz':{
+                
+                /*$IBRIDO== NomeAz*/
+                return $this->getResource('Promozione')->getPromozioniByAz($IBRIDO,$paged ,$order);
+                break;
+            }
+            
+            
+                
+        }
+        
         
     }
-    
-    public function getPromozioniByAz($NomeAz, $paged ,$order){
-        
-        return $this->getResource('Promozione')->getPromozioniByAz($NomeAz,$paged ,$order);
-        
-    }
+   
     
     
     
