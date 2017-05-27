@@ -2,9 +2,8 @@
     
         <?php 
         
-         
-           
-            foreach ($this->prom as $promozione) :?>
+        
+        foreach ($this->prom as $promozione) :?>
     
 		<div class="prod">
                     
@@ -13,8 +12,12 @@
                     </div>
 
                     <div class="info">		      
-                      <?php echo'<h1 class="Sottotitolo">' . $promozione->Nome . '</h1>' ?>
-                      <?php echo '<p class="Testo">' . $promozione->Descrizione . '</p>' ?>
+                      <?php echo'<h1><a href='. $this->url(array('controller' => 'public',
+                                                                                     'action'     => 'promozione',
+                                                                                     'Id_prom'  => $promozione->Id_promozione,
+                                                                                     'chiamante' => 'promCat'), 
+                                                                                     'default', true) .'>' . $promozione->Nome . '<a></h1>' ?>
+                      <?php echo '<p class="Testo">' . $promozione->Descrizione_breve . '</p>' ?>
                       <?php echo '<p class="Sottotitolo">Azienda: ' . $promozione->Azienda . '</p>' ?>
                       <?php echo '<p>Scadenza: ' . $promozione->Fine_promozione . '</p>' ?>
                       

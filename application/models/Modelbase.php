@@ -35,6 +35,12 @@ class Application_Model_Modelbase extends App_Model_Abstract
         
     }
     
+    public function getPromozioneByID($id_promozione){
+        
+        return $this->getResource('Promozione')->getPromozioneByID($id_promozione);
+        
+    }
+    
     public function getfaq(){
         
         return $this->getResource('Faq')->getfaq();

@@ -30,7 +30,7 @@ class Application_Resource_Azienda extends Zend_Db_Table_Abstract
         
        /*Scrivo la stringa per fare la select*/
 	$select = $this->select()
-                       ->where('id_azienda='.$id_azienda);
+                       ->where('Id_azienda=?',$id_azienda);
         
         return $this->fetchAll($select);
         

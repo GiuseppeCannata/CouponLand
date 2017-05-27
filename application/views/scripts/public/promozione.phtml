@@ -1,0 +1,22 @@
+<div class="prod">
+       
+   <?php  foreach ($this->prom as $promozione) :?>
+    
+    <div class="image">
+      <?php echo $this->productImg($promozione->Immagine, array('class' => 'imagefrm')) ?>
+    </div>
+
+    <div class="info">		
+        
+      <?php echo'<h1 class="Sottotitolo">'. $promozione->Nome . '</h1>' ?>
+      <?php echo'<h4>'. $promozione->Categoria . '</h4>' ?>
+      <?php echo '<p class="Testo">' . $promozione->Descrizione_estesa . '</p>' ?>
+      <?php echo '<p class="Sottotitolo">Azienda: ' . $promozione->Azienda . '</p>' ?>
+      <?php echo '<p>Scadenza: ' . $promozione->Fine_promozione . '</p>' ?>
+        
+    </div>
+    
+    <?php endforeach ?>
+                
+</div>
+

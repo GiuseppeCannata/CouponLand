@@ -94,6 +94,19 @@ class PublicController extends Zend_Controller_Action {
         
     }
     
+    public function promozioneAction() {
+      
+      $Id= $this->_getParam('Id_prom');
+      
+      $PromScelta = $this->_Modelbase->getPromozioneByID($Id);
+      
+      $this->view->assign(array('prom' => $PromScelta));
+      
+        
+    }
+    
+    
+    
     
     
     

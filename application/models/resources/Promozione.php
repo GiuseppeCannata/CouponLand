@@ -65,6 +65,17 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
     }
     
     
+    public function getPromozioneByID($id_promozione){
+        
+       /*Scrivo la stringa per fare la select*/
+	$select = $this->select()
+                       ->where('Id_promozione=?', $id_promozione);
+        
+        return $this->fetchAll($select);
+        
+    }
+    
+    
     
     
 }
