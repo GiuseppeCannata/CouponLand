@@ -32,7 +32,7 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
             
             $adapter = new Zend_Paginator_Adapter_DbTableSelect($select);
             $paginator = new Zend_Paginator($adapter);
-            $paginator->setItemCountPerPage(1)
+            $paginator->setItemCountPerPage(5)
                       ->setCurrentPageNumber((int) $paged);
             
             return $paginator;
@@ -53,7 +53,7 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
             
             $adapter = new Zend_Paginator_Adapter_DbTableSelect($select);
             $paginator = new Zend_Paginator($adapter);
-            $paginator->setItemCountPerPage(1)
+            $paginator->setItemCountPerPage(5)
                       ->setCurrentPageNumber((int) $paged);
             
             return $paginator;

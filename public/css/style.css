@@ -361,7 +361,7 @@ p.response {
     margin: 10px;
     border: solid 1px #999;
     width: 200px;
-    heigth: 250px;
+    height: 150px;
     
 }
 
@@ -382,10 +382,6 @@ li.prom{
     list-style-type: none;
 }
 
-hr.separatore{
-    
-    
-}
 
 div.promlist{
     
@@ -405,6 +401,13 @@ div.promlist{
 li.prom{
     
     margin-top:10px;
+}
+
+.imgprom{
+    
+    text-align: center;
+    width:  930px ;
+    
 }
 
 

@@ -1,5 +1,8 @@
 <div id="content">
     
+    <?php
+          echo '<h1 class="Titolo">'. $this->IBRIDO .'</h1>'
+    ?>
     
     <ul>
         <?php 
@@ -9,13 +12,9 @@
     
             <li class="prom">
 		
-                <br>
-                <hr class="separatore">
-
                 <div class="promlist">
-                  <?php echo $this->productImg($promozione->Immagine, array('class' => 'imglist') ) ?>
-
-
+                  <?php echo $this->productImg($promozione->Immagine, array('class' => 'imglist'), 'prom') ?>
+                
                 <div>	      
                   <?php echo'<h1 class="TestoLista"><a class="lista" href='. $this->url(array('controller' => 'public',
                                                                                  'action'     => 'promozione',
@@ -32,7 +31,7 @@
 
 
                <hr class="separatore">
-               <br>
+               
             </li>
             
 	<?php endforeach ?>

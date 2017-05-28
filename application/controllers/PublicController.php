@@ -70,7 +70,8 @@ class PublicController extends Zend_Controller_Action {
         $promozioni = $this->_Modelbase->getPromozioniByIBRIDO($chiamante,$IBRIDO, $paged ,$order=array('Fine_promozione'));
                 
         $this->view->assign(array('prom' => $promozioni,
-                                  'chiamante' => $chiamante));
+                                  'chiamante' => $chiamante,
+                                  'IBRIDO' => $this->_getParam('IBRIDO')));
         
         
     }
@@ -132,16 +133,9 @@ class PublicController extends Zend_Controller_Action {
         public function accediAction (){
         
         $this->_helper->layout->disableLayout();
-        
-        
+        $this->view->headLink()->appendStylesheet($this->view->baseUrl('css/Logo.css'));
+        $this->view->headLink()->appendStylesheet($this->view->baseUrl('css/AccediRegistrati.css'));
+       
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
 }
