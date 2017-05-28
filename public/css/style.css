@@ -217,8 +217,7 @@ img#bodyimg {
         background:url(images/freccia.png);
         position: relative;
         cursor:pointer;
-        bottom: -267px;
-        margin: 5px 50px 5px 202px;
+       
 }
 
 #prodotto {
@@ -241,6 +240,7 @@ img#bodyimg {
 	color:#a9a9a9;
 	padding:10px 0;
 	margin:0;
+        text-align: center;
 }
 
 
@@ -249,7 +249,8 @@ img#bodyimg {
 	color:#696969;
 	padding:5px;
 	margin:0;
-	line-height:1.8em;;
+	line-height:1.8em;
+        text-align: center;
 }
 
 
@@ -377,10 +378,7 @@ a.lista:visited {
    
 }
 
-li.prom{
-    
-    list-style-type: none;
-}
+
 
 
 div.promlist{
@@ -388,6 +386,8 @@ div.promlist{
    display: flex;
 
 }
+
+
 
 .Desc_br{
     
@@ -401,14 +401,36 @@ div.promlist{
 li.prom{
     
     margin-top:10px;
+    list-style:none;
+    
 }
 
 .imgprom{
     
-    text-align: center;
-    width:  930px ;
+    align-content: center;
+    width: 100%;
+  
     
 }
+
+div.info{
+    
+    margin: 10px;
+}
+
+
+ul.listaziende{
+    
+    float: left;
+}
+
+div#content{
+    
+    text-align: center;
+}
+
+
+
 
 
 

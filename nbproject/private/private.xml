@@ -3,13 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/CouponLand/public/css/MenuAtendina.css</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/views/helpers/ProductImg.php</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/layouts/scripts/navpubblica.phtml</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/public/promozione.phtml</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/models/resources/Promozione.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/models/Modelbase.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/public/index.phtml</file>
             <file>file:/C:/xampp/htdocs/CouponLand/public/css/style.css</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/public/getpromozioni.phtml</file>
             <file>file:/C:/xampp/htdocs/CouponLand/application/controllers/PublicController.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/public/getpromozioni.phtml</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/public/listaziende.phtml</file>
         </group>
     </open-files>
 </project-private>

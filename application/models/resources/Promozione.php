@@ -11,14 +11,15 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
     }
     
     public function getPromozioneTOP(){
-        
         /*Definisco l oggetto stringa che raffigura il comando sql*/
+        
         $select = $this->select()
-                       ->where('Discounted=1');
+                       ->where('Id_promozione >=0');
         
         /*se eseguo questa istruzione significa che il risultato della query non lo voglio paginato
         e quidi ritorno i dati cosi come sono */
         return $this->fetchAll($select);
+
     }  
     
      public function getPromozioniByCat($NomeCat, $paged ,$order){

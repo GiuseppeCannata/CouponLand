@@ -21,10 +21,11 @@ class PublicController extends Zend_Controller_Action {
     
     public function indexAction() {   
                
-        $PromozioniTOP = $this->_Modelbase->getPromozioneTOP();
-        //Definisce le variabili per il viewer
-        //passo alla view index l array contenete le variabili
-    	$this->view->assign(array('PromozioniTOP' => $PromozioniTOP));
+       $PromozioniTOP = $this->_Modelbase->getPromozioneTOP();
+       $this->view->assign(array('CatTOP' => $this->_cat,
+                                  'PromozioniTOP' => $PromozioniTOP));
+       
+
     
     }
 

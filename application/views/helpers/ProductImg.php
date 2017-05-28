@@ -4,10 +4,11 @@ class Zend_View_Helper_ProductImg extends Zend_View_Helper_HtmlElement
 	private $_attrs;
 	
 	public function productImg($imgFile, $attrs = false, $chiamante){
+            
             if (empty($imgFile)) {
                     $imgFile = 'default.jpg';
             }
-            if (null !== $attrs) {
+            if (null !== $attrs)  {
                     $_attrs = $this->_htmlAttribs($attrs);
             } else {
                     $_attrs = '';

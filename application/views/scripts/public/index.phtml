@@ -1,34 +1,41 @@
-<div>  
-        <div>
-            <img id="bodyimg"src="/CouponLand/public/img/coper.png"  alt="" width="920" height="343" border="0"> 
-            <a href="#prima_categoria"><div id="button"></div></a>
-        </div>
-          
-        <div class="textarea">
-            <?php 
-                
-                $i =0;
-                
-                foreach ($this->PromozioniTOP as $promTOP) {
-                    $i+=1;
-                    if($i==1){
-                       echo '<h2 id="prima_categoria">'. $promTOP->Categoria .'</h2>';  
-                    }
-                    else {
-                       echo '<h2>'. $promTOP->Categoria .'</h2>';  
-                    }
-                    
-                    echo '<p>'.$promTOP->Descrizione_breve.'</p>';
-                    echo '<img scr='.$promTOP->Immagine.'</p>';
-                    echo '<img id ="prodotto" src="/CouponLand/public/img/vaialprodotto" />';
-                        
-                }
-            ?>
-            
-        </div>
-    <div class="clr"></div>
+<div>
+    <img src="/CouponLand/public/img/coper.png"  alt="" width="920" height="343" border="0"> 
+    <a href="#listTOP"><div id="button"></div></a>
 </div>
 
+<div id="listTOP">
+
+    <div class="textarea">
+    <?php
+       //prendo tutte le categorie
+       foreach ($this->CatTOP as $Cat){     
+
+           $top=0;
+           $oggetto=NULL;
+            //prendo tutti i prodotti
+            foreach ($this->PromozioniTOP as $promTOP){
+
+                if(($promTOP->Categoria === $Cat->Nome) && ($promTOP->Coupon_emessi > $top)){
+
+                     $oggetto = $promTOP;
+                     $top=$promTOP->Coupon_emessi;
+
+                }    
+            }
+
+            if(!$oggetto==NULL){
+
+                echo '<h2 >'.$oggetto->Categoria.'</h2>';
+                echo '<h4>'.$oggetto->Nome.'</h4>';
+                echo '<p class="Testo">'.$oggetto->Descrizione_breve.'</p>';
+                echo '</div>';
+                echo $this->productImg($oggetto->Immagine, array('id' => 'prodotto'), 'prom');
 
 
+            }
+        }
+     ?>
 
+   </div>
+   <div class="clr"></div>
+</div>

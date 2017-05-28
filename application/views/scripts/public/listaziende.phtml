@@ -1,14 +1,12 @@
-<div>
-    
     <div class="Titolo">
       <h1>Le nostre aziende</h1><br>
     </div>
-    
-    <div class="Idlist">
+<div id="ContentListAziende">
+    <ul class="listaziende">
         
-        <div class="Sottotitolo">
+        <li class="prom" class="Sottotitolo">
             <h2>A-F</h2>
-        </div>
+        </li>
         
         <?php 
 
@@ -22,12 +20,12 @@
                         
                         case 'nav':{
                             
-                            echo '<div><a href='. $this->url(array('controller' => 'public',
+                            echo '<li class="prom"><a href='. $this->url(array('controller' => 'public',
                                                                'action' => 'getpromozioni',
                                                                'IBRIDO'=> $azienda->Nome,
                                                                'chiamante' => 'promAz' ), 
                                                                'default', true) .'>'.
-                                     $azienda->Nome.'</a></div>';
+                                     $azienda->Nome.'</a></li>';
                             
                   
                             
@@ -36,11 +34,11 @@
                         
                         case 'footer':{
                             
-                            echo '<div><a href='. $this->url(array('controller' => 'public',
+                            echo '<li class="prom"><a href='. $this->url(array('controller' => 'public',
                                                                'action' => 'azienda',
                                                                'id'=> $azienda->Id_azienda), 
                                                                'default', true) .'>'.
-                                     $azienda->Nome.'</a></div>';
+                                     $azienda->Nome.'</a></li>';
                             break;
                         }
                     
@@ -50,13 +48,12 @@
             }
 
         ?>
-    </div> 
+    </ul>
     
-    <div class="Idlist">
-        
-        <div class="Sottotitolo">
+    <ul class="listaziende">   
+        <li class="prom" class="Sottotitolo">
             <h2>G-O</h2>
-        </div>
+        </li>
         
         <?php 
     
@@ -70,12 +67,12 @@
                         
                         case 'nav':{
                             
-                            echo '<div><a href='. $this->url(array('controller' => 'public',
+                            echo '<li class="prom"><a href='. $this->url(array('controller' => 'public',
                                                                'action' => 'getpromozioni',
                                                                'IBRIDO'=> $azienda->Nome,
                                                                'chiamante' => 'promAZ' ), 
                                                                'default', true) .'>'.
-                                     $azienda->Nome.'</a></div>';
+                                     $azienda->Nome.'</a></li>';
                             
                   
                             
@@ -84,11 +81,11 @@
                         
                         case 'footer':{
                             
-                            echo '<div><a href='. $this->url(array('controller' => 'public',
+                            echo '<li class="prom"><a href='. $this->url(array('controller' => 'public',
                                                                'action' => 'azienda',
                                                                'id'=> $azienda->Id_azienda), 
                                                                'default', true) .'>'.
-                                     $azienda->Nome.'</a></div>';
+                                     $azienda->Nome.'</a></li>';
                             break;
                         }
                     
@@ -96,13 +93,14 @@
             }
         }
     ?>
-    </div>
-    
-    <div class="Idlist">
+ 
+    </ul>
+
+    <ul class="listaziende">
         
-        <div class="Sottotitolo">
+        <li class="prom" class="Sottotitolo">
             <h2>P-Z</h2>
-        </div>
+        </li>
         
         <?php 
     
@@ -116,12 +114,12 @@
                         
                         case 'nav':{
                             
-                            echo '<div><a href='. $this->url(array('controller' => 'public',
+                            echo '<li class="prom"><a href='. $this->url(array('controller' => 'public',
                                                                'action' => 'getpromozioni',
                                                                'IBRIDO'=> $azienda->Nome,
                                                                'chiamante' => 'promAz'), 
                                                                'default', true) .'>'.
-                                     $azienda->Nome.'</a></div>';
+                                     $azienda->Nome.'</a></li>';
                             
                   
                             
@@ -130,11 +128,11 @@
                         
                         case 'footer':{
                             
-                            echo '<div><a href='. $this->url(array('controller' => 'public',
+                            echo '<li class="prom"><a href='. $this->url(array('controller' => 'public',
                                                                'action' => 'azienda',
                                                                'id'=> $azienda->Id_azienda), 
                                                                'default', true) .'>'.
-                                     $azienda->Nome.'</a></div>';
+                                     $azienda->Nome.'</a></li>';
                             break;
                         }
                     
@@ -143,8 +141,8 @@
             
         }
     ?>
-    </div>
-
-
+    
+</ul>
 </div>
+ <div class="clr"></div>
 

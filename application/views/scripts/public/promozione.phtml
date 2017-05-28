@@ -4,21 +4,21 @@
        
         <?php  foreach ($this->prom as $promozione) :?>
 
-          
+            <div>
+              <?php echo $this->productImg($promozione->Immagine, array('class' => 'imgprom'), 'prom') ?>
+            </div>
 
-                 <div>
-                   <?php echo $this->productImg($promozione->Immagine, array('class' => 'imgprom'), 'prom') ?>
-                 </div>
+            <div class="info">		
 
-                 <div class="info">		
+              <?php echo '<h1>'. $promozione->Nome . '</h1>' ?>
+              <?php echo '<p class="Testo">' . $promozione->Descrizione_estesa . '</p>' ?>
+              <?php echo '<div class="Sottotitolo"><h4>Categoria: '. $promozione->Categoria . '</h4>' ?>
+              <?php echo '<h4>Offerta: ' . $promozione->Offerta . '<h4>' ?>
+              <?php echo '<h4>Azienda: ' . $promozione->Azienda . '<h4>' ?>
+              <?php echo '<h4>Data di inizio promozione: ' . $promozione->Inizio_promozione . '<h4>' ?>
+              <?php echo '<h4>Data scadenza promozione: ' . $promozione->Fine_promozione . '</h4></div>' ?>
 
-                   <?php echo'<h1 class="Sottotitolo">'. $promozione->Nome . '</h1>' ?>
-                   <?php echo'<h4>'. $promozione->Categoria . '</h4>' ?>
-                   <?php echo '<p class="Testo">' . $promozione->Descrizione_estesa . '</p>' ?>
-                   <?php echo '<p class="Sottotitolo">Azienda: ' . $promozione->Azienda . '</p>' ?>
-                   <?php echo '<p>Scadenza: ' . $promozione->Fine_promozione . '</p>' ?>
-
-                 </div>
+            </div>
                 
                
         <?php endforeach ?>
