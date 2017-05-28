@@ -13,7 +13,7 @@
     
 }
 
-input.form {
+.inputform {
     position: relative;
     z-index: 1;
     margin:5px;
@@ -26,7 +26,7 @@ input.form {
     
 }
 
-input.button{
+#registra{
     
     position: relative;
     z-index: 1;
@@ -83,4 +83,7 @@ input.button{
     
 }
 
-
+.formerror{
+    color: red;
+    font: 18px Arial;
+}

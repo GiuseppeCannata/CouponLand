@@ -68,18 +68,16 @@ class Application_Model_Modelbase extends App_Model_Abstract
             
                 
         }
-        
-        
+    }
+    
+    public function saveUtente($info)
+    {
+    	return $this->getResource('Utenti')->insertUtente($info);
+    }
+    
+    public function estraiUsersbyUsername($name)
+    {
+    	return $this->getResource('Utenti')->estraiUsersbyUsername($name);
     }
    
-    
-    
-    
-    
-        
-    
-    
-    
-    
-    
 }

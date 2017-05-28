@@ -15,6 +15,7 @@ class PublicController extends Zend_Controller_Action {
         $this->_cat = $this->_Modelbase->getCategorie();
         //la passo alla view
         $this->view->assign(array('CategorieTendina' => $this->_cat ));
+        $this->view->registraForm = $this->getRegistraForm();
     }
     
     
@@ -82,6 +83,56 @@ class PublicController extends Zend_Controller_Action {
       
       $this->view->assign(array('prom' => $PromScelta));
       
+        
+    }
+    
+    
+    public function registraAction(){
+        
+        if (!$this->getRequest()->isPost()) {
+			$this->_helper->redirector('index');
+		}
+		$form=$this->_form;
+		if (!$form->isValid($_POST)) {
+			$form->setDescription('Attenzione: alcuni dati inseriti sono errati.');
+			 $this->render('accedi');
+                       return  $this->_helper->layout->disableLayout();
+		}
+                $user_inserito = $form->getValue('User');
+               // $all_users =$this->_Modelbase->estraiAllUsers();                
+                
+                if($this->_Modelbase->estraiUsersbyUsername($user_inserito) != NULL){
+                    $form->setDescription('Attenzione: Utente giÃ  registrato!');
+			 $this->render('accedi');
+                       return  $this->_helper->layout->disableLayout();
+                    
+                }
+                
+                
+		$values = $form->getValues();
+		$this->_Modelbase->saveUtente($values);
+		$this->_helper->redirector('index');
+        
+        
+    }
+
+    
+    private function getregistraForm()
+	{
+		$urlHelper = $this->_helper->getHelper('url');
+		$this->_form = new Application_Form_Public_Utenti_Registra();
+		$this->_form->setAction($urlHelper->url(array(
+				'controller' => 'public',
+				'action' => 'registra'),
+				'default'
+				));
+		return $this->_form;
+	}
+        
+        public function accediAction (){
+        
+        $this->_helper->layout->disableLayout();
+        
         
     }
     
