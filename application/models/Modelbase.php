@@ -80,4 +80,11 @@ class Application_Model_Modelbase extends App_Model_Abstract
     	return $this->getResource('Utenti')->estraiUsersbyUsername($name);
     }
    
+    
+    public function estraiUsersbyEmail($email)
+    {
+    	return $this->getResource('Utenti')->estraiUsersbyEmail($email);
+    }
+   
+    
 }

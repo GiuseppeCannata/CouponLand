@@ -24,17 +24,20 @@ class Application_Resource_Utenti extends Zend_Db_Table{
         return $this->find($id)->current();
     }
     
-    public function insertUtente($info)
-    {
+    public function insertUtente($info){
+        
     	$this->insert($info);
+        $this->update(array('Livello' => 'User'), '');
     }
     
     
     
     public function estraiUsersbyUsername($name){
          return $this->fetchRow($this->select()->where('User = ?', $name));
+    }
                     
-     
+     public function estraiUsersbyEmail($email){
+         return $this->fetchRow($this->select()->where('Email = ?', $email));
     }
     
     

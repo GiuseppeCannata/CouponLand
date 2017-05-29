@@ -105,7 +105,7 @@ class Application_Form_Public_utenti_Registra extends App_Form_Abstract
                     
             ));
             $this->addElement('submit', 'registra', array(
-           // 'ignore' => true,
+          
                 'id' => 'registra',
             'label' => 'Registrati',
                 
