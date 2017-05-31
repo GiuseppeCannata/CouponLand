@@ -15,14 +15,18 @@
                 <div class="promlist">
                   <?php echo $this->productImg($promozione->Immagine, array('class' => 'imglist'), 'prom') ?>
                 
-                <div>	      
-                  <?php echo'<h1 class="TestoLista"><a class="lista" href='. $this->url(array('controller' => 'public',
+                <div>	
+                    
+                    <?php 
+                        echo'<h1 class="TestoLista"><a class="lista" href='. $this->url(array('controller' => 'public',
                                                                                  'action'     => 'promozione',
                                                                                  'Id_prom'  => $promozione->Id_promozione), 
-                                                                                 'default', true) .'>' . $promozione->Nome . '<a></h1>' ?>
-                  <?php echo '<p class="Desc_br">' . $promozione->Descrizione_breve . '</p>' ?>
-                  <?php echo '<p>Azienda: ' . $promozione->Azienda . '</p>' ?>
-                  <?php echo '<p>Scadenza: ' . $promozione->Fine_promozione . '</p>' ?>
+                                                                                 'default', true) .'>' . $promozione->Nome . '<a></h1>' ;
+                        echo '<p class="Desc_br">' . $promozione->Descrizione_breve . '</p>' ;
+                        echo '<p>Azienda: ' . $promozione->Azienda . '</p>' ;
+                        echo '<p>Scadenza: ' . $promozione->Fine_promozione . '</p>'; 
+                     
+                    ?>
 
                 </div>
 

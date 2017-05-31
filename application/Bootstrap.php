@@ -74,6 +74,14 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $this->getResourceLoader()
              ->addResourceType('modelResource','models/resources','Resource');
     }
+    
+    //AVVIO L ACL QUI POICHE IL BOOSTRAP E LA CONF GENERALE DELLA MIA APPA
+    protected function _initFrontControllerPlugin(){
+        //PRENDE IL FRONT CONTROLLE
+    	$front = Zend_Controller_Front::getInstance(); //IL FRONT è UN SINGLETONE
+    	$front->registerPlugin(new App_Controller_Plugin_Acl());
+        
+    }
 
 }
 

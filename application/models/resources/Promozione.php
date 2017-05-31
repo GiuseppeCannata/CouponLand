@@ -14,7 +14,7 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
         /*Definisco l oggetto stringa che raffigura il comando sql*/
         
         $select = $this->select()
-                       ->where('Id_promozione >=0');
+                       ->where('Fine_promozione >= CURDATE()');
         
         /*se eseguo questa istruzione significa che il risultato della query non lo voglio paginato
         e quidi ritorno i dati cosi come sono */
