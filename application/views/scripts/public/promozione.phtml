@@ -1,7 +1,5 @@
 <div class="prod">
     
-   
-       
         <?php  foreach ($this->prom as $promozione) :?>
 
             <div>
@@ -10,17 +8,19 @@
 
             <div class="info">		
 
-              <?php echo '<h1>'. $promozione->Nome . '</h1>' ?>
-              <?php echo '<p class="Testo">' . $promozione->Descrizione_estesa . '</p>' ?>
-              <?php echo '<div class="Sottotitolo"><h4>Categoria: '. $promozione->Categoria . '</h4>' ?>
-              <?php echo '<h4>Offerta: ' . $promozione->Offerta . '<h4>' ?>
-              <?php echo '<h4>Azienda: ' . $promozione->Azienda . '<h4>' ?>
-              <?php echo '<h4>Data di inizio promozione: ' . $promozione->Inizio_promozione . '<h4>' ?>
-              <?php echo '<h4>Data scadenza promozione: ' . $promozione->Fine_promozione . '</h4></div>' ?>
-
+                <?php 
+                    echo '<h1>'. $promozione->Nome . '</h1>' ;
+                    echo '<p class="Testo">' . $promozione->Descrizione_estesa . '</p>';
+                    echo '<div class="Sottotitolo"><h4>Categoria: '. $promozione->Categoria . '</h4>';
+                    echo '<h4>Offerta: ' . $promozione->Offerta . '<h4>';
+                    echo '<h4>Azienda: ' . $promozione->Azienda . '<h4>';
+                    echo '<h4>Data di inizio promozione: ' . $promozione->Inizio_promozione . '<h4>' ;
+                    echo '<h4>Data scadenza promozione: ' . $promozione->Fine_promozione . '</h4></div>' ;
+                    echo '<input class="button" value="Coupon" onclick="ottienicoupon('.$this->authInfo('Livello').')">' ;
+                ?>
+              
             </div>
-                
-               
+    
         <?php endforeach ?>
     
     

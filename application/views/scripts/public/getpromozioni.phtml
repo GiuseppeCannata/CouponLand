@@ -18,8 +18,7 @@
                 <div>	      
                   <?php echo'<h1 class="TestoLista"><a class="lista" href='. $this->url(array('controller' => 'public',
                                                                                  'action'     => 'promozione',
-                                                                                 'Id_prom'  => $promozione->Id_promozione,
-                                                                                 'chiamante' => 'promCat'), 
+                                                                                 'Id_prom'  => $promozione->Id_promozione), 
                                                                                  'default', true) .'>' . $promozione->Nome . '<a></h1>' ?>
                   <?php echo '<p class="Desc_br">' . $promozione->Descrizione_breve . '</p>' ?>
                   <?php echo '<p>Azienda: ' . $promozione->Azienda . '</p>' ?>

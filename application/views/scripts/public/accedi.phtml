@@ -4,8 +4,8 @@
     <head>
     <?= $this->headMeta(); ?>
     <?= $this->headTitle(); ?>
-     <link href="/CouponLand/public/css/AccediRegistrati.css" rel="stylesheet" type="text/css" />
-     <link href="/CouponLand/public/css/Logo.css" rel="stylesheet" type="text/css" />
+     <link href="<?php echo $this->baseUrl('css/AccediRegistrati.css');?>" rel="stylesheet" type="text/css" />
+     <link href= "<?php echo $this->baseUrl('css/Logo.css');?>" rel="stylesheet" type="text/css" />
     
         
     </head>
@@ -19,11 +19,7 @@
                 </h1>
         </div>
  
-  <?php echo $this->loginForm ?>
+        <?php echo $this->loginForm ?>
 
-        
-        
-        
-        
-    </body>
+   </body>
 </html>

@@ -7,6 +7,24 @@
     <?= $this->headLink(); ?>
     <?= $this->headTitle(); ?>
     
+    <!-- acquisisce il livello dell'utente -->
+    <?php $livello = $this->authInfo('Livello');?>
+    
+    
+    <script type="text/javascript">
+        
+            function ottienicoupon(livello) {
+                
+              if (livello == null )  {
+                  
+                alert("Sorry! Per poter ritirare il coupon devi esssere un utente registrato");
+              
+              }
+              
+            }
+            
+    </script>
+    
 </head>
 
 <body>
@@ -17,9 +35,21 @@
             
             <div class="logo">
                 <h1>
-                    <a href=" <?= $this->url(array('controller' => 'public',
-                                                   'action'     => 'index', ), 
-                                                   'default',true ); ?>">
+                    <a href=" <?php
+                                    if($livello == NULL){
+                       
+                                       echo $this->url(array('controller' => 'public',
+                                                         'action'     => 'index' ), 
+                                                         'default',true );
+                         
+                                    }
+                                    else{
+
+                                       echo $this->url(array('controller' => $livello,
+                                                         'action'     => 'index' ), 
+                                                         'default',true ); 
+                                        
+                                    }?>">
                         
                         <small>L'offerta che vuoi, quando vuoi!</small>Coupon<span>Land</span>
                     </a>
@@ -27,22 +57,33 @@
             </div>
 
             <nav class="accedi_registati">
-                <?= $this->render('navar.phtml') ?>
+                <?php  
+               
+                   if($livello == NULL){
+                       
+                        echo $this->render('navar.phtml');
+                        
+                       
+                         
+                    }
+                    else{
+                        echo $this->render('areariservata.phtml');
+                       
+                    }
+                    
+                ?>
             </nav>
             
-             <div class="search">
+            <div class="search">
                 
-                <form id="form"  method="post" action="#">
-                    <select title="Seleziona categoria per la ricerca" size="1" >
-                    <span><input name="barraricerca"  type="text" id="textfield" maxlength="50" placeholder="Che cosa stai cercando?" /></span>
-                     </select>
-                    <input class="button" type="submit"  value="Cerca"/>
-                </form>
-             </div>
+                <?php echo $this->ricercaForm ?>
+            </div>
+
 
             <nav class="menu">
-                <?= $this->render('navpubblica.phtml') ?>
+                <?= $this->render('navgen.phtml') ?>
             </nav>
+            
         </div>
         
         <div class="clr"></div>
@@ -51,9 +92,11 @@
     
     
     <div class="body">
+        
         <div id="bodyresize"> 
            <?php echo $this->layout()->content; ?>
         </div>
+        
      </div>
     
     <!--terminato header -->

@@ -2,16 +2,16 @@
 
 class Application_Service_Auth
 {
-    protected $_modelbaseModel;
+    protected $_Adminmodel;
     protected $_auth;
 
     public function __construct()
     {
-        $this->_modelbaseModel = new Application_Model_Modelbase();
+        $this->_Adminmodel = new Application_Model_Admin();
     }
     
-    public function authenticate($credentials)
-    {
+    public function authenticate($credentials){
+        
         $adapter = $this->getAuthAdapter($credentials);
         $auth    = $this->getAuth();
         $result  = $auth->authenticate($adapter);
@@ -19,13 +19,13 @@ class Application_Service_Auth
         if (!$result->isValid()) {
             return false;
         }
-        $user = $this->_modelbaseModel->e($credentials['User']);
+        $user = $this->_Adminmodel->getUserByName($credentials['User']);
         $auth->getStorage()->write($user);
         return true;
     }
     
-    public function getAuth()
-    {
+    public function getAuth(){
+        
         if (null === $this->_auth) {
             $this->_auth = Zend_Auth::getInstance();
         }

@@ -117,7 +117,7 @@ p.clr, .clr {
 .search {
         
         float:left;
-	margin: 10px;
+	margin: 0px;
         width: 600px;
        
 }
@@ -127,9 +127,20 @@ input.button {
 	padding:2px;
         margin: 0 0 0 5px;
         box-shadow: none;
+        font: 13.3333px Arial;
         font-size: 16px;
         height: 34px;
-        width: 60px;
+        width: 58px;
+        border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #8fbb1b;
+        
+    cursor: pointer;
+    display: inline-block;
+    letter-spacing: 0.5px;
+    position: relative;
+   
+        
 }
 
 .search form #textfield {
@@ -141,6 +152,20 @@ input.button {
 	margin-left:5px;
 	font:normal 15px Arial, Helvetica, serif;
 	color:black;
+       border: 1px solid #ddd;
+       border-radius: 3px;
+}
+
+.search select{
+    margin-left:5px;
+	padding:9px;
+        margin: 0 0 0 5px;
+        box-shadow: none;
+        font-size: 11px;
+        height: 32px;
+        width: 90px;
+        border: 1px solid #ddd;
+       border-radius: 3px;
 }
 
 /*nav composta da home,categorie,aziende,contattaci*/

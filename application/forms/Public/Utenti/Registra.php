@@ -90,7 +90,7 @@ class Application_Form_Public_utenti_Registra extends App_Form_Abstract
                 
                    $this->addElement('select', 'Eta', array(
             
-            'label' => 'Età',
+            'title' => 'Età',
             'required' => true,
             'multiOptions'=> $etaposs,
             
@@ -99,7 +99,7 @@ class Application_Form_Public_utenti_Registra extends App_Form_Abstract
                 
                 $this->addElement('select', 'Genere', array(
            
-            'label' => 'Genere',
+            'title' => 'Genere',
             'required' => true,
             'multiOptions'=> $genere = array('M' => 'M','F' => 'F'),
                     

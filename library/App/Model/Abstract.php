@@ -35,7 +35,7 @@ abstract class App_Model_Abstract
             
             //ora metto nell array (associativo) , l oggetto che istanzierò dalla classe che 
             $this->_resources[$name] = new $class();
-                }
+            }
 	    return $this->_resources[$name];
 	}
 
