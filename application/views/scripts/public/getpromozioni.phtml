@@ -1,40 +1,32 @@
 <div>
     
-    <?php
-          echo '<h1 class="Titolo">'. $this->IBRIDO .'</h1>'
-    ?>
+    <?php echo '<h1 class="Titolo">'. $this->IBRIDO .'</h1>' ?>
     
     <ul>
-        <?php 
-        
-       
-        foreach ($this->prom as $promozione) :?>
+        <?php foreach ($this->prom as $promozione) :?>
     
             <li class="prom">
 		
                 <div class="promlist">
-                  <?php echo $this->productImg($promozione->Immagine, array('class' => 'imglist'), 'prom') ?>
+                  <?php echo $this->productImg($promozione->Immagine,  'prom' ,array('class' => 'imglist')) ?>
+                </div>  
                 
-                <div>	
-                    
+                <div class="info">
                     <?php 
-                        echo'<h1 class="TestoLista"><a class="lista" href='. $this->url(array('controller' => 'public',
-                                                                                 'action'     => 'promozione',
-                                                                                 'Id_prom'  => $promozione->Id_promozione), 
-                                                                                 'default', true) .'>' . $promozione->Nome . '<a></h1>' ;
-                        echo '<p class="Desc_br">' . $promozione->Descrizione_breve . '</p>' ;
-                        echo '<p>Azienda: ' . $promozione->Azienda . '</p>' ;
-                        echo '<p>Scadenza: ' . $promozione->Fine_promozione . '</p>'; 
-                     
-                    ?>
-
+                                echo '<h1 class="TestoLista">'. $promozione->Nome .'</h1>' ;
+                                echo '<p class="Desc_br">' . $promozione->Descrizione_estesa . '</p>' ;
+                                echo '<p>Azienda:' . $promozione->Azienda . '</p>' ;
+                                echo '<p>Offerta: ' . $promozione->Offerta. '</p>' ;
+                                echo '<p>Scadenza: ' . $promozione->Fine_promozione . '</p>'; 
+                                echo '<input class="button" id="coupon" value="Coupon" onclick="ottienicoupon('.$this->authInfo('Livello').')">' ;
+                            ?>
+                        
                 </div>
-
-                </div>
-
-
-               <hr class="separatore">
+                
                
+                <div style="clear:both;"></div>
+                <hr class="separatore"> 
+                
             </li>
             
 	<?php endforeach ?>

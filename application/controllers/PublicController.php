@@ -10,6 +10,7 @@ class PublicController extends Zend_Controller_Action {
     protected $_form;
     protected $_form2;
     protected $_formricerca;
+    protected $_prom_trovate;
 
 	
     /*costruttore*/    
@@ -93,10 +94,10 @@ class PublicController extends Zend_Controller_Action {
         $IBRIDO = $this->_getparam('IBRIDO');
         $paged = $this->_getParam('page',1);
         $promozioni = $this->_Modelbase->getPromozioniByIBRIDO($chiamante,$IBRIDO, $paged ,$order=array('Fine_promozione'));
-                
+            
         $this->view->assign(array('prom' => $promozioni,
                                   'chiamante' => $chiamante,
-                                  'IBRIDO' => $this->_getParam('IBRIDO')));
+                                  'IBRIDO' => $IBRIDO));
         
         
     }
@@ -123,7 +124,7 @@ class PublicController extends Zend_Controller_Action {
             
         }
 	
-        $form=$this->_form;
+        $form = $this->_form;
         
         if (!$form->isValid($_POST)) {
             
@@ -167,16 +168,7 @@ class PublicController extends Zend_Controller_Action {
                 
     }
     
-    private function getRicercaForm(){
-    		$urlHelper = $this->_helper->getHelper('url');
-		$this->_formricerca = new Application_Form_Public_Ricerca_Ricerca();
-    		$this->_formricerca->setAction($urlHelper->url(array(
-			'controller' => 'public',
-			'action' => 'accedi'),
-			'default'
-		));
-		return $this->_formricerca;
-    }   
+      
         
     public function authenticateAction(){  
             
@@ -203,19 +195,7 @@ class PublicController extends Zend_Controller_Action {
         return $this->_helper->redirector('index', $this->_authService->getIdentity()->Livello);
         
     }
-	
-    private function getLoginForm(){
-        
-        $urlHelper = $this->_helper->getHelper('url');
-        $this->_form2 = new Application_Form_Public_Utenti_Login();
-        $this->_form2->setAction($urlHelper->url(array(
-                'controller' => 'public',
-                'action' => 'authenticate'),
-                'default'
-        ));
-        return $this->_form2;
-        
-    }   	
+  	
         
     public function registratiAction (){
         
@@ -229,6 +209,69 @@ class PublicController extends Zend_Controller_Action {
     
         
     }
+    
+    public function searchfrompromozioniAction(){
+        
+        if (!$this->getRequest()->isPost()) {
+            
+	    $this->_helper->redirector('index');
+               
+        }
+        
+	$post = $this->getRequest()->getPost();
+        
+        if(!$this->_formricerca->isValid($post)) 
+        {
+             
+        }
+        
+        $form = $this->_formricerca;
+        $cat = $form->getValue('Categoria');
+        $word = $form->getValue('boxricerca');
+        
+        $results=$this->_Modelbase->search($cat,$word);
+        
+        
+        $this->view->assign(array('promozione' => $results,
+                                  'word' => $word,
+                                  'cat' => $cat));
+       
+       
+        
+    }
+    
+    public function searchAction(){
+       
+       $promozione = $this->_getParam('r');
+       
+    }
+    
+    
+    
+    private function getLoginForm(){
+        
+        $urlHelper = $this->_helper->getHelper('url');
+        $this->_form2 = new Application_Form_Public_Utenti_Login();
+        $this->_form2->setAction($urlHelper->url(array(
+                'controller' => 'public',
+                'action' => 'authenticate'),
+                'default'
+        ));
+        return $this->_form2;
+        
+    } 
+
+    private function getRicercaForm(){
+
+
+        $this->_formricerca = new Application_Form_Public_Ricerca_Ricerca();
+        $this->_formricerca->setAction($this->_helper->getHelper('url')->url(array(
+                'controller' => 'public',
+                'action' => 'searchfrompromozioni'),
+                'default'
+        ));
+        return $this->_formricerca;
+    } 
 
     
 }

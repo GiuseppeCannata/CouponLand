@@ -50,7 +50,8 @@ class Application_Model_Modelbase extends App_Model_Abstract
     public function getPromozioniByIBRIDO($chiamante,$IBRIDO, $paged ,$order){
         
         switch($chiamante){
-            
+           
+        
             
             case 'promCat':{
                 /*$IBRIDO== NomeCat*/
@@ -85,6 +86,13 @@ class Application_Model_Modelbase extends App_Model_Abstract
     {
     	return $this->getResource('Utenti')->estraiUsersbyEmail($email);
     }
+    
+    public function search($cat,$textSearch){
+        
+    	return $this->getResource('Promozione')->search($cat,$textSearch);
+        
+    }
+
    
     
 }

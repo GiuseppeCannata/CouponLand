@@ -403,13 +403,8 @@ a.lista:visited {
    
 }
 
-
-
-
 div.promlist{
-    
-   display: flex;
-
+    float:right;
 }
 
 
@@ -440,7 +435,8 @@ li.prom{
 
 div.info{
     
-    margin: 10px;
+    margin: 0 auto;
+    
 }
 
 
@@ -452,6 +448,11 @@ ul.listaziende{
 div#content{
     
     text-align: center;
+}
+
+input#coupon{
+    
+    float:left;
 }
 
 

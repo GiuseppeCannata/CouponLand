@@ -22,11 +22,12 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
 
     }  
     
-     public function getPromozioniByCat($NomeCat, $paged ,$order){
+    public function getPromozioniByCat($NomeCat, $paged ,$order){
          
          /*Definisco l oggetto stringa che raffigura il comando sql*/
         $select = $this->select()
                        ->where('Categoria =?' ,$NomeCat)
+                       ->where('Fine_promozione >= CURDATE()')
                        ->order($order);
         
         if (null !== $paged) {
@@ -48,6 +49,7 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
          /*Definisco l oggetto stringa che raffigura il comando sql*/
         $select = $this->select()
                        ->where('Azienda =?' ,$NomeAz)
+                       ->where('Fine_promozione >= CURDATE()')
                        ->order($order);
         
         if (null !== $paged) {
@@ -75,6 +77,21 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
         return $this->fetchAll($select);
         
     }
+    
+    public function search($cat,$textSearch){
+        
+        $select = $this->select()
+                       ->where('Fine_promozione >= CURDATE()')
+                       ->where("Categoria=?",$cat)
+                       ->where("Descrizione_estesa LIKE ?", "%".$textSearch."%");
+                       
+         
+        
+        
+        return $this->fetchAll($select);
+         
+    }
+
     
     
     

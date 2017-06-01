@@ -27,14 +27,14 @@
                 echo '<div class="textarea">';
                 echo '<h2>'.$promozione->Categoria.'</h2>';
                 echo '<h4>'.$promozione->Nome.'</h4>';
-                echo '<p class="Testo">'.$promozione->Descrizione_breve.'</p>';
+                echo '<p class="Testo">'.$promozione->Descrizione_estesa.'</p>';
                 echo '<a href='. $this->url(array('controller' => 'public',
                                                 'action'     => 'promozione',
                                                 'Id_prom'  => $promozione->Id_promozione,
                                                 'chiamante' => 'promCat'), 
                                                 'default', true). '><img src="'. $this->baseUrl('img/vaialprodotto.png') .'" alt="" width="150" height="150" border="0"/></a>';
                 echo '</div>';
-                echo $this->productImg($promozione->Immagine, array('id' => 'prodotto'), 'prom');
+                echo $this->productImg($promozione->Immagine, 'prom', array('id' => 'prodotto'));
                 
                 echo '<hr>';
                 

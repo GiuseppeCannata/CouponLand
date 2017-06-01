@@ -20,10 +20,10 @@ class Application_Form_Public_Ricerca_Ricerca extends App_Form_Abstract
         $this->setAttrib('id', 'form');
         
         foreach ($cats as $cat) {
-        	$categories[$cat -> Id_categoria] = $cat->Nome;
+        	$categories[$cat -> Nome] = $cat->Nome;
         }
      
-        $this->addElement('select', 'selez_cat', array(
+        $this->addElement('select', 'Categoria', array(
             
             
             'required' => true,
@@ -35,7 +35,7 @@ class Application_Form_Public_Ricerca_Ricerca extends App_Form_Abstract
         
         
         
-        $this->addElement('text', 'inserisci', array(
+        $this->addElement('text', 'boxricerca', array(
             
             
             'id' => 'textfield',
