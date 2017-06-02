@@ -395,6 +395,7 @@ p.response {
 .TestoLista{
     
     font-size: 17px;
+    text-transform: uppercase;
 }
 
 a.lista:visited {

@@ -4,8 +4,10 @@
 <!-- Link alla prima pagina -->
 <?php if (isset($this->previous)): ?>
   <a href="<?= $this->url(array('controller' => 'public', 
-                                'action' => 'getpromozioni', 
+                                'action' => 'listpromozioni', 
                                 'chiamante' => $this->chiamante,
+                                'cat' => $this->cat,
+                                'word' => $this->word,
                                 'page' => $this->first)); ?>">Inizio</a> |
 <?php else: ?>
   Inizio |
@@ -15,8 +17,10 @@
 <?php if (isset($this->previous)): ?>
 <a href="_paginator.phtml"></a>
   <a href="<?= $this->url(array('controller' => 'public', 
-                                'action' => 'getpromozioni',
+                                'action' => 'listpromozioni',
                                 'chiamante' => $this->chiamante, 
+                                'cat' => $this->cat,
+                                 'word' => $this->word,
                                 'page' => $this->previous)); ?>">&lt; Precedente</a> |
 <?php else: ?>
   &lt; Precedente |
@@ -25,8 +29,10 @@
 <!-- Link alla pagina successiva -->
 <?php if (isset($this->next)): ?>
   <a href="<?= $this->url(array('controller' => 'public', 
-                                'action' => 'getpromozioni', 
+                                'action' => 'listpromozioni', 
                                 'chiamante' => $this->chiamante,
+                                'cat' => $this->cat,
+                                'word' => $this->word,
                                 'page' => $this->next)); ?>">Successivo &gt;</a> |
 <?php else: ?>
   Successivo &gt; |
@@ -35,8 +41,10 @@
 <!-- Link all'ultima pagina -->
 <?php if (isset($this->next)): ?>
   <a href="<?= $this->url(array('controller' => 'public', 
-                                'action' => 'getpromozioni',
+                                'action' => 'listpromozioni',
                                 'chiamante' => $this->chiamante,
+                                'cat' => $this->cat,
+                                'word' => $this->word,
                                 'page' => $this->last)); ?>">Fine</a>
 <?php else: ?>
   Fine

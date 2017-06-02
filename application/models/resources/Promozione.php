@@ -74,27 +74,40 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
 	$select = $this->select()
                        ->where('Id_promozione=?', $id_promozione);
         
-        return $this->fetchAll($select);
+        return $this->fetchRow($select);
         
     }
     
-    public function search($cat,$textSearch){
+    public function search($cat , $textSearch, $paged , $order){
         
         $select = $this->select()
                        ->where('Fine_promozione >= CURDATE()')
                        ->where("Categoria=?",$cat)
-                       ->where("Descrizione_estesa LIKE ?", "%".$textSearch."%");
+                       ->where("Descrizione_estesa LIKE ?", "%".$textSearch."%")
+                       ->order($order);
                        
-         
-        
+        if (null !== $paged) {
+            
+            $adapter = new Zend_Paginator_Adapter_DbTableSelect($select);
+            $paginator = new Zend_Paginator($adapter);
+            $paginator->setItemCountPerPage(5)
+                      ->setCurrentPageNumber((int) $paged);
+            
+            return $paginator;
+            
+        } 
         
         return $this->fetchAll($select);
          
     }
-
     
-    
-    
-    
+    public function updateCouponPromozione($Id_prom, $N_coupon){
+        
+        $data = array('Coupon_emessi' => $N_coupon);
+        $where = 'Id_promozione='.$Id_prom;
+        
+    	$this->update($data, $where);
+        
+    }
 }
 

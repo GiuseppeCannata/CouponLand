@@ -13,7 +13,7 @@
                 foreach ($this->CategorieTendina as $categoria) {
                 
                     echo '<li><a href='. $this->url(array('controller' => 'public',
-                                                          'action'     => 'getpromozioni',
+                                                          'action'     => 'listpromozioni',
                                                           'IBRIDO'  => $categoria->Nome,
                                                           'chiamante' => 'promCat'), 
                                                           'default', true) .'>'.

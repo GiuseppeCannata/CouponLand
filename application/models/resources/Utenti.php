@@ -26,10 +26,8 @@ class Application_Resource_Utenti extends Zend_Db_Table{
     public function insertUtente($info){
         
     	$this->insert($info);
-        $this->update(array('Livello' => 'User'), '');
+       
     }
-    
-    
     
     public function estraiUsersbyUsername($name){
         
@@ -38,19 +36,20 @@ class Application_Resource_Utenti extends Zend_Db_Table{
          
     }
                     
-     public function estraiUsersbyEmail($email){
+    public function estraiUsersbyEmail($email){
          
          return $this->fetchRow($this->select()->where('Email = ?', $email));
          
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
+    public function updateCouponUtente($User, $N_coupon){
+        
+        $data = array('Coupon_emessi' => $N_coupon);
+        $where = 'Livello='.$User;
+        
+        $this->update($data, $where );
+             
+        
+    }
     
 }

@@ -6,25 +6,10 @@
     <?= $this->headMeta(); ?>
     <?= $this->headLink(); ?>
     <?= $this->headTitle(); ?>
+    <?= $this->headScript(); ?>
     
     <!-- acquisisce il livello dell'utente -->
     <?php $livello = $this->authInfo('Livello');?>
-    
-    
-    <script type="text/javascript">
-        
-            function ottienicoupon(livello) {
-                
-              if (livello == null)  {
-                  
-                alert("Sorry! Per poter ritirare il coupon devi esssere un utente registrato");
-              
-              }
-              
-              
-            }
-            
-    </script>
     
 </head>
 
@@ -64,10 +49,9 @@
                    if($livello == NULL){
                        
                         echo $this->render('navar.phtml');
+                    
                         
-                       
-                         
-                    }
+                   }
                     else{
                         echo $this->render('naval.phtml');
                        
@@ -79,6 +63,7 @@
             <div class="search">
                 
                 <?php echo $this->ricercaForm ?>
+                
             </div>
 
 

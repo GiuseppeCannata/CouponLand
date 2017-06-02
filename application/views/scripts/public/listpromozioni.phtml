@@ -1,0 +1,80 @@
+<?php $this->headScript()
+        /*scriverà <script>src=......</script>*//*carico la libreria jquery*/
+	->appendFile('https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js')
+        /*scriverà <script>src=......</script>*/
+	->appendFile($this->baseUrl('js/functions.js'))
+        //mi permette di dire: da adesso in poi c è del codice jquery che devi aggiungere, questo finira quando definiro $this->headScript()->captureEnd()
+	->captureStart() ?>
+
+
+$(function() {
+                    
+        var UtenteLivello='<?php  if($this->authInfo('Livello')== null){
+                                      echo 'nonregistrato';}?>';
+       
+        $('a#coupon').on('click', function(){ Validation(UtenteLivello); })
+});
+   
+<?php $this->headScript()->captureEnd() ?>
+
+<div>
+    
+    <?php echo '<h1 class="Titolo">'. $this->IBRIDO .'</h1>' ?>
+    
+    <ul>
+        <?php foreach ($this->prom as $promozione) :?>
+    
+            <li class="prom">
+		
+                <div class="promlist">
+                  <?php echo $this->productImg($promozione->Immagine,  'prom' ,array('class' => 'imglist')) ?>
+                </div>  
+                
+                <div class="info">
+                    <?php 
+                                echo '<h1 class="TestoLista">'. $promozione->Nome .'</h1>' ;
+                                echo '<p class="Desc_br">' . $promozione->Descrizione_estesa . '</p>' ;
+                                echo '<p>Azienda:' . $promozione->Azienda . '</p>' ;
+                                echo '<p>Offerta: ' . $promozione->Offerta. '</p>' ;
+                                echo '<p>Scadenza: ' . $promozione->Fine_promozione . '</p>'; 
+                                
+                                $Livello = $this->authInfo('Livello');
+                                
+                                        
+                                if($Livello == null || $Livello == 'staff' || $Livello == 'admin'){
+                                    
+                                     echo '<a  id="coupon" >Coupon</a>';
+                                     
+                                }else{
+                                    
+                                    echo '<a id="coupon" href="'.$this->url(array('controller' => 'user',
+                                                                           'action'     => 'coupon',
+                                                                           'prom' => $promozione->Id_promozione), 
+                                                                           'default',true ).'" >Coupon</a>';
+                                }
+                            ?>
+                        
+                </div>
+                
+               
+                <div style="clear:both;"></div>
+                <hr class="separatore"> 
+                
+            </li>
+            
+	<?php endforeach ?>
+        
+    </ul>
+	  
+	  <!-- Paginazione -->	
+         <!-- iNTRODUCE LA BARRA DI PAGINAZIONE -->
+         
+	  <?php if($this->prom instanceof Zend_Paginator) {
+                        
+                      echo $this->paginationControl($this->prom ,'Sliding','public/_paginator.phtml',array('chiamante' => $this->chiamante,
+                                                                                                            'cat' => $this->cat,
+                                                                                                            'word' => $this->word));
+	        } 
+	  ?>
+
+</div>

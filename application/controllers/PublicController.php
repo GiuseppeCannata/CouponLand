@@ -1,5 +1,6 @@
-<!--Questo controllore è chiamato public poichè si riferisce alla parte publbica del sito (Livello 0)  -->
 <?php
+
+/*LIVELLO 0*/
 
 class PublicController extends Zend_Controller_Action {
      
@@ -7,8 +8,8 @@ class PublicController extends Zend_Controller_Action {
     protected $_Modelbase; //salvo il modelPubblico
     protected $_cat;  //salvo le categorie 
     protected $_authService;
-    protected $_form;
-    protected $_form2;
+    protected $_FormRegistra;
+    protected $_FormAccedi;
     protected $_formricerca;
     protected $_prom_trovate;
 
@@ -38,9 +39,6 @@ class PublicController extends Zend_Controller_Action {
         $PromozioniTOP = $this->_Modelbase->getPromozioneTOP();
         $this->view->assign(array('CatTOP' => $this->_cat,
                                   'PromozioniTOP' => $PromozioniTOP));
-       
-
-    
     }
 
     /*Metodo che permette di far vedere le pagine statiche*/
@@ -88,16 +86,45 @@ class PublicController extends Zend_Controller_Action {
     /*Metodo che si riferisce alla corrispettiva view getpromozioni.
      Questo metodo consente di caricare (servendosi del model) tutte le promozioni gestite dalla nostra applicazioni
      e presenti nel DBMS e passarle alla view corrispettiva*/
-    public function getpromozioniAction() {
+    public function listpromozioniAction() {
         
         $chiamante = $this->_getParam('chiamante');
+        
+        if($chiamante == 'search' && $this->_getParam('word') == NULL){
+            
+            if (!$this->getRequest()->isPost()) {
+
+               $this->_helper->redirector('index');
+
+            }
+
+            $post = $this->getRequest()->getPost();
+
+            if(!$this->_formricerca->isValid($post)){
+
+            }
+
+            $form = $this->_formricerca;
+
+            $cat = $form->getValue('Categoria');
+            $word = $form->getValue('boxricerca');
+            
+        }else{
+            
+            $cat = $this->_getParam('cat',null);
+            $word = $this->_getParam('word',null);
+            
+        }
+        
         $IBRIDO = $this->_getparam('IBRIDO');
         $paged = $this->_getParam('page',1);
-        $promozioni = $this->_Modelbase->getPromozioniByIBRIDO($chiamante,$IBRIDO, $paged ,$order=array('Fine_promozione'));
+        $promozioni = $this->_Modelbase->getPromozioniByIBRIDO($chiamante, $IBRIDO, $paged , $order=array('Fine_promozione'), $cat , $word );
             
         $this->view->assign(array('prom' => $promozioni,
                                   'chiamante' => $chiamante,
-                                  'IBRIDO' => $IBRIDO));
+                                  'IBRIDO' => $IBRIDO,
+                                  'cat' => $cat,
+                                  'word' => $word));
         
         
     }
@@ -124,7 +151,7 @@ class PublicController extends Zend_Controller_Action {
             
         }
 	
-        $form = $this->_form;
+        $form = $this->_FormRegistra;
         
         if (!$form->isValid($_POST)) {
             
@@ -145,58 +172,46 @@ class PublicController extends Zend_Controller_Action {
             return  $this->_helper->layout->disableLayout();
 
         }
-                
-                
+        
         $values = $form->getValues();
         $this->_Modelbase->saveUtente($values);
         $this->_helper->redirector('index');
         
-        
-    }
-
-    
-    private function getregistraForm(){
-        
-        $urlHelper = $this->_helper->getHelper('url');
-        $this->_form = new Application_Form_Public_Utenti_Registra();
-        $this->_form->setAction($urlHelper->url(array(
-                        'controller' => 'public',
-                        'action' => 'registra'),
-                        'default'
-                        ));
-        return $this->_form;
-                
     }
     
-      
-        
     public function authenticateAction(){  
             
         $request = $this->getRequest();
         
         if (!$request->isPost()) {
+            
             return $this->_helper->redirector('accedi');
+            
         }
         
-        $form = $this->_form2;
+        $form = $this->_FormAccedi;
         
         if (!$form->isValid($request->getPost())) {
+            
             $form->setDescription('Attenzione: alcuni dati inseriti sono errati!');
             $this->render('accedi');
+            
             return  $this->_helper->layout->disableLayout();
+            
         }
         
         if (false === $this->_authService->authenticate($form->getValues())) {
+            
             $form->setDescription('Autenticazione fallita, utente non trovato. Riprova!');
             $this->render('accedi');
             return $this->_helper->layout->disableLayout();
+            
         }
         
         return $this->_helper->redirector('index', $this->_authService->getIdentity()->Livello);
         
     }
   	
-        
     public function registratiAction (){
         
         $this->_helper->layout->disableLayout();
@@ -210,68 +225,41 @@ class PublicController extends Zend_Controller_Action {
         
     }
     
-    public function searchfrompromozioniAction(){
+    private function getregistraForm(){
         
-        if (!$this->getRequest()->isPost()) {
-            
-	    $this->_helper->redirector('index');
-               
-        }
+        $urlHelper = $this->_helper->getHelper('url');
+        $this->_FormRegistra = new Application_Form_Public_Utenti_Registra();
+        $this->_FormRegistra->setAction($urlHelper->url(array('controller' => 'public',
+                                                              'action' => 'registra'),
+                                                              'default'));
         
-	$post = $this->getRequest()->getPost();
-        
-        if(!$this->_formricerca->isValid($post)) 
-        {
-             
-        }
-        
-        $form = $this->_formricerca;
-        $cat = $form->getValue('Categoria');
-        $word = $form->getValue('boxricerca');
-        
-        $results=$this->_Modelbase->search($cat,$word);
-        
-        
-        $this->view->assign(array('promozione' => $results,
-                                  'word' => $word,
-                                  'cat' => $cat));
-       
-       
-        
+        return $this->_FormRegistra;
+                
     }
-    
-    public function searchAction(){
-       
-       $promozione = $this->_getParam('r');
-       
-    }
-    
-    
     
     private function getLoginForm(){
         
         $urlHelper = $this->_helper->getHelper('url');
-        $this->_form2 = new Application_Form_Public_Utenti_Login();
-        $this->_form2->setAction($urlHelper->url(array(
-                'controller' => 'public',
-                'action' => 'authenticate'),
-                'default'
-        ));
-        return $this->_form2;
+        $this->_FormAccedi = new Application_Form_Public_Utenti_Login();
+        $this->_FormAccedi->setAction($urlHelper->url(array( 'controller' => 'public',
+                                                             'action' => 'authenticate'),
+                                                             'default'));
+        
+        return $this->_FormAccedi;
         
     } 
 
     private function getRicercaForm(){
 
-
         $this->_formricerca = new Application_Form_Public_Ricerca_Ricerca();
-        $this->_formricerca->setAction($this->_helper->getHelper('url')->url(array(
-                'controller' => 'public',
-                'action' => 'searchfrompromozioni'),
-                'default'
-        ));
+        $this->_formricerca->setAction($this->_helper->getHelper('url')->url(array( 'controller' => 'public',
+                                                                                    'action' => 'listpromozioni',
+                                                                                    'chiamante' => 'search',
+                                                                                     'IBRIDO'=> 'Elenco risultati:'),
+                                                                                    'default'));
+        
         return $this->_formricerca;
+        
     } 
-
     
 }
