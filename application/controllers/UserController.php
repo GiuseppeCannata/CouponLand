@@ -57,21 +57,36 @@ class UserController extends Zend_Controller_Action{
     
     public function couponAction(){
        
-        $auth = Zend_Auth::getInstance();
-        $User = $auth->getIdentity()->User;
-          
+        $auth = Zend_Auth::getInstance()->getIdentity();
+        
+        $User = $auth->User;
         $Id_prom = $this->_getParam('prom');
+       
           
         //ritorna true se l utente ha gia prelevato il coupon
         $results = $this->_ModelUser->verificaemissioneCoupon($User , $Id_prom);
         
         if(!$results){
             
-            $this->view->assign(array('Titolo' => 'Spiacenti', 
-                                      'msg' => 'Il coupon è gia stato prelevato per questpo prodotto')) ;
+            $this->view->assign(array('response' => $results,
+                                      'Titolo' => 'Spiacenti', 
+                                      'msg' => 'Il coupon è gia stato prelevato per questo prodotto! '
+                . 'Le ricordiamo che è possibile ritirare un solo coupon per prodotto!')) ;
         }else{
             
             $promozione = $this->_Modelbase->getPromozioneByID($Id_prom);
+            
+            //aggiorno i coupon emessi della promnozione
+            $coupon_emessi =  (int) $promozione['Coupon_emessi'] ;
+            $N_coupon = $coupon_emessi +1;
+            $this->_ModelUser->updateCouponPromozione($Id_prom, $N_coupon );
+            
+            //aggiorno coupon_emessi dell utente
+            $Utente = $this->_ModelUser->getCouponemessiUtente($User);
+            $coupon_emessi = (int)$Utente['Coupon_emessi'];
+            $N_coupon = $coupon_emessi +1;
+            $this->_ModelUser->updateCouponUtente($User, $N_coupon);
+           
             
             $data = array('User'=> $User, 
                 'Id_promozione'=> $promozione['Id_promozione'], 
@@ -79,23 +94,27 @@ class UserController extends Zend_Controller_Action{
                 'Inizio_promozione'=> $promozione['Inizio_promozione'],
                 'Fine_promozione'=> $promozione['Fine_promozione']);
             
-            //inserisco
+            //inserisco l emissione del coupon
             $this->_ModelUser->insertCouponEmessi($data);
             
-            $N_coupon = $auth->getIdentity()->Coupon_emessi + 1;
-            $this->_ModelUser->updateCouponUtente($User, $N_coupon);
-            
-            //$N_coupon =  $promozione['Coupon_emessi'] ;
-            $this->_ModelUser->updateCouponPromozione($Id_prom, $N_coupon );
-            
-            $this->view->assign(array('Titolo' => 'Coupon', 
-                                      'msg' => 'Ecco a lei il suo coupon!',
-                                      ));
+            $this->view->assign(array( 'response' => $results,
+                                       'Titolo' => 'Coupon', 
+                                       'msg' => 'Ecco a lei il suo coupon!',
+                                       'prom'=> $promozione));
         }
-            
+        
+        
     }
     
-    
+     public function cvAction(){
+         $this->_helper->getHelper('layout')->disableLayout();
+         
+         $this->view->assign(array('Id_promozione' => $this->_getParam('Id_promozione'),
+                                    'Nome_Promozione' => $this->_getParam('Nome_Promozione'),
+                                    'Fine_promozione' => $this->_getParam('Fine_promozione'),
+                                    'Azienda' =>$this->_getParam('Azienda') ));
+        	
+    }
     
 }
 

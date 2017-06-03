@@ -11,4 +11,12 @@ function Validation(UtenteLivello ) {
     }
 }
 
+function apriImmagine() {
+              
+               alert('aaaa');
+                
+}
+
+
+
 

@@ -45,11 +45,18 @@ class Application_Resource_Utenti extends Zend_Db_Table{
     public function updateCouponUtente($User, $N_coupon){
         
         $data = array('Coupon_emessi' => $N_coupon);
-        $where = 'Livello='.$User;
+        $where=$this->getAdapter()->quoteInto('User=?', $User);
         
         $this->update($data, $where );
-             
+    }
+    
+    public function getCouponemessiUtente($User){
         
+    	$select = $this->select()
+                        ->where('User=?',$User) ;
+        
+        
+        return $this->fetchRow($select);
     }
     
 }

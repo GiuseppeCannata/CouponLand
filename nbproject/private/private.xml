@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/public/listpromozioni.phtml</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/user/index.phtml</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/controllers/UserController.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/models/resources/Promozione.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/models/User.php</file>
             <file>file:/C:/xampp/htdocs/CouponLand/application/models/resources/Couponemessi.php</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/models/resources/Couponemessi/Item.php</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/controllers/PublicController.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/models/resources/Utenti.php</file>
         </group>
     </open-files>
 </project-private>

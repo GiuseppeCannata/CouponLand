@@ -7,6 +7,12 @@
     <?= $this->headLink(); ?>
     <?= $this->headTitle(); ?>
     <?= $this->headScript(); ?>
+    <script>
+    function apriImmagine() {
+              
+     window.open("/CouponLand/application/views/scripts/user/cv.phtml");
+    }   
+</script>
     
     <!-- acquisisce il livello dell'utente -->
     <?php $livello = $this->authInfo('Livello');?>

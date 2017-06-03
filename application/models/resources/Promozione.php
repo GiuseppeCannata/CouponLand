@@ -104,7 +104,7 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
     public function updateCouponPromozione($Id_prom, $N_coupon){
         
         $data = array('Coupon_emessi' => $N_coupon);
-        $where = 'Id_promozione='.$Id_prom;
+        $where=$this->getAdapter()->quoteInto('Id_promozione=?', $Id_prom);
         
     	$this->update($data, $where);
         

@@ -31,12 +31,10 @@ class Application_Model_User extends App_Model_Abstract {
         
     }
     
-    
-   
-    
-    
-    
-
-    
+    public function getCouponemessiUtente($User){
+        
+    	return $this->getResource('Utenti')->getCouponemessiUtente($User);
+        
+    }
 }
 
