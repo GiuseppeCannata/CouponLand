@@ -1,23 +1,30 @@
-<div id="coupon">
-        
-        <div>
-        <h1 class='Titolo'><?= $this->Titolo; ?></h2>
-        </div>
+<?php echo $this->doctype() ?>
 
-
-        <div>
-            <p class='Testo' ><?= $this->msg; ?></p>
-        </div>
-        <?php   if($this->response == true){
-            
-            echo '<a href="'. $this->url(array('controller' => 'user',
-                                               'action'     => 'cv',
-                                               'Id_promozione' => $this->prom['Id_promozione'],
-                                               'Nome_Promozione' => $this->prom['Nome'],
-                                               'Fine_promozione' => $this->prom['Fine_promozione'],
-                                               'Azienda' => $this->prom['Azienda'] ),
-                                               'default',true ).'" target=”_blank” >Coupon Stampabile</a>';
-        } ?>
+<html>
     
-</div>
+    <head>
+        <?= $this->headMeta(); ?>
+        <title>Coupon</title>
+        <link href= "<?= $this->baseUrl('css/Coupon.css');?>" rel="stylesheet" type="text/css" />
+    </head>
+    
+    <body>
+        
+
+            <img src="<?= $this->baseUrl('img/coupon.jpg'); ?>">
+            <div id="info">
+            <?php
+            
+              echo '<h4>Rilasciato a:  <small>'. $this->authInfo('Nome').'   '. $this->authInfo('Cognome') .'</small></h4>';
+              echo '<h4>Nome promozione: <small>'. $this->Nome_promozione .'</small></h4>';
+              echo '<h4>Categoria: <small>'. $this->Categoria .'</small></h4>';
+              echo '<h4>Offerta: <small>'. $this->Offerta .'</small></h4>';
+              echo '<h4>Azienda: <small>'. $this->Azienda .'</small></h4>';   
+              echo '<h4>Valida entro la data: <small>'. $this->Fine_promozione .'</small></h4>';
+              echo '<br><br><br><h4>Id coupon: <small>'. $this->Id_coupon .'</small></h4>';
+              
+            ?>
+        </div>
+    </body>
+</html>
 

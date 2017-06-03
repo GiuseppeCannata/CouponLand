@@ -37,6 +37,12 @@ class Application_Resource_Couponemessi extends Zend_Db_Table_Abstract {
     public function insertCouponEmessi($data){
       
        $this->insert($data);
+       
+       
+       $select = $this->select()
+                      ->where('Id_promozione=?',$data['Id_promozione']);
+        
+        return $this->fetchRow($select);
         
     }
        

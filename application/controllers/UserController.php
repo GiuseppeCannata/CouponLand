@@ -55,7 +55,7 @@ class UserController extends Zend_Controller_Action{
         	
     }
     
-    public function couponAction(){
+    public function validatecouponAction(){
        
         $auth = Zend_Auth::getInstance()->getIdentity();
         
@@ -95,25 +95,28 @@ class UserController extends Zend_Controller_Action{
                 'Fine_promozione'=> $promozione['Fine_promozione']);
             
             //inserisco l emissione del coupon
-            $this->_ModelUser->insertCouponEmessi($data);
+           $r =$this->_ModelUser->insertCouponEmessi($data);
             
             $this->view->assign(array( 'response' => $results,
                                        'Titolo' => 'Coupon', 
                                        'msg' => 'Ecco a lei il suo coupon!',
+                                       'Id_coupon' => $r['Id_coupon'],
                                        'prom'=> $promozione));
         }
         
         
     }
     
-     public function cvAction(){
+    public function couponAction(){
+        
          $this->_helper->getHelper('layout')->disableLayout();
          
-         $this->view->assign(array('Id_promozione' => $this->_getParam('Id_promozione'),
-                                    'Nome_Promozione' => $this->_getParam('Nome_Promozione'),
-                                    'Fine_promozione' => $this->_getParam('Fine_promozione'),
-                                    'Azienda' =>$this->_getParam('Azienda') ));
-        	
+         $this->view->assign(array('Nome_promozione' => $this->_getParam('Nome_promozione'),
+                                   'Categoria' => $this->_getParam('Categoria'),
+                                   'Offerta' => $this->_getParam('Offerta'),
+                                   'Fine_promozione' => $this->_getParam('Fine_promozione'),
+                                   'Azienda' =>$this->_getParam('Azienda'),
+                                   'Id_coupon' => $this->_getParam('Id_coupon')));
     }
     
 }

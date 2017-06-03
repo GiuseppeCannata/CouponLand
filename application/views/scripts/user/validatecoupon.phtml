@@ -1,0 +1,24 @@
+<div id="coupon">
+        
+        <div><h1 class='Titolo'><?= $this->Titolo; ?></h2></div>
+        
+        <div>
+            <p class='Testo' ><?= $this->msg; ?></p>
+        </div>
+        
+        <?php   
+           if($this->response == true){
+            
+                echo '<a href="'. $this->url(array('controller' => 'user',
+                                                   'action'     => 'coupon',
+                                                   'Nome_promozione' => $this->prom['Nome'],
+                                                   'Categoria' => $this->prom['Categoria'],
+                                                   'Offerta' => $this->prom['Offerta'],
+                                                   'Azienda' => $this->prom['Azienda'],
+                                                   'Fine_promozione' => $this->prom['Fine_promozione'],
+                                                   'Id_coupon' =>$this->Id_coupon),
+                                                   'default',true ).'" target=”_blank” >Coupon Stampabile</a>';
+            } ?>
+    
+</div>
+
