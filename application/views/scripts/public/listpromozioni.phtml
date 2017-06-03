@@ -22,7 +22,22 @@ $(function() {
     <?php echo '<h1 class="Titolo">'. $this->IBRIDO .'</h1>' ?>
     
     <ul>
-        <?php foreach ($this->prom as $promozione) :?>
+        <?php 
+        
+        $r=$this->prom; 
+        if(count($r) == 0 && $this->chiamante == 'search'){
+            
+            echo '<h4>Parola cercata: '. $this->word.'</h4>';
+            echo '<h4>Categoria selezionata: '. $this->cat .'</h4>';
+            echo '<h4>Non ha prodotto nessun risultato</h4>';
+            
+            
+        }
+        
+        foreach ($this->prom as $promozione) :?>
+        
+       
+        
     
             <li class="prom">
 		
