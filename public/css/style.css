@@ -458,6 +458,32 @@ input#coupon{
 
 
 
+#ingrandita {
+  display: none;
+  position: fixed;
+  background: #FFFFFF;
+  top: 50px;
+  left:400px;
+  z-index: 10;
+  min-height: 200px;
+  min-width: 200px;
+  color: #336699;
+}
+#sfondo{
+    
+  display: none;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: #000000;
+  z-index: 1;;
+  
+}
+
+
+
 
 
 
