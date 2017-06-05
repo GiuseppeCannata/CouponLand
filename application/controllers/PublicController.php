@@ -109,6 +109,8 @@ class PublicController extends Zend_Controller_Action {
             $cat = $form->getValue('Categoria');
             $word = $form->getValue('boxricerca');
             
+            
+            
         }else{
             
             $cat = $this->_getParam('cat',null);

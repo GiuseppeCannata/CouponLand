@@ -16,19 +16,25 @@ class Application_Form_Public_Ricerca_Ricerca extends App_Form_Abstract{
         $this->setAction('');
         $this->setAttrib('id', 'form');
         
+        
+        $categories["Categoria"] = 'Categoria';
+        
         foreach ($cats as $cat) {
             
             $categories[$cat -> Nome] = $cat->Nome;
                 
         }
+        
+        
      
         $this->addElement('select', 'Categoria', array('required' => true,
                                                         'multiOptions'=> $categories,
-                                                        'decorators' => $this->elementDecorators));
+                                                        'decorators' => $this->elementDecorators))
+                ->setDefault('Categoria', $categories["Categoria"] );
                 
         
         $this->addElement('text', 'boxricerca', array( 'id' => 'textfield',
-                                                        'placeholder' => 'Cosa stai cercando?',
+                                                        'placeholder' => 'Ricordi alcune parole della descrizone?',
                                                         'filters' => array('StringTrim'),
                                                         'required' => true,
                                                         'validators' => array(array('StringLength',true, array(1,200))),

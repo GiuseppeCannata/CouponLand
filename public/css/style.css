@@ -122,6 +122,11 @@ p.clr, .clr {
        
 }
 
+.search ul.errors{
+    
+    display: none;
+}
+
 input.button {
         margin-left:5px;
 	padding:2px;
@@ -384,10 +389,12 @@ p.response {
 
 .imglist{
     
+    cursor: pointer;
     margin: 10px;
     border: solid 1px #999;
     width: 200px;
     height: 150px;
+    
     
 }
 
@@ -455,6 +462,11 @@ input#coupon{
     
     float:left;
 }
+
+
+
+
+
 
 
 

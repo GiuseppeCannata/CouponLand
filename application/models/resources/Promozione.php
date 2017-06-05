@@ -79,12 +79,33 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
     }
     
     public function search($cat , $textSearch, $paged , $order){
-        
-        $select = $this->select()
-                       ->where('Fine_promozione >= CURDATE()')
-                       ->where("Categoria=?",$cat)
-                       ->where("Descrizione_estesa LIKE ?", "%".$textSearch."%")
-                       ->order($order);
+  
+      
+        if($textSearch != NULL){
+            
+            if($cat == 'Categoria'){
+
+               $select = $this->select()
+                           ->where('Fine_promozione >= CURDATE()')
+                           ->where("Descrizione_estesa LIKE ?", "%".$textSearch."%")
+                           ->order($order);
+            }
+            else{
+
+                $select = $this->select()
+                               ->where('Fine_promozione >= CURDATE()')
+                               ->where("Categoria=?",$cat)
+                               ->where("Descrizione_estesa LIKE ?", "%".$textSearch."%")
+                               ->order($order);
+            }
+            
+            
+        }else{
+            
+            return false;
+        }
+            
+       
                        
         if (null !== $paged) {
             

@@ -13,8 +13,35 @@ $(function() {
                                       echo 'nonregistrato';}?>';
        
         $('a#coupon').on('click', function(){ Validation(UtenteLivello); })
+        
+        
+        
+
+    $('img').click(function(e){
+    
+        var img = $(this).closest('div.promlist').find('img');
+        
+        $("#sfondo").css({"opacity" : "0.7"}).fadeIn("slow");
+
+        
+        $('div#ingrandita').html("<img width=500 height=400 src='"+img.attr("src")+"'>").fadeIn("slow");
+        
+    });
+    
+    $("#sfondo").click(function(){
+      $("#sfondo").fadeOut("slow");
+      $("#ingrandita").fadeOut("slow");
+    });
+
+    $("#ingrandita").click(function(){
+      $("#sfondo").fadeOut("slow");
+      $("#ingrandita").fadeOut("slow");
+    });
+    
+ 
+    
 });
-   
+
 <?php $this->headScript()->captureEnd() ?>
 
 <div>
@@ -24,8 +51,9 @@ $(function() {
     <ul>
         <?php 
         
-        $r=$this->prom; 
-        if(count($r) == 0 && $this->chiamante == 'search'){
+        
+        
+        if( ($this->prom == false || count($this->prom) == 0) && $this->chiamante == 'search'){
             
             echo '<h4>Parola cercata: '. $this->word.'</h4>';
             echo '<h4>Categoria selezionata: '. $this->cat .'</h4>';
@@ -33,51 +61,49 @@ $(function() {
             
             
         }
-        
-        foreach ($this->prom as $promozione) :?>
-        
-       
-        
-    
-            <li class="prom">
-		
-                <div class="promlist">
-                  <?php echo $this->productImg($promozione->Immagine,  'prom' ,array('class' => 'imglist')) ?>
-                </div>  
-                
-                <div class="info">
-                    <?php 
+        else{
+                echo '<div id="ingrandita"></div><div id="sfondo"></div>';
+                foreach ($this->prom as $promozione) :?>
+                    
+                    <li class="prom">
+
+                       <div class="promlist">
+                         <?php echo $this->productImg($promozione->Immagine,  'prom' ,array('title' => 'click to zoom',
+                                                                                            'class' => 'imglist')) ?>
+                       </div>  
+
+                       <div class="info">
+                           <?php
                                 echo '<h1 class="TestoLista">'. $promozione->Nome .'</h1>' ;
                                 echo '<p class="Desc_br">' . $promozione->Descrizione_estesa . '</p>' ;
                                 echo '<p>Azienda:' . $promozione->Azienda . '</p>' ;
                                 echo '<p>Offerta: ' . $promozione->Offerta. '</p>' ;
                                 echo '<p>Scadenza: ' . $promozione->Fine_promozione . '</p>'; 
-                                
+
+
                                 $Livello = $this->authInfo('Livello');
-                                
-                                        
+
+
                                 if($Livello == null || $Livello == 'staff' || $Livello == 'admin'){
-                                    
+
                                      echo '<a  id="coupon" >Coupon</a>';
-                                     
+
                                 }else{
-                                    
+
                                     echo '<a id="coupon" href="'.$this->url(array('controller' => 'user',
                                                                            'action'     => 'validatecoupon',
                                                                            'prom' => $promozione->Id_promozione), 
                                                                            'default',true ).'" >Coupon</a>';
                                 }
+
+
                             ?>
-                        
-                </div>
-                
-               
-                <div style="clear:both;"></div>
-                <hr class="separatore"> 
-                
-            </li>
-            
-	<?php endforeach ?>
+                        </div>
+                       <div style="clear:both;"></div>
+                       <hr class="separatore"> 
+                    </li>
+        <?php endforeach ?>
+        <?php } ?>
         
     </ul>
 	  
