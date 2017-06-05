@@ -6,7 +6,10 @@ class UserController extends Zend_Controller_Action{
     protected $_cat;
     protected $_formricerca;
     protected $_ModelUser; 
-    
+    protected $_authService;
+    protected $_formarearis;
+
+
     public function init(){
         
         $this->_helper->layout->setLayout('main');
@@ -18,6 +21,7 @@ class UserController extends Zend_Controller_Action{
         //la passo alla view
         $this->view->assign(array('CategorieTendina' => $this->_cat ));
         $this->view->ricercaForm = $this->getRicercaForm();
+        $this->view->arearisForm = $this->getAreaRisForm();
 
     }
 
@@ -51,9 +55,7 @@ class UserController extends Zend_Controller_Action{
         return $this->_helper->redirector('index','public');	
     }
     
-    public function areariservataAction(){
-        	
-    }
+    
     
     public function validatecouponAction(){
        
@@ -117,6 +119,87 @@ class UserController extends Zend_Controller_Action{
                                    'Fine_promozione' => $this->_getParam('Fine_promozione'),
                                    'Azienda' =>$this->_getParam('Azienda'),
                                    'Id_coupon' => $this->_getParam('Id_coupon')));
+    }
+    
+    
+    public function modificautenteAction(){
+        
+        if (!$this->getRequest()->isPost()) {
+            
+	    $this->_helper->redirector('index');
+            
+        }
+	
+        $form=$this->_formarearis;
+        $post = $this->getRequest()->getPost();
+        
+        
+        if (!$form->isValid($post)) {
+            
+            $form->setDescription('Attenzione: alcuni dati inseriti sono errati.');
+            $this->render('areariservata');
+            return  $this->_helper->layout->disableLayout();
+           
+	}
+        
+        if(empty($post['Pass']))
+        {
+            $form->getElement('Pass')->setRequired(false);
+            
+        }
+       
+        //Id, Username e Email nell'utente autenticato
+        $iduser_attuale = $this->_authService->getIdentity()->Id_user;
+        $user_attuale = $this->_authService->getIdentity()->User; 
+        $email_attuale = $this->_authService->getIdentity()->Email; 
+
+        //Username e Email inserite nella form
+        $user_inserito = $form->getValue('User');
+        $email_inserita = $form->getValue('Email');
+        
+        
+       
+        
+        
+        //controllo se l'utente inserisce un username o un email che gia' son state utilizzate
+       if(($this->_ModelUser->estraiUsersbyUsernameandId($user_inserito, $iduser_attuale) != NULL) || ($this->_ModelUser->estraiUsersbyEmailandId($email_inserita,$iduser_attuale) != NULL)){
+            
+            $form->setDescription('Attenzione: User o email giÃ  presenti!');
+            $this->render('areariservata');
+            return  $this->_helper->layout->disableLayout();
+
+        }
+                
+        
+        //Vengono presi i valori dalla form e viene effetuato l'update        
+        $values = $form->getValues();
+        if($values["Pass"] == NULL){
+            $values["Pass"] = $this->_authService->getIdentity()->Pass;
+        }
+        
+        $this->_ModelUser->modificaUtente($values, $iduser_attuale);
+        $this->_authService->authenticate($values);
+        $this->_helper->redirector('index');
+        
+        
+        
+        
+    }
+    
+    
+      private function getAreaRisForm(){
+    		$urlHelper = $this->_helper->getHelper('url');
+		$this->_formarearis = new Application_Form_User_AreaRiser();
+    		$this->_formarearis->setAction($urlHelper->url(array(
+			'controller' => 'user',
+			'action' => 'modificautente'),
+			'default'
+		));
+		return $this->_formarearis;
+    } 
+    
+    public function areariservataAction(){
+        $this->_helper->layout->disableLayout();
     }
     
 }

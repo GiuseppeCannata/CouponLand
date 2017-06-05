@@ -2,15 +2,15 @@
 
 class Application_Service_Auth
 {
-    protected $_Adminmodel;
+    protected $_ModelUser;
     protected $_auth;
 
     public function __construct()
     {
-        $this->_Adminmodel = new Application_Model_Admin();
+        $this->_ModelUser = new Application_Model_User();
     }
     
-    public function authenticate($credentials){
+     public function authenticate($credentials){
         
         $adapter = $this->getAuthAdapter($credentials);
         $auth    = $this->getAuth();
@@ -19,7 +19,7 @@ class Application_Service_Auth
         if (!$result->isValid()) {
             return false;
         }
-        $user = $this->_Adminmodel->getUserByName($credentials['User']);
+        $user = $this->_ModelUser->estraiUsersbyUsername($credentials['User']);
         $auth->getStorage()->write($user);
         return true;
     }

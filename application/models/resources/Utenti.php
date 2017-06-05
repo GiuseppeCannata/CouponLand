@@ -59,4 +59,32 @@ class Application_Resource_Utenti extends Zend_Db_Table{
         return $this->fetchRow($select);
     }
     
+    
+    public function modificaUtente($info, $id){
+        
+        $table = new Application_Resource_Utenti();
+        $where = $table->getAdapter()->quoteInto('Id_user = ?', $id);
+        $this->update($info, $where);
+    }
+    
+    public function estraiUsersbyUsernameandId($name,$id){
+        
+        $select= $this->select()->where('Id_user != ?',$id)
+                                ->where('User = ?', $name);
+        
+        return $this->fetchRow($select);
+        
+    }   
+    
+    
+    public function estraiUsersbyEmailandId($email,$id){
+        
+        $select= $this->select()->where('Id_user != ?',$id)
+                                ->where('Email = ?', $email);
+        
+                                
+        return $this->fetchRow($select);
+         
+    } 
+    
 }
