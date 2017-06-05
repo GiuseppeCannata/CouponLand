@@ -11,13 +11,19 @@
             
                 echo '<a href="'. $this->url(array('controller' => 'user',
                                                    'action'     => 'coupon',
+                                                   'Id_promozione' =>$this->Id_promozione),
+                                                   'default',true ).'" target="_blank" >Coupon Stampabile</a>';
+                
+                
+                /* echo '<a href="'. $this->url(array('controller' => 'user',
+                                                   'action'     => 'coupon',
                                                    'Nome_promozione' => $this->prom['Nome'],
                                                    'Categoria' => $this->prom['Categoria'],
                                                    'Offerta' => $this->prom['Offerta'],
                                                    'Azienda' => $this->prom['Azienda'],
                                                    'Fine_promozione' => $this->prom['Fine_promozione'],
                                                    'Id_coupon' =>$this->Id_coupon),
-                                                   'default',true ).'" target=”_blank” >Coupon Stampabile</a>';
+                                                   'default',true ).'" target=”_blank” >Coupon Stampabile</a>';*/
             } ?>
     
 </div>

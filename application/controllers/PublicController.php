@@ -176,7 +176,8 @@ class PublicController extends Zend_Controller_Action {
         }
         
         $values = $form->getValues();
-        $values["Livello"] = 'user';        $this->_Modelbase->saveUtente($values);
+        $values["Livello"] = 'user';        
+        $this->_Modelbase->saveUtente($values);
         $this->_helper->redirector('index');
         
     }

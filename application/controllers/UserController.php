@@ -76,34 +76,10 @@ class UserController extends Zend_Controller_Action{
                 . 'Le ricordiamo che è possibile ritirare un solo coupon per prodotto!')) ;
         }else{
             
-            $promozione = $this->_Modelbase->getPromozioneByID($Id_prom);
-            
-            //aggiorno i coupon emessi della promnozione
-            $coupon_emessi =  (int) $promozione['Coupon_emessi'] ;
-            $N_coupon = $coupon_emessi +1;
-            $this->_ModelUser->updateCouponPromozione($Id_prom, $N_coupon );
-            
-            //aggiorno coupon_emessi dell utente
-            $Utente = $this->_ModelUser->getCouponemessiUtente($User);
-            $coupon_emessi = (int)$Utente['Coupon_emessi'];
-            $N_coupon = $coupon_emessi +1;
-            $this->_ModelUser->updateCouponUtente($User, $N_coupon);
-           
-            
-            $data = array('User'=> $User, 
-                'Id_promozione'=> $promozione['Id_promozione'], 
-                'Nome_promozione'=> $promozione['Nome'],
-                'Inizio_promozione'=> $promozione['Inizio_promozione'],
-                'Fine_promozione'=> $promozione['Fine_promozione']);
-            
-            //inserisco l emissione del coupon
-           $r =$this->_ModelUser->insertCouponEmessi($data);
-            
             $this->view->assign(array( 'response' => $results,
                                        'Titolo' => 'Coupon', 
                                        'msg' => 'Ecco a lei il suo coupon!',
-                                       'Id_coupon' => $r['Id_coupon'],
-                                       'prom'=> $promozione));
+                                       'Id_promozione' => $Id_prom));
         }
         
         
@@ -111,14 +87,41 @@ class UserController extends Zend_Controller_Action{
     
     public function couponAction(){
         
-         $this->_helper->getHelper('layout')->disableLayout();
+        $auth = Zend_Auth::getInstance()->getIdentity();
+        $Id_prom = $this->_getParam('Id_promozione');
+        $User = $auth->User;
+        $promozione = $this->_Modelbase->getPromozioneByID($Id_prom);
+            
+        //aggiorno i coupon emessi della promnozione
+        $coupon_emessi =  (int) $promozione['Coupon_emessi'] ;
+        $N_coupon = $coupon_emessi +1;
+        $this->_ModelUser->updateCouponPromozione($Id_prom, $N_coupon );
+
          
-         $this->view->assign(array('Nome_promozione' => $this->_getParam('Nome_promozione'),
-                                   'Categoria' => $this->_getParam('Categoria'),
-                                   'Offerta' => $this->_getParam('Offerta'),
-                                   'Fine_promozione' => $this->_getParam('Fine_promozione'),
-                                   'Azienda' =>$this->_getParam('Azienda'),
-                                   'Id_coupon' => $this->_getParam('Id_coupon')));
+        //aggiorno coupon_emessi dell utente
+        $Utente = $this->_ModelUser->getCouponemessiUtente($User);
+        $coupon_emessi = (int)$Utente['Coupon_emessi'];
+        $N_coupon = $coupon_emessi +1;
+        $this->_ModelUser->updateCouponUtente($User, $N_coupon);
+           
+            
+        $data = array('User'=> $User, 
+            'Id_promozione'=> $promozione['Id_promozione'], 
+            'Nome_promozione'=> $promozione['Nome'],
+            'Inizio_promozione'=> $promozione['Inizio_promozione'],
+            'Fine_promozione'=> $promozione['Fine_promozione']);
+            
+            //inserisco l emissione del coupon
+        $r = $this->_ModelUser->insertCouponEmessi($data);
+        
+        $this->_helper->getHelper('layout')->disableLayout();
+         
+        $this->view->assign(array('Nome_promozione' => $promozione['Nome'] ,
+                                   'Categoria' => $promozione['Categoria'],
+                                   'Offerta' => $promozione['Offerta'],
+                                   'Fine_promozione' => $promozione['Fine_promozione'],
+                                   'Azienda' => $promozione['Azienda'],
+                                   'Id_coupon' => $r['Id_coupon']));
     }
     
     
