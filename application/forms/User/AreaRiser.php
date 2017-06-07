@@ -8,8 +8,8 @@ class Application_Form_User_AreaRiser extends App_Form_Abstract
     protected  $_authService;
 
 
-    public function init()
-	{
+    public function init(){
+        
                 $this->_ModelUser = new Application_Model_User();
                 $this->_authService = new Application_Service_Auth();
                 $this->setMethod('post');
@@ -27,16 +27,12 @@ class Application_Form_User_AreaRiser extends App_Form_Abstract
 		
                 
                 
-                $this->addElement('text', 'User', array(
-                   
-                    'class' => 'inputform',
-            'label' => 'Username',
-            'value' => $this->_authService->getIdentity()->User,         
-            'filters' => array('StringTrim'),
-            'required' => true,
-            'validators' => array(array('StringLength',true, array(1,50))),
-            
-		));
+                $this->addElement('text', 'User', array('class' => 'inputform',
+                                                        'label' => 'Username',
+                                                        'value' => $this->_authService->getIdentity()->User,         
+                                                        'filters' => array('StringTrim'),
+                                                        'required' => true,
+                                                        'validators' => array(array('StringLength',true, array(1,50))),));
                 
                
                 $this->addElement('password', 'Pass', array(
@@ -84,8 +80,7 @@ class Application_Form_User_AreaRiser extends App_Form_Abstract
                 
                 
                
-                $this->addElement('text', 'Telefono', array(
-                    'class' => 'inputform',
+                $this->addElement('text', 'Telefono', array('class' => 'inputform',
             'label' => 'Numero di telefono',
             'value' => $this->_authService->getIdentity()->Telefono,
             'filters' => array('StringTrim'),
@@ -133,19 +128,7 @@ class Application_Form_User_AreaRiser extends App_Form_Abstract
 		));    
                 
         }
-
-    
-    public function pwdNotChanged()
-    {
-        $this->getElement('password')->setRequired(false);
-        $this->getElement('password')->setIgnore(true);
-
-        $this->getElement('verificapassword')->setRequired(false);
-        $this->getElement('verificapassword')->setIgnore(true);
-
-//        var_dump($this); die();
-    }
-    
+       
 }
 
 

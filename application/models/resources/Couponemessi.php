@@ -45,6 +45,13 @@ class Application_Resource_Couponemessi extends Zend_Db_Table_Abstract {
         return $this->fetchRow($select);
         
     }
-       
+    
+    public function numerocouponemessi() {
+        
+        $select = $this->select();
+        
+        return $this->fetchRow($select);
+        
+    }   
 }
 

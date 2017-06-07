@@ -130,5 +130,13 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
     	$this->update($data, $where);
         
     }
+    
+    public function promTutte(){
+        
+        $select = $this->select();
+        
+        return $this->fetchAll($select);
+        
+    }
 }
 

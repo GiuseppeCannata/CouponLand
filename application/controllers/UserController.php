@@ -55,8 +55,6 @@ class UserController extends Zend_Controller_Action{
         return $this->_helper->redirector('index','public');	
     }
     
-    
-    
     public function validatecouponAction(){
        
         $auth = Zend_Auth::getInstance()->getIdentity();
@@ -124,7 +122,6 @@ class UserController extends Zend_Controller_Action{
                                    'Id_coupon' => $r['Id_coupon']));
     }
     
-    
     public function modificautenteAction(){
         
         if (!$this->getRequest()->isPost()) {
@@ -133,7 +130,7 @@ class UserController extends Zend_Controller_Action{
             
         }
 	
-        $form=$this->_formarearis;
+        $form = $this->_formarearis;
         $post = $this->getRequest()->getPost();
         
         
@@ -177,32 +174,30 @@ class UserController extends Zend_Controller_Action{
         //Vengono presi i valori dalla form e viene effetuato l'update        
         $values = $form->getValues();
         if($values["Pass"] == NULL){
+            
             $values["Pass"] = $this->_authService->getIdentity()->Pass;
+            
         }
         
         $this->_ModelUser->modificaUtente($values, $iduser_attuale);
         $this->_authService->authenticate($values);
         $this->_helper->redirector('index');
-        
-        
-        
-        
     }
     
-    
-      private function getAreaRisForm(){
-    		$urlHelper = $this->_helper->getHelper('url');
-		$this->_formarearis = new Application_Form_User_AreaRiser();
-    		$this->_formarearis->setAction($urlHelper->url(array(
-			'controller' => 'user',
-			'action' => 'modificautente'),
-			'default'
-		));
-		return $this->_formarearis;
+    private function getAreaRisForm(){
+        
+        $urlHelper = $this->_helper->getHelper('url');
+        $this->_formarearis = new Application_Form_User_AreaRiser();
+        $this->_formarearis->setAction($urlHelper->url(array('controller' => 'user',
+                                                            'action' => 'modificautente'),
+                                                            'default'));
+        return $this->_formarearis;
     } 
     
     public function areariservataAction(){
+        
         $this->_helper->layout->disableLayout();
+        
     }
     
 }

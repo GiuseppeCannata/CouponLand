@@ -224,6 +224,7 @@ a#active {
 	margin:0 auto;
 	padding:0px 0 20px 0px;
 	width:930px;
+        min-height: 500px;
         background-color: white
             
 }

@@ -21,7 +21,31 @@ class Application_Resource_Faq extends Zend_Db_Table_Abstract {
                     
         return $this->fetchAll($select);
     }
+    
+    public function saveFaq($values){
        
+	$this->insert($values);
+                    
+    }
+    
+    
+    public function updateFaq($values){
+       
+        $Id_faq = $values['Id_faq'];
+	$data = array('Domanda' =>  $values['Domanda'],
+                      'Risposta' => $values['Risposta']);
+        $where=$this->getAdapter()->quoteInto('Id_faq=?',$Id_faq  );
+        
+        $this->update($data, $where );
+                    
+    }
+    
+    public function deletefaq($Id_faq){
+       
+	$this->find($Id_faq)->current()->delete();
+                    
+    }
+    
 }
 
 

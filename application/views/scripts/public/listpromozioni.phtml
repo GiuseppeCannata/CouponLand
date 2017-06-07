@@ -9,33 +9,45 @@
 
 $(function() {
                     
-        var UtenteLivello='<?php  if($this->authInfo('Livello')== null){
-                                      echo 'nonregistrato';}?>';
+        var UtenteLivello='<?php  
+                                if($this->authInfo('Livello')== null){
+            
+                                    echo 'nonregistrato';
+                                      
+                                }
+                                else{
+                                    
+                                    echo $this->authInfo('Livello');  
+                                }
+                            ?>';
        
         $('a#coupon').on('click', function(){ Validation(UtenteLivello); })
         
         
         
 
-    $('img').click(function(e){
+    $('img').on('click', function(e){
     
         var img = $(this).closest('div.promlist').find('img');
         
         $("#sfondo").css({"opacity" : "0.7"}).fadeIn("slow");
 
-        
         $('div#ingrandita').html("<img width=500 height=400 src='"+img.attr("src")+"'>").fadeIn("slow");
         
     });
     
-    $("#sfondo").click(function(){
+    $("#sfondo").on('click', function(){
+    
       $("#sfondo").fadeOut("slow");
       $("#ingrandita").fadeOut("slow");
+      
     });
 
-    $("#ingrandita").click(function(){
+    $("#ingrandita").on('click', function(){
+    
       $("#sfondo").fadeOut("slow");
       $("#ingrandita").fadeOut("slow");
+      
     });
     
  
@@ -62,6 +74,12 @@ $(function() {
             
         }
         else{
+            if(count($this->prom) == 0){
+            
+            echo '<h4>Spiacenti. Non ci sono ancora promozioni '. $this->word.'</h4>';
+            
+        }
+            
                 echo '<div id="ingrandita"></div><div id="sfondo"></div>';
                 foreach ($this->prom as $promozione) :?>
                     

@@ -1,0 +1,25 @@
+<div>
+        
+        <div><h1 class='Titolo'>Messaggio</h1></div>
+        
+        <div>
+            <p class='Testo' ><?= $this->msg; ?></p>
+        </div>
+        
+        <?php 
+        
+            echo '<a href="'. $this->url(array('controller' => 'admin',
+                                              'action'     => $this->actionSI,
+                                              'Id_faq' => $this->id_faq ),
+                                              'default',true ).'" >Si</a>';
+            echo '<br><br>';   
+            echo '<a href="'. $this->url(array('controller' => 'admin',
+                                               'action'     => $this->indietro,),
+                                               'default',true ).'" >Indietro</a>';       
+                   
+                   
+        ?>
+        
+    
+</div>
+

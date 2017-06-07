@@ -1,0 +1,52 @@
+<?php $this->headScript()
+        /*scriverà <script>src=......</script>*//*carico la libreria jquery*/
+	->appendFile('https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js')
+        /*scriverà <script>src=......</script>*/
+	->appendFile($this->baseUrl('js/functions.js'))
+        //mi permette di dire: da adesso in poi c è del codice jquery che devi aggiungere, questo finira quando definiro $this->headScript()->captureEnd()
+	->captureStart() ?>
+
+
+$(function()
+{
+         //quale azione, sul server, validerà i dati inseriti fino a quel momento? 
+          //utilizzo il view helper url
+	var actionUrl='<?= $this->url(array('controller' => 'public', 
+                                            'action' => 'validatelogin',), 'default'); ?>';
+        //prendo il nome della form
+	var formName='<?= $this->loginForm->getName() ?>';
+        //definisco l hendler cioè quello che ad ogni blur invia i dati al server
+        //funzione associata alla tag input
+	$(":input").on('blur', function(event) {
+        //vado a prendere l elemento su cui si è verifocato l evento di blur
+        var formElementId = $(this).attr('id');
+        //prendo la funzione  js do validation a cui passo l id dell elemento, url per attivazione sul server ,nome della form
+        doValidation(formElementId, actionUrl, formName);
+    });
+});
+
+<?php $this->headScript()->captureEnd() ?>
+
+<div>
+    <h1 class="Titolo">Statistiche CouponLand.it</h1>
+    <h3>Monitora l andamento di CouponLand.it in pochi minuti!</h3>
+</div>
+
+<div>
+   <h4>Coupon emessi: <?php echo $this->N_couponEmessi; ?> </h4>
+    <p>
+        <label>Scegli la promozione che ti interessa</label>
+        
+         <select name="promozione" size="1">
+         <?php foreach ($this->promTUTTE as $promozioni){
+                echo '<option>'. $promozioni->Nome .'</option>'; 
+             }
+          ?>
+         
+        </select>
+    </p>
+</div>
+
+
+
+

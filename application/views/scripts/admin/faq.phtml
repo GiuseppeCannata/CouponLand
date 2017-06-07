@@ -1,0 +1,35 @@
+<div class="faq-content">
+ 
+    
+    <h1 class="Titolo"> F.A.Q </h1><br>
+
+        <?php 
+
+            foreach ($this->listFAQ as $Faq) {
+
+                echo '<h4 class="Sottotitolo">'. $Faq->Domanda .'</h4>';
+                echo '<div class="Testo"><p>'. $Faq->Risposta .'</p></div>';
+                
+                echo '<a href="'.  $this->url(array('controller' => 'admin',
+                                    'action' => 'modificafaq', 
+                                    'domanda' => $Faq->Domanda,
+                                    'risposta' => $Faq->Risposta,
+                                    'id' => $Faq->Id_faq),
+                                    'default',true ) .'">Modifica</a>';
+                
+                echo '<a href="'.  $this->url(array('controller' => 'admin',
+                                    'action' => 'messaggio', 
+                                    'domanda' => $Faq->Domanda,
+                                    'id' => $Faq->Id_faq),
+                                    'default',true ) .'">Cancella</a>';
+                echo '<hr>';
+
+            }
+        ?>
+    
+    
+    <a href="<?= $this->url(array('controller' => 'admin',
+                                    'action' => 'nuovafaq'), 
+                                    'default',true ); ?>">Inserisci nuova F.A.Q</a>
+          
+</div>

@@ -36,7 +36,7 @@ class Application_Form_Public_Ricerca_Ricerca extends App_Form_Abstract{
         $this->addElement('text', 'boxricerca', array( 'id' => 'textfield',
                                                         'placeholder' => 'Ricordi alcune parole della descrizone?',
                                                         'filters' => array('StringTrim'),
-                                                        'required' => true,
+                                                        'required' => false,
                                                         'validators' => array(array('StringLength',true, array(1,200))),
                                                         'decorators' => $this->elementDecorators));
     

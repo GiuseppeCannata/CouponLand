@@ -1,0 +1,19 @@
+<div>
+    <h1 class="Titolo">Benvenuto Amministratore</h1>
+    <h3 class="Sottotitolo">Come posso aiutarti oggi?<h3>
+    
+    
+    <a href="<?= $this->url(array('controller' => 'admin',
+                                    'action' => 'statistiche'), 
+                                    'default',true ); ?>">
+        <img src="<?php echo $this->baseUrl('img/admin/statistiche.jpg');?>" alt="" width="920" height="343" border="0"> 
+    </a>
+    <br><br>
+    <a href="<?= $this->url(array('controller' => 'admin',
+                                    'action' => 'faq'), 
+                                    'default',true ); ?>">
+        <img src="<?php echo $this->baseUrl('img/admin/faq.jpg');?>" alt="" width="920" height="343" border="0"> 
+    </a>
+            
+</div>
+
