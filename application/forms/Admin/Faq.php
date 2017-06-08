@@ -23,7 +23,7 @@ class Application_Form_Admin_Faq extends App_Form_Abstract{
     public function init(){
         
         $this->setMethod('post');
-        $this->setName('aggiungifaq');
+        $this->setName('faqform');
         $this->setAction('');
         $this->setAttrib('id', 'form');
         
@@ -41,7 +41,7 @@ class Application_Form_Admin_Faq extends App_Form_Abstract{
                         'value'      => $this->_domanda,
                         'placeholder' => 'Domanda F.A.Q',
                         'validators' => array(array('StringLength',true, array(1,500))),
-                       /* 'decorators' => $this->elementDecorators*/));
+                       'decorators' => $this->elementDecorators));
 
         $this->addElement('textarea', 'Risposta', array(
                         'label' => "Risposta",
@@ -50,21 +50,15 @@ class Application_Form_Admin_Faq extends App_Form_Abstract{
                         'value'      => $this->_risposta,
                         'placeholder' => 'Risposta F.A.Q',
                         'validators' => array(array('StringLength',true, array(1,500))),
-                        /*'decorators' => $this->elementDecorators*/));
+                        'decorators' => $this->elementDecorators));
         
 
         $this->addElement('submit', 'ok', array(
                          'label'    => 'ok',
-                         /*'decorators' => $this->buttonDecorators*/ ));
+                         'decorators' => $this->buttonDecorators ));
         
 	$this->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'table', 'class' => 'zend_form')),
         		     array('Description', array('placement' => 'prepend', 'class' => 'formerror')),'Form'));
     }
-    
-    public function populate($domanda,$risposta)
-    {
-            $this->domanda->setValue($domanda);
-            $this->risposta->setValue($risposta);
-    }
-    
+   
 }

@@ -2,11 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/models/Admin.php</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/forms/Admin/Faq.php</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/admin/faq.phtml</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/controllers/AdminController.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

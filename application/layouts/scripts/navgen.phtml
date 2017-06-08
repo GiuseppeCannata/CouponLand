@@ -1,8 +1,21 @@
 <ul id="Pricipale-a">
                     
-    <li class="left"><a href=" <?= $this->url(array('controller' => 'public',
-                                                    'action'     => 'index', ), 
-                                                    'default',true ); ?>"
+    <li class="left"><a href=" <?php
+                                    $livello = $this->authInfo('Livello');
+                                    if($livello == NULL){
+                       
+                                       echo $this->url(array('controller' => 'public',
+                                                         'action'     => 'index' ), 
+                                                         'default',true );
+                         
+                                    }
+                                    else{
+
+                                       echo $this->url(array('controller' => $livello,
+                                                         'action'     => 'index' ), 
+                                                         'default',true ); 
+                                        
+                                    }?>"
         id="active" class="Principale-b"> Home </a></li>
 
     <li id="MenuPrincipale" class="left"> <!--Lista delle Categorie -->

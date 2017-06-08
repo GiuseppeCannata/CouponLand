@@ -1,6 +1,7 @@
-    <div class="Titolo">
+ <div class="Titolo">
       <h1>Le nostre aziende</h1><br>
-    </div>
+   </div>
+
 <div id="ContentListAziende">
     <ul class="listaziende">
         
@@ -9,13 +10,9 @@
         </li>
         
         <?php 
-
             foreach ($this->listaziende as $azienda) {
-
                 $ris = substr($azienda->Nome, 0 , 1);
-
                 if($ris === 'A' || $ris === 'B' || $ris === 'C' || $ris === 'D' || $ris === 'E' || $ris === 'F'){
-
                     switch($this->chiamante){
                         
                         case 'nav':{
@@ -46,7 +43,6 @@
                     
                 }
             }
-
         ?>
     </ul>
     
@@ -58,7 +54,6 @@
         <?php 
     
         foreach ($this->listaziende as $azienda) {
-
             $ris = substr($azienda->Nome, 0,1);
             
             if($ris === 'G' || $ris === 'H' || $ris === 'I' || $ris === 'L' || $ris === 'M' || $ris === 'N'|| $ris === 'O'){
@@ -105,7 +100,6 @@
         <?php 
     
         foreach ($this->listaziende as $azienda) {
-
             $ris = substr($azienda->Nome, 0,1);
             
             if($ris === 'P' || $ris === 'Q' || $ris === 'R' || $ris === 'S' || $ris === 'T' || $ris === 'U'|| $ris === 'V' || $ris==='Z'){
@@ -144,5 +138,6 @@
     
 </ul>
 </div>
- <div class="clr"></div>
+<div class="clr"></div>
+
 

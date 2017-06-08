@@ -1,0 +1,83 @@
+<h1 class="Titolo">Le nostre aziende</h1><br>
+<a  href="<?= $this->url(array('controller' => 'admin',
+                                'action' => 'nuovaazienda'), 
+                                'default', true) ?>" > Nuova Azienda </a>
+
+<div id="ContentListAziende">
+    <ul class="listaziende">
+        
+        <li class="prom" class="Sottotitolo">
+            <h2>A-F</h2>
+        </li>
+        
+        <?php 
+
+            foreach ($this->listaziende as $azienda) {
+
+                $ris = substr($azienda->Nome, 0 , 1);
+
+                if($ris === 'a' || $ris === 'b' || $ris === 'c' || $ris === 'd' || $ris === 'e' || $ris === 'f'){
+                    
+                    echo '<li class="prom"><a href='. $this->url(array('controller' => 'admin',
+                                                       'action' => 'azienda',
+                                                       'id'=> $azienda->Id_azienda), 
+                                                       'default', true) .'>'.
+                             $azienda->Nome.'</a></li>';
+                }
+            }
+
+        ?>
+    </ul>
+    
+    <ul class="listaziende">   
+        <li class="prom" class="Sottotitolo">
+            <h2>G-O</h2>
+        </li>
+        
+        <?php 
+    
+        foreach ($this->listaziende as $azienda) {
+
+            $ris = substr($azienda->Nome, 0,1);
+            
+            if($ris === 'g' || $ris === 'h' || $ris === 'i' || $ris === 'l' || $ris === 'm' || $ris === 'n'|| $ris === 'o'){
+                
+                echo '<li class="prom"><a href='. $this->url(array('controller' => 'admin',
+                                                       'action' => 'azienda',
+                                                       'id'=> $azienda->Id_azienda), 
+                                                       'default', true) .'>'.
+                             $azienda->Nome.'</a></li>';
+            }
+        }
+    ?>
+ 
+    </ul>
+
+    <ul class="listaziende">
+        
+        <li class="prom" class="Sottotitolo">
+            <h2>P-Z</h2>
+        </li>
+        
+        <?php 
+    
+        foreach ($this->listaziende as $azienda) {
+
+            $ris = substr($azienda->Nome, 0,1);
+            
+            if($ris === 'p' || $ris === 'q' || $ris === 'r' || $ris === 's' || $ris === 't' || $ris === 'u'|| $ris === 'v' || $ris==='z'){
+                
+               echo '<li class="prom"><a href='. $this->url(array('controller' => 'admin',
+                                                       'action' => 'azienda',
+                                                       'id'=> $azienda->Id_azienda), 
+                                                       'default', true) .'>'.
+                             $azienda->Nome.'</a></li>';
+            }
+            
+        }
+    ?>
+    
+</ul>
+</div>
+<div class="clr"></div>
+

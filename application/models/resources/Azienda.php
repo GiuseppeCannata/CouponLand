@@ -36,6 +36,40 @@ class Application_Resource_Azienda extends Zend_Db_Table_Abstract
         
     }
     
+    public function getAziendaByName($Nome){
+        
+       /*Scrivo la stringa per fare la select*/
+	$select = $this->select()
+                       ->where('Nome=?',$Nome);
+        
+        $result = $this->fetchRow($select);
+        
+         if($result == NULL){
+             
+             return false;
+           
+        }else{
+            
+           return true;
+           
+       }
+        
+    }
+    
+    public function saveAzienda($data){
+        
+      $this->insert($data);
+        
+    }
+    
+    
+    public function deleteAzienda($Id){
+        
+      $this->find($Id)->current()->delete();
+        
+    }
+    
+    
        
 }
 

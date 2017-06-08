@@ -9,6 +9,7 @@ class AdminController extends Zend_Controller_Action{
     protected $_ricercaForm; 
     protected $_creaFaqForm; 
     protected $_modificaFaqForm; 
+    protected $_creaAziendaForm;
    
     public function init(){
         
@@ -26,6 +27,7 @@ class AdminController extends Zend_Controller_Action{
         $this->view->ricercaForm = $this->getRicercaForm();
         $this->view->creaFaqForm = $this->getCreafaqForm();
         $this->view->modificaFaqForm = $this->getModificafaqForm();
+        $this->view->creaAziendaForm = $this->getCreaAziendaForm();
 
     }
 
@@ -184,6 +186,129 @@ class AdminController extends Zend_Controller_Action{
         $this->_helper->redirector('faq');
         
     }
+    
+    
+    
+    
+    
+    
+    
+    public function listaziendeAction () {
+        
+      $listaziende = $this->_Modelbase->getAziende();
+      //Da chi è stato chiamato questo metodo?
+      $chiamante = $this->_getParam('chiamante');
+      $this->view->assign(array('listaziende' => $listaziende));
+        
+    }
+    
+    /*Metodo che si riferisce alla corrispettiva view azienda.
+      Questo metodo consente di caricare (servendosi del model) l azienda specificata per Id, e passare 
+      alla corrispettiva view le info rispetto ad essa*/
+    public function aziendaAction() {
+        
+      $id_azienda = $this->_getParam('id');
+      $azienda = $this->_ModelAdmin->getAziendaByID($id_azienda);
+      $this->view->assign(array('azienda' => $azienda));
+      
+    }
+    
+    
+    private function getCreaAziendaForm(){
+
+        $Id = $this->getParam("Id");
+        
+        
+        $this->_creaAziendaForm = new Application_Form_Admin_Azienda($Id);
+        $this->_creaAziendaForm ->AddCategorieToSelect($this->_cat->toArray());
+        $this->_creaAziendaForm->setAction($this->_helper->getHelper('url')->url(array('controller' => 'admin',
+                                                                                       'action' => 'verificanuovaazienda'),
+                                                                                       'default'));
+        return $this->_creaAziendaForm;
+        
+    }
+    
+    
+    //verifica se la faq è valida, fa  l inseriemnto , e mi da un messaggio
+    public function verificanuovaaziendaAction(){
+        
+       if (!$this->getRequest()->isPost()) {
+            
+	    $this->_helper->redirector('index');
+            
+        }
+	
+        $form = $this->_creaAziendaForm;
+        $post = $this->getRequest()->getPost();
+         
+        if (!$form->isValid($post)) {
+            
+            $form->setDescription('Attenzione: compila tutti i campi');
+            //nome pagina
+            return $this->render('nuovaazienda');
+           
+	}
+        
+         $values= $form->getValues();
+        $Nome_Azienda = $values["Nome"]; 
+        $result = $this->_ModelAdmin->getAziendaByName($Nome_Azienda);
+        
+        
+        //se result == true significa che l azienda gia c e nel db
+        if($result){
+            
+            $form->setDescription('Attenzione: Azienda già essistente');
+            //nome pagina
+            return $this->render('nuovaazienda');
+            
+        }
+        //devo per forza trovare il nome poichè la combo resituisce l Id
+       /* $Id_categoria =  $values['Tipologia'];
+        $Name_cat = $this->_ModelAdmin->getCategoriaByID($Id_categoria);
+        $values["Tipologia"] = $Name_cat['Nome'];*/
+        $this->_ModelAdmin->saveAzienda($values);
+        $this->view->assign('msg', 'Inserimento avvenuto con successo');
+    }
+    
+    
+    public function nuovaaziendaAction(){
+        
+         //azione per la view
+        
+    }
+    
+    
+    public function deleteaziendaAction(){
+        
+       
+        $this->view->assign(array('actionSI' => 'cancellaazienda',
+                                  'indietro' => 'azienda',
+                                  'msg' => 'Sei sicuro di voler cancellare l azienda: " '. $this->_getParam('Nome_azienda'). ' " ?',
+                                  'Id_azienda' => $this->_getParam('Id_azienda')));
+    }
+    
+    
+    public function cancellaaziendaAction(){
+        
+       
+        $Id_azienda = $this->_getParam('Id_azienda');
+        
+        $this->_ModelAdmin->cancellaAzienda($Id_azienda);
+        
+        $this->_helper->redirector('listaziende');
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

@@ -45,7 +45,42 @@ class Application_Model_Admin extends App_Model_Abstract {
     	return $this->getResource('Faq')->deletefaq($Id_faq);
         
     }
+    
+    
+    public function getAziendaByID($id_azienda){
+        
+        return $this->getResource('Azienda')->getAziendaByID($id_azienda);
+        
+    }
+    
+            
+    public function getAziendaByName($Nome_Azienda){
+        
+        return $this->getResource('Azienda')->getAziendaByName($Nome_Azienda);
+        
+    }
+    
+    public function saveAzienda($values){
+        
+        return $this->getResource('Azienda')->saveAzienda($values);
+        
+    }
+    
+    public function getCategoriaById($Id_categoria){
+        
+        return $this->getResource('Categoria')->getCatByID($Id_categoria);
+        
+    }
+    
+    
+    public function cancellaAzienda($Id_azienda){
+        
+         return $this->getResource('Azienda')->deleteAzienda($Id_azienda);
+        
+    }
+    
+    
    
-
+    
     
 }

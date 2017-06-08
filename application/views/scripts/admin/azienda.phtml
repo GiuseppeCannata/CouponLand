@@ -1,0 +1,33 @@
+<div>
+    <?php foreach ($this->azienda as $aziendascelta) :?>
+    
+        <div>
+          <?php echo $this->productImg($aziendascelta->Logo_aziendale, 'aziende' , array('class' => 'imgs')) ?>
+        </div>
+
+        <div class="Sottotitolo">
+
+          <?php echo '<h4>Tipologia: ' . $aziendascelta->Tipologia . '</h4>' ?>
+          <?php echo '<h4>Ragione sociale: ' . $aziendascelta->Ragione_sociale . '</h4>' ?>
+          <?php echo '<h4>Localizzazione: ' . $aziendascelta->Localizzazione . '</h4>' ?>
+          <h4>Presentazione azienda:</h4>
+
+        </div>
+        
+        <div class="Testo">
+            
+          <?php echo '<p>' . $aziendascelta->Descrizione . '</p>' ?>
+
+        </div>
+    
+    
+    <a href=" <?=$this->url(array('controller' => 'admin',
+                                    'action' => 'deleteazienda', 
+                                    'Id_azienda' => $aziendascelta->Id_azienda,
+                                    'Nome_azienda' => $aziendascelta->Nome ),
+                                    'default',true )?>">Cancella azienda</a>
+    
+    <?php endforeach ?>
+</div>
+
+

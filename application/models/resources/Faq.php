@@ -22,9 +22,9 @@ class Application_Resource_Faq extends Zend_Db_Table_Abstract {
         return $this->fetchAll($select);
     }
     
-    public function saveFaq($values){
+    public function saveFaq($data){
        
-	$this->insert($values);
+	$this->insert($data);
                     
     }
     
