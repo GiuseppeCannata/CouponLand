@@ -47,9 +47,9 @@ class Application_Model_Admin extends App_Model_Abstract {
     }
     
     
-    public function getAziendaByID($id_azienda){
+    public function getAziendaByID($id_azienda , $chiamante = null){
         
-        return $this->getResource('Azienda')->getAziendaByID($id_azienda);
+        return $this->getResource('Azienda')->getAziendaByID($id_azienda, $chiamante);
         
     }
     
@@ -76,6 +76,12 @@ class Application_Model_Admin extends App_Model_Abstract {
     public function cancellaAzienda($Id_azienda){
         
          return $this->getResource('Azienda')->deleteAzienda($Id_azienda);
+        
+    }
+    
+    public function updateAzienda($azienda){
+        
+         return $this->getResource('Azienda')->updateAzienda($azienda);
         
     }
     

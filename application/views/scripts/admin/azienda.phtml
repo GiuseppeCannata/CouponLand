@@ -19,15 +19,23 @@
           <?php echo '<p>' . $aziendascelta->Descrizione . '</p>' ?>
 
         </div>
-    
+    <?php endforeach ?>
     
     <a href=" <?=$this->url(array('controller' => 'admin',
                                     'action' => 'deleteazienda', 
                                     'Id_azienda' => $aziendascelta->Id_azienda,
                                     'Nome_azienda' => $aziendascelta->Nome ),
-                                    'default',true )?>">Cancella azienda</a>
+                                    'default',true )?>"><button>Cancella azienda</button></a>
     
-    <?php endforeach ?>
+    
+    <a href=" <?=$this->url(array('controller' => 'admin',
+                                    'action' => 'updateazienda', 
+                                    'Id_azienda' => $aziendascelta->Id_azienda ),
+                                    'default',true )?>"><button>Modifica azienda</button></a>
+    
+    <a href="<?= $this->url(array('controller' => 'admin',
+                                    'action' => 'listaziende'), 
+                                    'default',true ); ?>"><button class="bottom">Torna alla lista</button></a>
 </div>
 
 

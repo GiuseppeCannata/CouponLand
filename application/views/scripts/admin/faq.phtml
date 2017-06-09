@@ -15,21 +15,23 @@
                                     'domanda' => $Faq->Domanda,
                                     'risposta' => $Faq->Risposta,
                                     'id' => $Faq->Id_faq),
-                                    'default',true ) .'">Modifica</a>';
+                                    'default',true ) .'"><button class="bottom">Modifica</button></a>';
                 
                 echo '<a href="'.  $this->url(array('controller' => 'admin',
                                     'action' => 'messaggio', 
                                     'domanda' => $Faq->Domanda,
                                     'id' => $Faq->Id_faq),
-                                    'default',true ) .'">Cancella</a>';
+                                    'default',true ) .'" ><button class="bottom">Cancella</button></a>';
                 echo '<hr>';
+            
 
             }
         ?>
     
     
+    
     <a href="<?= $this->url(array('controller' => 'admin',
                                     'action' => 'nuovafaq'), 
-                                    'default',true ); ?>">Inserisci nuova F.A.Q</a>
+                                    'default',true ); ?>"><button class="bottom">Inserisci nuova F.A.Q</button></a>
           
 </div>

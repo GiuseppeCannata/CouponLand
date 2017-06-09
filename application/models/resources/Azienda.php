@@ -26,12 +26,14 @@ class Application_Resource_Azienda extends Zend_Db_Table_Abstract
         
     }
     
-    public function getAziendaByID($id_azienda){
+    public function getAziendaByID($id_azienda, $chiamante){
         
        /*Scrivo la stringa per fare la select*/
 	$select = $this->select()
                        ->where('Id_azienda=?',$id_azienda);
-        
+        if($chiamante == 'modifica'){
+            return $this->fetchRow($select);
+        }
         return $this->fetchAll($select);
         
     }
@@ -68,6 +70,27 @@ class Application_Resource_Azienda extends Zend_Db_Table_Abstract
       $this->find($Id)->current()->delete();
         
     }
+    
+    
+    public function updateAzienda($values){
+        
+        $Id_azienda = $values['Id_azienda'];
+        
+	$data = array('Nome' =>  $values['Nome'],
+                      'Ragione_sociale' => $values['Ragione_sociale'],
+                      'Logo_aziendale' => $values['Logo_aziendale'],
+                      'Localizzazione' => $values['Localizzazione'],
+                      'Descrizione' => $values['Descrizione'],
+                      'Tipologia' => $values['Tipologia']);
+        
+        $where=$this->getAdapter()->quoteInto('Id_azienda=?',$Id_azienda  );
+        
+        $this->update($data, $where );
+        
+    }
+    
+    
+    
     
     
        

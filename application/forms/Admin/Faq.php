@@ -28,8 +28,7 @@ class Application_Form_Admin_Faq extends App_Form_Abstract{
         $this->setAttrib('id', 'form');
         
         
-        $this->addElement('text','Id_faq',array(
-            'class'     => 'hide',
+        $this->addElement('hidden','Id_faq',array(
             'value'     => $this->_id
         ));
 

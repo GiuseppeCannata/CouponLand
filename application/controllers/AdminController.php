@@ -10,6 +10,7 @@ class AdminController extends Zend_Controller_Action{
     protected $_creaFaqForm; 
     protected $_modificaFaqForm; 
     protected $_creaAziendaForm;
+    protected $_modificaAziendaForm;
    
     public function init(){
         
@@ -28,6 +29,7 @@ class AdminController extends Zend_Controller_Action{
         $this->view->creaFaqForm = $this->getCreafaqForm();
         $this->view->modificaFaqForm = $this->getModificafaqForm();
         $this->view->creaAziendaForm = $this->getCreaAziendaForm();
+        $this->view->modificaAziendaForm = $this->getModificaAziendaForm();
 
     }
 
@@ -36,20 +38,6 @@ class AdminController extends Zend_Controller_Action{
         
     } 
     
-    private function getRicercaForm(){
-
-        $this->_ricercaForm = new Application_Form_Public_Ricerca_Ricerca();
-        $this->_ricercaForm->setAction($this->_helper->getHelper('url')->url(array( 'controller' => 'public',
-                                                                                    'action' => 'listpromozioni',
-                                                                                    'chiamante' => 'search',
-                                                                                     'IBRIDO'=> 'Elenco risultati:'),
-                                                                                    'default'));
-        
-        return $this->_ricercaForm;
-        
-    }   
-
-    //
     public function logoutAction(){
         
         //utilizzo il metodo clear dell oggetto zend_auth
@@ -95,6 +83,19 @@ class AdminController extends Zend_Controller_Action{
         $this->view->assign('msg', 'Inserimento avvenuto con successo');
     }
     
+    private function getRicercaForm(){
+
+        $this->_ricercaForm = new Application_Form_Public_Ricerca_Ricerca();
+        $this->_ricercaForm->setAction($this->_helper->getHelper('url')->url(array( 'controller' => 'public',
+                                                                                    'action' => 'listpromozioni',
+                                                                                    'chiamante' => 'search',
+                                                                                     'IBRIDO'=> 'Elenco risultati:'),
+                                                                                    'default'));
+        
+        return $this->_ricercaForm;
+        
+    }   
+    
     private function getCreafaqForm(){
 
         $this->_creaFaqForm = new Application_Form_Admin_Faq();
@@ -113,13 +114,13 @@ class AdminController extends Zend_Controller_Action{
         
         $this->_modificaFaqForm = new Application_Form_Admin_Faq($domanda,$risposta,$id);
         $this->_modificaFaqForm->setAction($this->_helper->getHelper('url')->url(array('controller' => 'admin',
-                                                                                       'action' => 'editfaq'),
+                                                                                       'action' => 'verificamodificafaq'),
                                                                                        'default'));
         return $this->_modificaFaqForm;
         
     } 
     
-    public function editfaqAction(){
+    public function verificamodificafaqAction(){
         
         if (!$this->getRequest()->isPost()) {
             
@@ -196,8 +197,6 @@ class AdminController extends Zend_Controller_Action{
     public function listaziendeAction () {
         
       $listaziende = $this->_Modelbase->getAziende();
-      //Da chi è stato chiamato questo metodo?
-      $chiamante = $this->_getParam('chiamante');
       $this->view->assign(array('listaziende' => $listaziende));
         
     }
@@ -216,15 +215,33 @@ class AdminController extends Zend_Controller_Action{
     
     private function getCreaAziendaForm(){
 
-        $Id = $this->getParam("Id");
-        
-        
-        $this->_creaAziendaForm = new Application_Form_Admin_Azienda($Id);
+        $this->_creaAziendaForm = new Application_Form_Admin_Azienda();
         $this->_creaAziendaForm ->AddCategorieToSelect($this->_cat->toArray());
         $this->_creaAziendaForm->setAction($this->_helper->getHelper('url')->url(array('controller' => 'admin',
                                                                                        'action' => 'verificanuovaazienda'),
                                                                                        'default'));
         return $this->_creaAziendaForm;
+        
+    }
+    
+    private function getModificaAziendaForm(){
+
+        $Id = $this->getParam("Id_azienda");
+        
+        $this->_modificaAziendaForm = new Application_Form_Admin_Azienda(/*$result*/);
+        $this->_modificaAziendaForm ->AddCategorieToSelect($this->_cat->toArray());
+        
+       if($Id != null){
+            
+            $result = $this->_ModelAdmin->getAziendaByID($Id, 'modifica')->toArray();
+            $this->_modificaAziendaForm ->setDefaults($result);
+            
+        }
+        
+        $this->_modificaAziendaForm->setAction($this->_helper->getHelper('url')->url(array('controller' => 'admin',
+                                                                                       'action' => 'verificamodificaazienda'),
+                                                                                       'default'));
+        return $this->_modificaAziendaForm;
         
     }
     
@@ -249,7 +266,7 @@ class AdminController extends Zend_Controller_Action{
            
 	}
         
-         $values= $form->getValues();
+        $values= $form->getValues();
         $Nome_Azienda = $values["Nome"]; 
         $result = $this->_ModelAdmin->getAziendaByName($Nome_Azienda);
         
@@ -262,13 +279,49 @@ class AdminController extends Zend_Controller_Action{
             return $this->render('nuovaazienda');
             
         }
-        //devo per forza trovare il nome poichè la combo resituisce l Id
-       /* $Id_categoria =  $values['Tipologia'];
-        $Name_cat = $this->_ModelAdmin->getCategoriaByID($Id_categoria);
-        $values["Tipologia"] = $Name_cat['Nome'];*/
+        
+        if($values['Logo_aziendale'] == null){
+            
+            $values['Logo_aziendale'] = "default.jpg";
+        }
+        
         $this->_ModelAdmin->saveAzienda($values);
         $this->view->assign('msg', 'Inserimento avvenuto con successo');
     }
+    
+    public function verificamodificaaziendaAction(){
+        
+       if (!$this->getRequest()->isPost()) {
+            
+	    $this->_helper->redirector('index');
+            
+        }
+	
+        $form = $this->_modificaAziendaForm;
+        $post = $this->getRequest()->getPost();
+         
+        if (!$form->isValid($post)) {
+            
+            $form->setDescription('Attenzione: compila tutti i campi');
+            //nome pagina
+            return $this->render('updateazienda');
+           
+	}
+        
+        $values= $form->getValues();
+        
+       if($values['Logo_aziendale'] == null){
+            
+            $azienda = $this->_ModelAdmin->getAziendaByID($values['Id_azienda'], 'modifica');
+            $logo = $azienda['Logo_aziendale'];
+            $values['Logo_aziendale'] =  $logo ;
+                    
+        }
+        
+        $this->_ModelAdmin->updateAzienda($values);
+        $this->view->assign('msg', 'Aggiornamento avvenuto con successo');
+    }
+    
     
     
     public function nuovaaziendaAction(){
@@ -301,16 +354,11 @@ class AdminController extends Zend_Controller_Action{
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    public function updateaziendaAction(){
+        
+       //serve per la view
+       
+    }
     
 }
 

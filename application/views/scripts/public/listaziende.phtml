@@ -11,8 +11,9 @@
         
         <?php 
             foreach ($this->listaziende as $azienda) {
+                
                 $ris = substr($azienda->Nome, 0 , 1);
-                if($ris === 'A' || $ris === 'B' || $ris === 'C' || $ris === 'D' || $ris === 'E' || $ris === 'F'){
+                if($ris === 'a' || $ris === 'b' || $ris === 'c' || $ris === 'd' || $ris === 'e' || $ris === 'f'){
                     switch($this->chiamante){
                         
                         case 'nav':{
@@ -56,7 +57,7 @@
         foreach ($this->listaziende as $azienda) {
             $ris = substr($azienda->Nome, 0,1);
             
-            if($ris === 'G' || $ris === 'H' || $ris === 'I' || $ris === 'L' || $ris === 'M' || $ris === 'N'|| $ris === 'O'){
+            if($ris === 'g' || $ris === 'h' || $ris === 'i' || $ris === 'l' || $ris === 'm' || $ris === 'n'|| $ris === 'o'){
                 
                 switch($this->chiamante){
                         
@@ -102,7 +103,7 @@
         foreach ($this->listaziende as $azienda) {
             $ris = substr($azienda->Nome, 0,1);
             
-            if($ris === 'P' || $ris === 'Q' || $ris === 'R' || $ris === 'S' || $ris === 'T' || $ris === 'U'|| $ris === 'V' || $ris==='Z'){
+            if($ris === 'p' || $ris === 'q' || $ris === 'r' || $ris === 's' || $ris === 't' || $ris === 'u'|| $ris === 'v' || $ris==='z'){
                 
                switch($this->chiamante){
                         

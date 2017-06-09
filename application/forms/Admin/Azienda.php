@@ -2,54 +2,70 @@
 
 class Application_Form_Admin_Azienda extends App_Form_Abstract
 {
-    
-    protected $_id;
-    protected $_Modelbase;
+   
     protected $categorie_select;
-    protected $_cat;
+    
      
-    public function __construct( $cat  , $id=null ){
-        
-        if ($id != null){
-            
-            
-            
-            //fai qualcosa
-        }
-        
-        $this->_id = $id;
-        
+  /*  public function __construct( $azienda = null ){
         
         $this->categorie_select = new Zend_Form_Element_Select('Tipologia');
-        $this->categorie_select->setLabel('Categoria azienda: ');
-        $this->categorie_select->setValue('---');
+        $this->categorie_select->setLabel('Tipologia: ');
+        
+        if ($azienda != null){
+            
+            $this->_nome = $azienda['Nome'];
+            $this->_ragione = $azienda['Ragione_sociale'];
+            $this->_logo = $azienda['Logo_aziendale'];
+            $this->_localizzazione = $azienda['Localizzazione'];
+            $this->_descrizione = $azienda['Descrizione'];
+            $this->_id = $azienda['Id_azienda'];
+            
+            $this->categorie_select->setValue($azienda['Tipologia']);
+            
+        }
+        else{
+            $this->categorie_select->setValue('---');
+        }
+        
         $this->categorie_select->setDecorators($this->elementDecorators);
         $this->addElement($this->categorie_select);
 
         $this->init();
         
     }
-    
+    */
     
     public function init(){
         
         $this->setMethod('post');
         $this->setName('formAzienda');
-        $this->setAction('');
         $this->setAttrib('id', 'form');
+        $this->setAttrib('enctype', 'multipart/form-data');
+        $this->setAction('');
+        
+        $this->categorie_select = new Zend_Form_Element_Select('Tipologia');
+        $this->categorie_select->setLabel('Tipologia: ');
+         $this->categorie_select->setValue('---');
+        $this->categorie_select->setDecorators($this->elementDecorators);
+        $this->addElement($this->categorie_select);
+        
+       
+        
 
         $this->addElement('text', 'Nome', array(
             'label' => "Nome Azienda",
             'filters' => array('StringTrim', 'StringToLower'),
             'required' => true,
+            /*'value' => $this->_nome,*/
             'placeholder' => 'Inserisci',
             'decorators' => $this->elementDecorators,
         ));
 
-        $this->addElement('text', 'Ragione_Sociale', array(
+        $this->addElement('text', 'Ragione_sociale', array(
             'label' => "Ragione sociale",
             'filters' => array('StringTrim', 'StringToLower'),
             'required' => true,
+           /* 'value' => $this->_ragione,*/
             'placeholder' => 'Ragione sociale',
            'decorators' => $this->elementDecorators,
         ));
@@ -57,6 +73,7 @@ class Application_Form_Admin_Azienda extends App_Form_Abstract
 
         $this->addElement('file', 'Logo_aziendale', array(
                         'label' => 'Logo',
+                        'required' => false,
                         'destination' => APPLICATION_PATH . '/../public/img/aziende',
                         'validators' => array( 
                                         array('Count', false, 1),
@@ -68,6 +85,7 @@ class Application_Form_Admin_Azienda extends App_Form_Abstract
             'label' => "Localizzazione",
             'filters' => array('StringTrim', 'StringToLower'),
             'required' => true,
+           /* 'value' => $this->_localizzazione,*/
             'placeholder' => 'Descrizione azienda',
             'decorators' => $this->elementDecorators,
         ));
@@ -76,15 +94,13 @@ class Application_Form_Admin_Azienda extends App_Form_Abstract
             'label' => "Descrizione azienda",
             'filters' => array('StringTrim', 'StringToLower'),
             'required' => true,
+           /* 'value' => $this->_descrizione,*/
             'placeholder' => 'Descrizione azienda',
            'decorators' => $this->elementDecorators,
         ));
         
-        
-        
-
         $this->addElement('hidden','Id_azienda',array(
-            'value'=> $this->_id
+          /*  'value'=> $this->_id*/
         ));
 
         $this->addElement('submit', 'submitInserisci', array(
@@ -93,13 +109,7 @@ class Application_Form_Admin_Azienda extends App_Form_Abstract
             
         ));
         
-        $this->setDecorators(array(
-            'FormElements',
-            array('HtmlTag', array('tag' => 'table')),
-        	array('Description', array('placement' => 'prepend', 'class' => 'formerror')),
-            'Form'
-        ));
-
+       
         $this->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'table', 'class' => 'zend_form')),
         		     array('Description', array('placement' => 'prepend', 'class' => 'formerror')),'Form'));
 
@@ -108,17 +118,12 @@ class Application_Form_Admin_Azienda extends App_Form_Abstract
     
      /* riceve i dati della query getCategorie()  */
 
-    public function AddCategorieToSelect($data)
-    {
+    public function AddCategorieToSelect($data){
+        
         for ($i = 0; $i < sizeof($data); $i++) {
             $this->categorie_select->addMultiOption($data[$i]['Nome'], $data[$i]['Nome']);
         }
 
     }
-    
-    
-    
-   
-
 }
 
