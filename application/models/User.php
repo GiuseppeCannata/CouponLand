@@ -62,5 +62,7 @@ class Application_Model_User extends App_Model_Abstract {
     public function estraiUsersbyEmail($email){
     	return $this->getResource('Utenti')->estraiUsersbyEmail($email);
     }
+    
+    
 }
 

@@ -23,7 +23,7 @@ class Application_Form_User_AreaRiser extends App_Form_Abstract
                 $etaposs[18] = 18;
                 for ($i = 19; $i < 121; $i++){
                     $etaposs[$i] = $etaposs[$i-1] + 1;
-                    }
+                }
 		
                 
                 
@@ -36,96 +36,71 @@ class Application_Form_User_AreaRiser extends App_Form_Abstract
                 
                
                 $this->addElement('password', 'Pass', array(
-                    'class' => 'inputform',
-            'label' => 'Nuova password',
-             'value' => $this->_authService->getIdentity()->Pass,  
-            'filters' => array('StringTrim'),
-            'required' => false ));
+                                  'class' => 'inputform',
+                                  'label' => 'Nuova password',
+                                  'value' => $this->_authService->getIdentity()->Pass,  
+                                  'filters' => array('StringTrim'),
+                                  'required' => false ));
                 
                 
-              $this->addElement('text', 'Nome', array(
-                  'class' => 'inputform',
-            'label' => 'Nome',
-            'value' => $this->_authService->getIdentity()->Nome,   
-            'filters' => array('StringTrim'),
-            'required' => true,
-            'validators' => array(array('StringLength',true, array(1,20))),
-           
-		));
+                $this->addElement('text', 'Nome', array('class' => 'inputform',
+                                                        'label' => 'Nome',
+                                                        'value' => $this->_authService->getIdentity()->Nome,   
+                                                        'filters' => array('StringTrim'),
+                                                        'required' => true,
+                                                        'validators' => array(array('StringLength',true, array(1,20))),));
               
               
-                $this->addElement('text', 'Cognome', array(
-                    'class' => 'inputform',
-            'label' => 'Cognome',
-            'value' => $this->_authService->getIdentity()->Cognome,
-            'filters' => array('StringTrim'),
-            'required' => true,
-            'validators' => array(array('StringLength',true, array(1,20))),
-            
-		));
+                 $this->addElement('text', 'Cognome', array(
+                                    'class' => 'inputform',
+                                    'label' => 'Cognome',
+                                    'value' => $this->_authService->getIdentity()->Cognome,
+                                    'filters' => array('StringTrim'),
+                                    'required' => true,
+                                    'validators' => array(array('StringLength',true, array(1,20))),));
                 
              
 		
                 
-                $this->addElement('text', 'Email', array(
-                    'class' => 'inputform',
-            'label'      => 'Email',
-            'value' => $this->_authService->getIdentity()->Email,
-            'required'   => true,
-            'filters'    => array('StringTrim'),
-            'validators' => array(
-                'EmailAddress',
-            )
-        ));
+                 $this->addElement('text', 'Email', array(
+                                    'class' => 'inputform',
+                                    'label'      => 'Email',
+                                    'value' => $this->_authService->getIdentity()->Email,
+                                    'required'   => true,
+                                    'filters'    => array('StringTrim'),
+                                    'validators' => array('EmailAddress',)));
                 
                 
                
                 $this->addElement('text', 'Telefono', array('class' => 'inputform',
-            'label' => 'Numero di telefono',
-            'value' => $this->_authService->getIdentity()->Telefono,
-            'filters' => array('StringTrim'),
-            'required' => true,
-            'validators' => array(array('Float', true, array('locale' => 'en_US')),array('StringLength',true, array(1,10))),
-            
-		));  
+                                'label' => 'Numero di telefono',
+                                'value' => $this->_authService->getIdentity()->Telefono,
+                                'filters' => array('StringTrim'),
+                                'required' => true,
+                                'validators' => array(array('Float', true, 
+                                array('locale' => 'en_US')),array('StringLength',true, array(1,10))),));  
                 
-                   $this->addElement('select', 'Eta', array(
-            
-            'title' => 'Età',
-            
-            'required' => true,
-            'multiOptions'=> $etaposs,
-            
-		))
-                         ->setDefault('Eta', $this->_authService->getIdentity()->Eta );
+                $this->addElement('select', 'Eta', array('title' => 'Età',
+                                  'required' => true,
+                                   'multiOptions'=> $etaposs,))->setDefault('Eta', $this->_authService->getIdentity()->Eta );
                 
                    
                 
                 $this->addElement('select', 'Genere', array(
-           
-            'title' => 'Genere',
-            'required' => true,
-            'multiOptions'=> $genere = array('M' => 'M','F' => 'F'),
-                    ))
-                        ->setDefault('Genere', $this->_authService->getIdentity()->Genere );
+                                    'title' => 'Genere',
+                                    'required' => true,
+                                    'multiOptions'=> $genere = array('M' => 'M','F' => 'F'),))
+                                    ->setDefault('Genere', $this->_authService->getIdentity()->Genere );
             
                 
                 
-                $this->addElement('submit', 'registra', array(
-          
-                'id' => 'registra',
-            'label' => 'Modifica',
-                
-		
-		));
+                $this->addElement('submit', 'registra', array('id' => 'registra',
+                                  'label' => 'Modifica',));
     
                 
-                $this->setDecorators(array(
-			'FormElements',
-			array('HtmlTag', array('tag' => 'table')),
+                $this->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'table')),
 			array('Description', array('placement' => 'prepend', 'class' => 'formerror')),
-			'Form'
-		));    
+			'Form'));    
                 
         }
        

@@ -14,7 +14,7 @@ class Application_Resource_Utenti extends Zend_Db_Table{
     }
     
     
-    public function getUtenteById($id){
+    public function getUserByID($id){
         //questa funziona ritorna un oggetto
         //find()-->metodo ereditato
         //         metodo che estrae dal DB, e ritorna sottoforma di oggetto, un insieme di tuple che hanno un certo 
@@ -35,6 +35,8 @@ class Application_Resource_Utenti extends Zend_Db_Table{
         return $this->fetchRow($select);
          
     }
+    
+    
                     
     public function estraiUsersbyEmail($email){
          
@@ -86,5 +88,36 @@ class Application_Resource_Utenti extends Zend_Db_Table{
         return $this->fetchRow($select);
          
     } 
+    
+    public function getUtenti(){
+        
+        $select = $this->select()
+                       ->order('Nome');
+        
+        return $this->fetchAll($select);
+         
+    }
+    
+    public function getUtenteByID($id){
+        
+       /*Scrivo la stringa per fare la select*/
+	$select = $this->select()
+                       ->where('Id_user=?',$id);
+        
+        return $this->fetchRow($select);
+        
+    }
+    
+    public function getPassByID($id){
+        
+       /*Scrivo la stringa per fare la select*/
+	$select = $this->select()
+                       ->where('Id_user=?',$id);
+        
+        return $this->fetchRow($select);
+        
+    }
+    
+    
     
 }

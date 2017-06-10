@@ -11,7 +11,9 @@ class AdminController extends Zend_Controller_Action{
     protected $_modificaFaqForm; 
     protected $_creaAziendaForm;
     protected $_modificaAziendaForm;
-   
+    protected $_modificautenteForm;
+
+
     public function init(){
         
         $this->_helper->layout->setLayout('main');
@@ -19,6 +21,7 @@ class AdminController extends Zend_Controller_Action{
         $this->_authService = new Application_Service_Auth();
         
         $this->_Modelbase = new Application_Model_Modelbase();
+        $this->_ModelUser = new Application_Model_User();
         $this->_ModelAdmin = new Application_Model_Admin();
         
         $this->_cat = $this->_Modelbase->getCategorie();
@@ -30,7 +33,8 @@ class AdminController extends Zend_Controller_Action{
         $this->view->modificaFaqForm = $this->getModificafaqForm();
         $this->view->creaAziendaForm = $this->getCreaAziendaForm();
         $this->view->modificaAziendaForm = $this->getModificaAziendaForm();
-
+        
+        $this->view->modificautenteForm = $this->getModificaUtenteForm();
     }
 
     public function indexAction(){
@@ -360,5 +364,109 @@ class AdminController extends Zend_Controller_Action{
        
     }
     
+    
+    public function listutentiAction () {
+        
+      $listutenti = $this->_ModelAdmin->getUtenti();
+      
+      $this->view->assign(array('listutenti' => $listutenti ));
+        
+    }
+    
+    
+    public function schedautenteAction(){
+        
+       $Id = $this->_getParam("Id_user");
+        
+       $utente = $this->_ModelAdmin->getUtenteByID($Id);
+       $this->view->assign(array('utente' => $utente));
+       
+    }
+    
+    
+    
+    
+    public function updateutenteAction () {
+        
+     //serve per iniettare la form
+        
+    }
+    
+    private function getModificaUtenteForm(){
+
+       $Id = $this->getParam("Id_user");
+        
+        $this->_modificautenteForm = new Application_Form_Admin_ModificaUtente;
+        
+        if($Id != null){
+            
+            $result = $this->_ModelAdmin->getUtenteByID($Id)->toArray();
+            $this->_modificautenteForm->setDefaults($result);
+            
+        }
+        
+        $this->_modificautenteForm->setAction($this->_helper->getHelper('url')->url(array('controller' => 'admin',
+                                                                                       'action' => 'verificamodificautente'),
+                                                                                       'default'));
+        return $this->_modificautenteForm;
+        
+    } 
+    
+    
+    
+    public function verificamodificautenteAction(){
+        
+       if (!$this->getRequest()->isPost()) {
+            
+	    $this->_helper->redirector('index');
+            
+        }
+	
+        $form = $this->_modificautenteForm;
+        $post = $this->getRequest()->getPost();
+        
+        
+        if (!$form->isValid($post)) {
+            
+            $form->setDescription('Attenzione: completa tutti i campi.');
+            $this->render('updateutente');
+           
+	}
+        
+        if(empty($post['Pass'])){
+            
+            $form->getElement('Pass')->setRequired(false);
+            
+        }
+       
+
+        //Username e Email inserite nella form
+        $user_inserito = $form->getValue('User');
+        $email_inserita = $form->getValue('Email');
+        
+        
+      /* if(($this->_ModelUser->estraiUsersbyUsernameandId($user_inserito, $iduser_attuale) != NULL) || ($this->_ModelUser->estraiUsersbyEmailandId($email_inserita,$iduser_attuale) != NULL)){
+            
+            $form->setDescription('Attenzione: User o email giÃ  presenti!');
+            $this->render('updateutente');
+            
+
+        }   
+        
+        //Vengono presi i valori dalla form e viene effetuato l'update        
+        $values = $form->getValues();
+        $id = $values["Id_user"] ;
+        
+        if($values["Pass"] == NULL){
+            
+            
+            $values["Pass"] = $this->_ModelAdmin->getPassByID($id)->Pass;
+            
+        }
+        
+        $this->_ModelUser->modificaUtente($values, $id);
+        $this->_helper->redirector('listutenti');*/
+        
+    }
 }
 

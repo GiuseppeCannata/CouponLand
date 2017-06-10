@@ -8,12 +8,10 @@ class Application_Model_Admin extends App_Model_Abstract {
     }
 
         
-    public function getUserByName($info){
-        
-    	return $this->getResource('Utenti')->estraiUsersbyUsername($info);
+    public function getUserByID($info){
+       
+    	return $this->getResource('Utenti')->getUserByID($info);
     }
-    
-   
     
     public function  numerocouponemessi(){
         
@@ -85,8 +83,21 @@ class Application_Model_Admin extends App_Model_Abstract {
         
     }
     
+    public function getUtenti(){
+        
+         return $this->getResource('Utenti')->getUtenti();
+        
+    }
     
-   
+    public function getUtenteByID($info){
+       
+    	return $this->getResource('Utenti')->getUtenteByID($info);
+    }
     
+    public function getPassByID($info){
+       
+    	return $this->getResource('Utenti')->getPassByID($info);
+    }
+
     
 }

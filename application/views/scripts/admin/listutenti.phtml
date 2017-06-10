@@ -1,0 +1,93 @@
+<h1 class="Titolo">Lista degli utenti registrati al sito</h1><br>
+<!--<a  href="<?= $this->url(array('controller' => 'admin',
+                                'action' => 'nuovaazienda'), 
+                                'default', true) ?>" ><button> Nuova Azienda</button> </a> -->
+<h3 class="Sottotitolo">Clicca sull utente che desideri per modificare il suo profilo<h3>
+
+<div>
+    <ul class="listaziende">
+        
+        <li class="prom" class="Sottotitolo">
+            <h2>A-F</h2>
+        </li>
+        
+        <?php 
+        
+            if($this->listutenti == null){
+                
+                echo '<h4>Spiacente. Non ci sono ancora utenti iscritti</h4>';
+                
+            }
+
+            foreach ($this->listutenti as $utente) {
+
+                $ris = substr($utente->Nome, 0 , 1);
+
+                if($ris === 'a' || $ris === 'b' || $ris === 'c' || $ris === 'd' || $ris === 'e' || $ris === 'f' ||
+                   $ris === 'A' || $ris === 'B' || $ris === 'C' || $ris === 'D' || $ris === 'E' || $ris === 'F'){
+                    
+                    echo '<li class="prom"><a href='. $this->url(array('controller' => 'admin',
+                                                       'action' => 'schedautente',
+                                                       'Id_user'=> $utente->Id_user), 
+                                                       'default', true) .'>'.
+                             $utente->Nome.'</a></li>';
+                }
+            }
+            
+
+        ?>
+    </ul>
+    
+    <ul class="listaziende">   
+        <li class="prom" class="Sottotitolo">
+            <h2>G-O</h2>
+        </li>
+        
+        <?php 
+    
+        foreach ($this->listutenti as $utente) {
+
+            $ris = substr($utente->Nome, 0,1);
+            
+            if($ris === 'g' || $ris === 'h' || $ris === 'i' || $ris === 'l' || $ris === 'm' || $ris === 'n'|| $ris === 'o'||
+               $ris === 'G' || $ris === 'H' || $ris === 'I' || $ris === 'L' || $ris === 'M' || $ris === 'N'|| $ris === 'O'){
+                
+                echo '<li class="prom"><a href='. $this->url(array('controller' => 'admin',
+                                                       'action' => 'schedautente',
+                                                       'Id_user'=> $utente->Id_user), 
+                                                       'default', true) .'>'.
+                             $utente->Nome.'</a></li>';
+            }
+        }
+    ?>
+ 
+    </ul>
+
+    <ul class="listaziende">
+        
+        <li class="prom" class="Sottotitolo">
+            <h2>P-Z</h2>
+        </li>
+        
+        <?php 
+    
+        foreach ($this->listutenti as $utente) {
+
+            $ris = substr($utente->Nome, 0,1);
+            
+            if($ris === 'p' || $ris === 'q' || $ris === 'r' || $ris === 's' || $ris === 't' || $ris === 'u'|| $ris === 'v' || $ris==='z'||
+               $ris === 'P' || $ris === 'Q' || $ris === 'R' || $ris === 'S' || $ris === 'T' || $ris === 'U'|| $ris === 'V' || $ris==='Z'){
+                
+               echo '<li class="prom"><a href='. $this->url(array('controller' => 'admin',
+                                                       'action' => 'schedautente',
+                                                       'Id_user'=> $utente->Id_user), 
+                                                       'default', true) .'>'.
+                             $utente->Nome.'</a></li>';
+            }
+            
+        }
+    ?>
+    
+</ul>
+</div>
+<div class="clr"></div>

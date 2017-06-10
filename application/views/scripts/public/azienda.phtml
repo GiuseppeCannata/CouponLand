@@ -1,22 +1,22 @@
 <div>
-    <?php foreach ($this->azienda as $aziendascelta) :?>
+    <?php foreach ($this->azienda as $azienda) :?>
     
         <div>
-          <?php echo $this->productImg($aziendascelta->Logo_aziendale, 'aziende' , array('class' => 'imgs')) ?>
+          <?php echo $this->productImg($azienda->Logo_aziendale, 'aziende' , array('class' => 'imgs')) ?>
         </div>
 
         <div class="Sottotitolo">
 
-          <?php echo '<h4>Tipologia: ' . $aziendascelta->Tipologia . '</h4>' ?>
-          <?php echo '<h4>Ragione sociale: ' . $aziendascelta->Ragione_sociale . '</h4>' ?>
-          <?php echo '<h4>Localizzazione: ' . $aziendascelta->Localizzazione . '</h4>' ?>
+          <?php echo '<h4>Tipologia: ' . $azienda->Tipologia . '</h4>' ?>
+          <?php echo '<h4>Ragione sociale: ' . $azienda->Ragione_sociale . '</h4>' ?>
+          <?php echo '<h4>Localizzazione: ' . $azienda->Localizzazione . '</h4>' ?>
           <h4>Presentazione azienda:</h4>
 
         </div>
         
         <div class="Testo">
             
-          <?php echo '<p>' . $aziendascelta->Descrizione . '</p>' ?>
+          <?php echo '<p>' . $azienda->Descrizione . '</p>' ?>
 
         </div>
     

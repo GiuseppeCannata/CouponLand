@@ -1,41 +1,44 @@
 <div>
-    <?php foreach ($this->azienda as $aziendascelta) :?>
+    <?php foreach ($this->azienda as $azienda) :?>
     
         <div>
-          <?php echo $this->productImg($aziendascelta->Logo_aziendale, 'aziende' , array('class' => 'imgs')) ?>
+          <?php echo $this->productImg($azienda->Logo_aziendale, 'aziende' , array('class' => 'imgs')) ?>
         </div>
 
         <div class="Sottotitolo">
 
-          <?php echo '<h4>Tipologia: ' . $aziendascelta->Tipologia . '</h4>' ?>
-          <?php echo '<h4>Ragione sociale: ' . $aziendascelta->Ragione_sociale . '</h4>' ?>
-          <?php echo '<h4>Localizzazione: ' . $aziendascelta->Localizzazione . '</h4>' ?>
+          <?php echo '<h4>Tipologia: ' . $azienda->Tipologia . '</h4>' ?>
+          <?php echo '<h4>Ragione sociale: ' . $azienda->Ragione_sociale . '</h4>' ?>
+          <?php echo '<h4>Localizzazione: ' . $azienda->Localizzazione . '</h4>' ?>
           <h4>Presentazione azienda:</h4>
 
         </div>
         
         <div class="Testo">
             
-          <?php echo '<p>' . $aziendascelta->Descrizione . '</p>' ?>
+          <?php echo '<p>' . $azienda->Descrizione . '</p>' ?>
 
         </div>
-    <?php endforeach ?>
+    
     
     <a href=" <?=$this->url(array('controller' => 'admin',
                                     'action' => 'deleteazienda', 
-                                    'Id_azienda' => $aziendascelta->Id_azienda,
-                                    'Nome_azienda' => $aziendascelta->Nome ),
+                                    'Id_azienda' => $azienda->Id_azienda,
+                                    'Nome_azienda' => $azienda->Nome ),
                                     'default',true )?>"><button>Cancella azienda</button></a>
     
     
     <a href=" <?=$this->url(array('controller' => 'admin',
                                     'action' => 'updateazienda', 
-                                    'Id_azienda' => $aziendascelta->Id_azienda ),
+                                    'Id_azienda' => $azienda->Id_azienda ),
                                     'default',true )?>"><button>Modifica azienda</button></a>
     
     <a href="<?= $this->url(array('controller' => 'admin',
                                     'action' => 'listaziende'), 
                                     'default',true ); ?>"><button class="bottom">Torna alla lista</button></a>
+                                    
+   <?php endforeach ?>
+    
 </div>
 
 

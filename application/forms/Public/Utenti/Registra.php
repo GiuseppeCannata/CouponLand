@@ -50,7 +50,7 @@ class Application_Form_Public_utenti_Registra extends App_Form_Abstract{
                                                     'required' => true,
                                                     'validators' => array(array('StringLength',true, array(1,20)))));
 
-$this->addElement('text', 'Email', array('class' => 'inputform',
+        $this->addElement('text', 'Email', array('class' => 'inputform',
                                                 'placeholder'  => 'Email',
                                                 'required'   => true,
                                                 'filters'    => array('StringTrim'),
