@@ -443,9 +443,11 @@ class AdminController extends Zend_Controller_Action{
         //Username e Email inserite nella form
         $user_inserito = $form->getValue('User');
         $email_inserita = $form->getValue('Email');
+        $iduser = $form->getValue('Id_user');
         
+        //effettuo la verifica per controllare se email o user sono gia presenti (utilizzati)
         
-      /* if(($this->_ModelUser->estraiUsersbyUsernameandId($user_inserito, $iduser_attuale) != NULL) || ($this->_ModelUser->estraiUsersbyEmailandId($email_inserita,$iduser_attuale) != NULL)){
+       if(($this->_ModelUser->estraiUsersbyUsernameandId($user_inserito, $iduser) != NULL) || ($this->_ModelUser->estraiUsersbyEmailandId($email_inserita,$iduser) != NULL)){
             
             $form->setDescription('Attenzione: User o email giÃ  presenti!');
             $this->render('updateutente');
@@ -455,18 +457,38 @@ class AdminController extends Zend_Controller_Action{
         
         //Vengono presi i valori dalla form e viene effetuato l'update        
         $values = $form->getValues();
-        $id = $values["Id_user"] ;
         
         if($values["Pass"] == NULL){
             
             
-            $values["Pass"] = $this->_ModelAdmin->getPassByID($id)->Pass;
+            $values["Pass"] = $this->_ModelAdmin->getPassByID($iduser)->Pass;
             
         }
         
-        $this->_ModelUser->modificaUtente($values, $id);
-        $this->_helper->redirector('listutenti');*/
+        $this->_ModelUser->modificaUtente($values, $iduser);
+        $this->_helper->redirector('listutenti');
         
     }
+    
+    
+    public function messaggioeliminautenteAction() {
+        
+      $this->view->assign(array( 'Nome' => $this->_getParam('Nome'),
+                                  'Id_user' => $this->_getParam('Id_user')));
+        
+    }
+    
+    
+    public function deleteutenteAction() {
+        
+      $id = $this->_getParam('Id_user');
+      
+      $this->_ModelAdmin->deleteutente($id);
+      $this->_helper->redirector('listutenti');
+        
+    }
+    
+    
+    
 }
 

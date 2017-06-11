@@ -1,0 +1,16 @@
+<h1 class="Titolo">Messaggio</h1>
+
+<div>
+    <h3 class="testo">Sei sicuro di voler eliminare: <?= $this->Nome ?></h3>
+    <br><br>
+    <a href="<?= $this->url(array('controller' => 'admin',
+                                    'action' => 'deleteutente',
+                                    'Id_user' => $this->Id_user), 
+                                    'default',true ); ?>"><button class="button">Elimina</button><a>
+            
+    <a href="<?= $this->url(array('controller' => 'admin',
+                                    'action' => 'schedautente',
+                                     'Id_user' => $this->Id_user), 
+                                    'default',true ); ?>"><button class="button">Torna alla scheda</button><a>
+</div>
+

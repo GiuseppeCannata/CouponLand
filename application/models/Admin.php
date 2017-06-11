@@ -98,6 +98,12 @@ class Application_Model_Admin extends App_Model_Abstract {
        
     	return $this->getResource('Utenti')->getPassByID($info);
     }
+    public function deleteutente($id){
+       
+    	return $this->getResource('Utenti')->deleteutente($id);
+    }
+    
+    
 
     
 }

@@ -92,6 +92,7 @@ class Application_Resource_Utenti extends Zend_Db_Table{
     public function getUtenti(){
         
         $select = $this->select()
+                       ->where('User != ?','admin')
                        ->order('Nome');
         
         return $this->fetchAll($select);
@@ -117,6 +118,14 @@ class Application_Resource_Utenti extends Zend_Db_Table{
         return $this->fetchRow($select);
         
     }
+    
+    public function deleteutente($Id){
+        
+      $this->find($Id)->current()->delete();
+        
+    }
+    
+   
     
     
     

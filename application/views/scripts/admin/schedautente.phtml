@@ -2,32 +2,31 @@
         
         
         
-        <div class="Schedautente">
-
+        
+          <?php echo '<h3>Utente di livello: ' .$this->utente->Livello . '</h4><br><br>' ?>
+            
           <?php echo '<h4>User: ' .$this->utente->User . '</h4>' ?>
           <?php echo '<h4>Nome: ' . $this->utente->Nome . '</h4>' ?>
           <?php echo '<h4>Cognome: ' .$this->utente->Cognome . '</h4>' ?>
-            <?php echo '<h4>Email: ' . $this->utente->Email . '</h4>' ?>
-            <?php echo '<h4>Telefono: ' . $this->utente->Telefono . '</h4>' ?>
-            <?php echo '<h4>Eta: ' . $this->utente->Eta. '</h4>' ?>
-            <?php echo '<h4>Genere: ' . $this->utente->Genere. '</h4>' ?>
-           
-         
-
-        </div>
-        
- 
+          <?php echo '<h4>Email: ' . $this->utente->Email . '</h4>' ?>
+          <?php echo '<h4>Telefono: ' . $this->utente->Telefono . '</h4>' ?>
+          <?php echo '<h4>Eta: ' . $this->utente->Eta. '</h4>' ?>
+          <?php echo '<h4>Genere: ' . $this->utente->Genere. '</h4>' ?>
         
 <a href="<?= $this->url(array('controller' => 'admin',
                                     'action' => 'updateutente',
                                      'Id_user' => $this->utente->Id_user), 
-                                    'default',true ); ?>"><button class="bottom" >Modifica</button><a>
-        
-<a><button class="bottom">Elimina</button><a>
+                                    'default',true ); ?>" ><button class="bottom" >Modifica</button><a>
         
 <a href="<?= $this->url(array('controller' => 'admin',
-                                    'action' => 'listutentri'), 
-                                    'default',true ); ?>"><button class="bottom">Torna alla lista</button><a></a>
+                                    'action' => 'messaggioeliminautente',
+                                     'Id_user' => $this->utente->Id_user,
+                                     'Nome' => $this->utente->Nome), 
+                                    'default',true ); ?>" ><button class="bottom">Elimina</button><a>
+        
+<a href="<?= $this->url(array('controller' => 'admin',
+                                    'action' => 'listutenti'), 
+                                    'default',true ); ?>" ><button class="bottom">Torna alla lista</button><a></a>
     
 
 
