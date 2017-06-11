@@ -315,6 +315,20 @@ class AdminController extends Zend_Controller_Action{
 	}
         
         $values= $form->getValues();
+        $Nome_Azienda = $values["Nome"];
+        $result = $this->_ModelAdmin->getAziendaByName($Nome_Azienda);
+        
+        
+        //se result == true significa che l azienda gia c e nel db
+        if($result){
+            
+            $form->setDescription('Attenzione: Azienda già essistente');
+            //nome pagina
+            return $this->render('updateazienda');
+            
+        }
+        
+        $values= $form->getValues();
         
        if($values['Logo_aziendale'] == null){
             
@@ -452,7 +466,7 @@ class AdminController extends Zend_Controller_Action{
        if(($this->_ModelUser->estraiUsersbyUsernameandId($user_inserito, $iduser) != NULL) || ($this->_ModelUser->estraiUsersbyEmailandId($email_inserita,$iduser) != NULL)){
             
             $form->setDescription('Attenzione: User o email giÃ  presenti!');
-            $this->render('updateutente');
+            return $this->render('updateutente');
             
 
         }   

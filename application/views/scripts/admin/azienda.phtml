@@ -7,6 +7,7 @@
 
         <div class="Sottotitolo">
 
+          <?php echo '<h4>Nome azienda: ' . $azienda->Nome . '</h4>' ?>
           <?php echo '<h4>Tipologia: ' . $azienda->Tipologia . '</h4>' ?>
           <?php echo '<h4>Ragione sociale: ' . $azienda->Ragione_sociale . '</h4>' ?>
           <?php echo '<h4>Localizzazione: ' . $azienda->Localizzazione . '</h4>' ?>
@@ -25,13 +26,13 @@
                                     'action' => 'deleteazienda', 
                                     'Id_azienda' => $azienda->Id_azienda,
                                     'Nome_azienda' => $azienda->Nome ),
-                                    'default',true )?>"><button>Cancella azienda</button></a>
+                                    'default',true )?>"><button class="bottom">Cancella azienda</button></a>
     
     
     <a href=" <?=$this->url(array('controller' => 'admin',
                                     'action' => 'updateazienda', 
                                     'Id_azienda' => $azienda->Id_azienda ),
-                                    'default',true )?>"><button>Modifica azienda</button></a>
+                                    'default',true )?>"><button class="bottom">Modifica azienda</button></a>
     
     <a href="<?= $this->url(array('controller' => 'admin',
                                     'action' => 'listaziende'), 

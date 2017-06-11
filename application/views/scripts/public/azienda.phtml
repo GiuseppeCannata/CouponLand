@@ -7,6 +7,7 @@
 
         <div class="Sottotitolo">
 
+          <?php echo '<h4>Nome azienda: ' . $azienda->Nome . '</h4>' ?>
           <?php echo '<h4>Tipologia: ' . $azienda->Tipologia . '</h4>' ?>
           <?php echo '<h4>Ragione sociale: ' . $azienda->Ragione_sociale . '</h4>' ?>
           <?php echo '<h4>Localizzazione: ' . $azienda->Localizzazione . '</h4>' ?>
@@ -21,6 +22,11 @@
         </div>
     
     <?php endforeach ?>
+    
+    <a href="<?= $this->url(array('controller' => 'public',
+                                    'action' => 'listaziende',
+                                     'chiamante' => 'footer'), 
+                                    'default',true ); ?>"><button class="bottom">Torna alla lista</button></a>
 </div>
 
 

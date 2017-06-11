@@ -104,6 +104,7 @@ class Application_Form_Admin_Azienda extends App_Form_Abstract
         ));
 
         $this->addElement('submit', 'submitInserisci', array(
+                          'class' => 'bottom',
                           'label' => 'Fatto',
             'decorators' => $this->buttonDecorators,
             

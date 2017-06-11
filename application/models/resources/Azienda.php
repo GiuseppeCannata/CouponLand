@@ -26,7 +26,7 @@ class Application_Resource_Azienda extends Zend_Db_Table_Abstract
         
     }
     
-    public function getAziendaByID($id_azienda, $chiamante){
+    public function getAziendaByID($id_azienda, $chiamante = null){
         
        /*Scrivo la stringa per fare la select*/
 	$select = $this->select()
