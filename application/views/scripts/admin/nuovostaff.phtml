@@ -1,0 +1,13 @@
+<h1 class="Titolo">Nuovo membro Staff</h1>
+<h3 class="Sottotitolo"> Benvenuto nella sezione crea nuovo utente staff!</h3>
+<h3 class="Sottotitolo"> Per completare la procedura compila tutti i campi sotto riportati!</h3>
+<h3 class="Sottotitolo"> Al termine fai click su fatto.</h3>
+<br><br>
+
+<div>
+    <?= $this->nuovoStaffForm; ?>
+</div>
+<a href="<?= $this->url(array('controller' => 'admin',
+                                    'action' => 'listutenti'), 
+                                    'default',true ); ?>"><button class="bottom">Torna alla lista</button></a>
+

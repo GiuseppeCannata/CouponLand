@@ -86,6 +86,7 @@ class Application_Form_Admin_ModificaUtente extends App_Form_Abstract {
                 
                 
                 $this->addElement('submit', 'registra', array('id' => 'registra',
+                    'class' => 'bottom',
                                   'label' => 'Modifica',
                     /*'decorators' => $this->buttonDecorators,*/));
                 

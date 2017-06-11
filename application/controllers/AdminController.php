@@ -12,6 +12,7 @@ class AdminController extends Zend_Controller_Action{
     protected $_creaAziendaForm;
     protected $_modificaAziendaForm;
     protected $_modificautenteForm;
+    protected $_nuovoStaffForm;
 
 
     public function init(){
@@ -33,8 +34,9 @@ class AdminController extends Zend_Controller_Action{
         $this->view->modificaFaqForm = $this->getModificafaqForm();
         $this->view->creaAziendaForm = $this->getCreaAziendaForm();
         $this->view->modificaAziendaForm = $this->getModificaAziendaForm();
-        
         $this->view->modificautenteForm = $this->getModificaUtenteForm();
+        
+        $this->view->nuovoStaffForm = $this->getNuovoStaffForm();
     }
 
     public function indexAction(){
@@ -429,7 +431,7 @@ class AdminController extends Zend_Controller_Action{
         if (!$form->isValid($post)) {
             
             $form->setDescription('Attenzione: completa tutti i campi.');
-            $this->render('updateutente');
+            return $this->render('updateutente');
            
 	}
         
@@ -441,7 +443,7 @@ class AdminController extends Zend_Controller_Action{
        
 
         //Username e Email inserite nella form
-        $user_inserito = $form->getValue('User');
+       $user_inserito = $form->getValue('User');
         $email_inserita = $form->getValue('Email');
         $iduser = $form->getValue('Id_user');
         
@@ -459,7 +461,6 @@ class AdminController extends Zend_Controller_Action{
         $values = $form->getValues();
         
         if($values["Pass"] == NULL){
-            
             
             $values["Pass"] = $this->_ModelAdmin->getPassByID($iduser)->Pass;
             
@@ -489,6 +490,61 @@ class AdminController extends Zend_Controller_Action{
     }
     
     
+    
+    private function getNuovoStaffForm() {
+
+        $this->_nuovoStaffForm = new Application_Form_Admin_Staff();
+        $this->_nuovoStaffForm->setAction($this->_helper->getHelper('url')->url(array('controller' => 'admin',
+                                                                                       'action' => 'verificanuovostaff'),
+                                                                                       'default'));
+        return $this->_nuovoStaffForm;
+        
+    }
+    
+    
+    public function nuovostaffAction() {
+        
+      //serve per la view
+        
+    }
+    
+    
+    public function verificanuovostaffAction(){
+        
+        if (!$this->getRequest()->isPost()) {
+            
+	    $this->_helper->redirector('index');
+            
+        }
+	
+        $form = $this->_FormRegistra;
+        
+        if (!$form->isValid($_POST)) {
+            
+            $form->setDescription('Attenzione: alcuni dati inseriti sono errati.');
+            $this->render('registrati');
+            return  $this->_helper->layout->disableLayout();
+           
+	}
+        
+        $user_inserito = $form->getValue('User');
+        $email_inserita = $form->getValue('Email');
+       // $all_users =$this->_Modelbase->estraiAllUsers();                
+                
+        if(($this->_Modelbase->estraiUsersbyUsername($user_inserito) != NULL) || ($this->_Modelbase->estraiUsersbyEmail($email_inserita) != NULL)){
+            
+            $form->setDescription('Attenzione: Utente giÃƒÂ  registrato!');
+            $this->render('registrati');
+            return  $this->_helper->layout->disableLayout();
+
+        }
+        
+        $values = $form->getValues();
+        $values["Livello"] = 'user';        
+        $this->_Modelbase->saveUtente($values);
+        $this->_helper->redirector('index');
+        
+    }
     
 }
 
