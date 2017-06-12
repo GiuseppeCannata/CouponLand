@@ -531,15 +531,14 @@ class AdminController extends Zend_Controller_Action{
             
         }
 	
-        $form = $this->_FormRegistra;
+        $form = $this->_nuovoStaffForm;
+        $post = $this->getRequest()->getPost();
         
-        if (!$form->isValid($_POST)) {
+        if (!$form->isValid($post)) {
             
-            $form->setDescription('Attenzione: alcuni dati inseriti sono errati.');
-            $this->render('registrati');
-            return  $this->_helper->layout->disableLayout();
-           
-	}
+            $form->setDescription('Attenzione: completa tutti i campi.');
+            return$this->render('nuovostaff');
+        }
         
         $user_inserito = $form->getValue('User');
         $email_inserita = $form->getValue('Email');
@@ -547,17 +546,13 @@ class AdminController extends Zend_Controller_Action{
                 
         if(($this->_Modelbase->estraiUsersbyUsername($user_inserito) != NULL) || ($this->_Modelbase->estraiUsersbyEmail($email_inserita) != NULL)){
             
-            $form->setDescription('Attenzione: Utente giÃƒÂ  registrato!');
-            $this->render('registrati');
-            return  $this->_helper->layout->disableLayout();
-
-        }
+            $form->setDescription('Attenzione: User o email gia presenti!');
+            return $this->render('nuovostaff');
+        }   
         
         $values = $form->getValues();
-        $values["Livello"] = 'user';        
+        $values["Livello"] = 'staff';        
         $this->_Modelbase->saveUtente($values);
-        $this->_helper->redirector('index');
-        
     }
     
 }
