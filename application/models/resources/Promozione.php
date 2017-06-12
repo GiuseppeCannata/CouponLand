@@ -138,5 +138,27 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
         return $this->fetchAll($select);
         
     }
+    
+    //metodo che, in seguito all eliminazione di una categoria, mette  tutte le promozioni con quella categoria a 
+    //Categoria: Nessuna categoria
+    public function aggiornaPromforCat($Categoria_selezionata){
+        
+        $data = array('Categoria' => 'Nessuna categoria');
+        $where=$this->getAdapter()->quoteInto('Categoria=?', $Categoria_selezionata);
+        
+        $this->update($data, $where);
+        
+    }
+    
+    //metodo che, in seguito alla modifica di una categoria, mette  tutte le promozioni con quella categoria a 
+    //Categoria: (nuova categoria selezionata dall admin)
+    public function updatePromforCat($Nuovo_nome_cat,$Vecchio_nome_cat){
+        
+        $data = array('Categoria' => $Nuovo_nome_cat);
+        $where=$this->getAdapter()->quoteInto('Categoria=?', $Vecchio_nome_cat);
+        
+        $this->update($data, $where);
+        
+    }    
 }
 

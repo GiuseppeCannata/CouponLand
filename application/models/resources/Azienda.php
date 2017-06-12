@@ -88,11 +88,6 @@ class Application_Resource_Azienda extends Zend_Db_Table_Abstract
         $this->update($data, $where );
         
     }
-    
-    
-    
-    
-    
        
 }
 

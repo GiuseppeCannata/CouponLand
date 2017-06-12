@@ -36,6 +36,48 @@ class Application_Resource_Categoria extends Zend_Db_Table_Abstract
         //               fa una query al DB estraendo tutti i dati che sono compatibili con l oggetto select
         return $this->fetchAll($select);
     }
+    
+    
+    public function saveCategoria($values){
        
+       $this->insert($values);
+     
+    }
+    
+    public function verificaCategoria($Categoria_inserita){
+       
+    	
+        /*Scrivo la stringa per fare la select*/
+	$select = $this->select()
+                       ->where('Nome=?',$Categoria_inserita);
+        
+        $result = $this->fetchRow($select);
+        
+         if($result != NULL){
+             
+             return true;
+           
+        }else{
+            
+           return false;
+           
+       }
+    }
+    
+    public function deleteCat($Categoria_selezionata){
+       
+    	$this->find($Categoria_selezionata)->current()->delete();
+        
+    }
+           
+    public function updateCat($Nuovo_nome_cat,$Vecchio_nome_cat){
+       
+        $data = array('Nome' => $Nuovo_nome_cat);
+        $where=$this->getAdapter()->quoteInto('Nome=?', $Vecchio_nome_cat);
+        
+        $this->update($data, $where);
+        
+    }
+      
 }
 

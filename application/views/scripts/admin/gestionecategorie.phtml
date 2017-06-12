@@ -1,0 +1,15 @@
+<h1 class="Titolo">Gestione categorie</h1>
+<h3 class="Sottotitolo">Benvenuto nella sezione gestione categorie!<h3>
+<h3 class="Sottotitolo">Scegli l operazione che vuoi compiere<h3>
+
+<a href="<?= $this->url(array('controller' => 'admin',
+                                    'action' => 'creanuovacategoria'), 
+                                    'default',true ); ?>"><button class="bottom">Aggiungi Categoria</button></a>
+                                    
+<a href="<?= $this->url(array('controller' => 'admin',
+                                'action' => 'cancellacategoria'), 
+                                'default',true ); ?>"><button class="bottom">Cancella Categoria</button></a>
+
+<a href="<?= $this->url(array('controller' => 'admin',
+                                'action' => 'modificacategoria'), 
+                                'default',true ); ?>"><button class="bottom">Modifica Categoria</button></a>

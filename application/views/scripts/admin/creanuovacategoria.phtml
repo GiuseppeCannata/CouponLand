@@ -1,0 +1,11 @@
+<h1 class="Titolo">Inserisci nuova categoria</h1>
+<h3 class="Sottotitolo"> Benvenuto nella sezione inserisci nuova categoria!</h3>
+<h3 class="Sottotitolo"> Inserisci il nome della nuova categoria</h3>
+
+<div>
+    <?= $this->nuovaCategoriaForm; ?>
+</div>
+<a href="<?= $this->url(array('controller' => 'admin',
+                                    'action' => 'gestionecategorie'), 
+                                    'default',true ); ?>"><button class="bottom">Indietro</button></a>
+

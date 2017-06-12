@@ -103,7 +103,43 @@ class Application_Model_Admin extends App_Model_Abstract {
     	return $this->getResource('Utenti')->deleteutente($id);
     }
     
+    public function saveCategoria($values){
+       
+    	return $this->getResource('Categoria')->saveCategoria($values);
+    }
     
-
+    public function verificaCategoria($Categoria_inserita){
+       
+    	return $this->getResource('Categoria')->verificaCategoria($Categoria_inserita);
+        
+    }
+    
+    public function deleteCat($Categoria_selezionata){
+       
+    	return $this->getResource('Categoria')->deleteCat($Categoria_selezionata);
+        
+    }
+    
+    public function aggiornaPromforCat($Categoria_selezionata){
+       
+    	return $this->getResource('Promozione')->aggiornaPromforCat($Categoria_selezionata);
+        
+    }
+    
+    public function updateCat($Nuovo_nome_cat,$Vecchio_nome_cat){
+       
+    	return $this->getResource('Categoria')->updateCat($Nuovo_nome_cat,$Vecchio_nome_cat);
+        
+    }
+    
+    public function updatePromforCat($Nuovo_nome_cat,$Vecchio_nome_cat){
+       
+    	return $this->getResource('Promozione')->updatePromforCat($Nuovo_nome_cat,$Vecchio_nome_cat);
+        
+    }
+    
+    
+    
+   
     
 }

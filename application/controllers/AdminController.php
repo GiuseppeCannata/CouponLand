@@ -13,6 +13,9 @@ class AdminController extends Zend_Controller_Action{
     protected $_modificaAziendaForm;
     protected $_modificautenteForm;
     protected $_nuovoStaffForm;
+    protected $_NuovaCategoriaForm;
+    protected $_cancellaCategoriaForm;
+    protected $_modificaCategoriaForm;
 
 
     public function init(){
@@ -35,8 +38,10 @@ class AdminController extends Zend_Controller_Action{
         $this->view->creaAziendaForm = $this->getCreaAziendaForm();
         $this->view->modificaAziendaForm = $this->getModificaAziendaForm();
         $this->view->modificautenteForm = $this->getModificaUtenteForm();
-        
         $this->view->nuovoStaffForm = $this->getNuovoStaffForm();
+        $this->view->nuovaCategoriaForm = $this->getNuovaCategoriaForm();
+        $this->view->cancellaCategoriaForm = $this->getCancellaCategoriaForm();
+        $this->view->modificaCategoriaForm = $this->getModificaCategoriaForm();
     }
 
     public function indexAction(){
@@ -553,6 +558,168 @@ class AdminController extends Zend_Controller_Action{
         $values = $form->getValues();
         $values["Livello"] = 'staff';        
         $this->_Modelbase->saveUtente($values);
+    }
+    
+    
+    
+    private function getNuovaCategoriaForm(){
+
+        $this->_NuovaCategoriaForm = new Application_Form_Admin_NuovaCategoria();
+        $this->_NuovaCategoriaForm->setAction($this->_helper->getHelper('url')->url(array('controller' => 'admin',
+                                                                               'action' => 'verificanuovacategoria'),
+                                                                               'default'));
+        return $this->_NuovaCategoriaForm ;
+        
+    }
+    
+    
+    public function verificanuovacategoriaAction(){
+        
+        if (!$this->getRequest()->isPost()) {
+            
+	    $this->_helper->redirector('index');
+            
+        }
+	
+        $form = $this->_NuovaCategoriaForm;
+        $post = $this->getRequest()->getPost();
+        
+        if (!$form->isValid($post)) {
+            
+            $form->setDescription('Attenzione: Completa tutti i campi.');
+            return $this->render('creanuovacategoria');
+        }
+        
+        $Categoria_inserita = $form->getValue('Nome');
+        
+        $result = $this->_ModelAdmin->verificaCategoria($Categoria_inserita);
+        
+        if($result){
+            
+            $form->setDescription('Attenzione: Categoria gia presente.');
+            return $this->render('creanuovacategoria');
+            
+        }
+        
+        $values = $form->getValues();      
+        $this->_ModelAdmin->saveCategoria($values);
+    }
+    
+    
+    public function gestionecategorieAction(){
+        
+        //serve per la view
+    }
+    
+    public function creanuovacategoriaAction(){
+        
+        //serve per la view
+    }
+    
+    public function cancellacategoriaAction(){
+        
+        //serve per la view
+    }
+    
+    private function getCancellaCategoriaForm(){
+
+        $this->_cancellaCategoriaForm = new Application_Form_Admin_CancellaCategoria();
+        $this->_cancellaCategoriaForm->AddCategorieToSelect($this->_cat->toArray());
+        $this->_cancellaCategoriaForm->setAction($this->_helper->getHelper('url')->url(array('controller' => 'admin',
+                                                                                       'action' => 'verificancellacategoria'),
+                                                                                       'default'));
+        return $this->_cancellaCategoriaForm;
+        
+    }
+    
+    
+    public function verificancellacategoriaAction(){
+        
+        if (!$this->getRequest()->isPost()) {
+            
+	    $this->_helper->redirector('index');
+            
+        }
+	
+        $form = $this->_cancellaCategoriaForm;
+        $post = $this->getRequest()->getPost();
+        
+        if (!$form->isValid($post)) {
+            
+            $form->setDescription('Attenzione: Errore');
+            return $this->render('cancellacategoria');
+        }
+        
+        $Categoria_selezionata = $form->getValue('Nome');
+        
+        $result=$this->_ModelAdmin->getCategoriaById($Categoria_selezionata);
+        $this->_ModelAdmin->deleteCat($Categoria_selezionata);
+        
+        
+        //aggiorno le promozioni togliendo la categoria e mettendo nessuna categoria
+        
+        $this->_ModelAdmin->aggiornaPromforCat($result["Nome"]);
+        
+        
+    }
+    
+    
+    public function modificacategoriaAction(){
+        
+        //serve per la view
+    }
+    
+    
+    
+    private function getModificaCategoriaForm(){
+
+        $this->_modificaCategoriaForm = new Application_Form_Admin_ModificaCategoria();
+        $this->_modificaCategoriaForm->AddCategorieToSelect($this->_cat->toArray());
+        $this->_modificaCategoriaForm->setAction($this->_helper->getHelper('url')->url(array('controller' => 'admin',
+                                                                                       'action' => 'verifimodificacategoria'),
+                                                                                       'default'));
+        return $this->_modificaCategoriaForm;
+        
+    }
+    
+    
+    public function verifimodificacategoriaAction(){
+        
+        if (!$this->getRequest()->isPost()) {
+            
+	    $this->_helper->redirector('index');
+            
+        }
+	
+        $form = $this->_modificaCategoriaForm;
+        $post = $this->getRequest()->getPost();
+        
+        if (!$form->isValid($post)) {
+            
+            $form->setDescription('Attenzione: Completa tutti i campi.');
+            return $this->render('modificacategoria');
+        }
+        
+        $Nuovo_nome_cat = $form->getValue('Nome_nuovo');
+        
+        $result = $this->_ModelAdmin->verificaCategoria($Nuovo_nome_cat);
+        
+        if($result){
+            
+            $form->setDescription('Attenzione: Categoria gia presente.');
+            return $this->render('modificacategoria');
+            
+        }
+        
+       
+        $Vecchia_cat= $this->_ModelAdmin->getCategoriaById($form->getValue('Nome_vecchio'));
+        
+        $this->_ModelAdmin->updateCat($Nuovo_nome_cat,$Vecchia_cat["Nome"]);
+        
+        //aggiorno le promozioni con il nuovo nome della categoria
+        $this->_ModelAdmin->updatePromforCat($Nuovo_nome_cat,$Vecchia_cat["Nome"]);
+        
+        
     }
     
 }

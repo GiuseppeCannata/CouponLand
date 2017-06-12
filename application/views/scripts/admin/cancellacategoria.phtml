@@ -1,0 +1,11 @@
+<h1 class="Titolo">Cancella categoria</h1>
+<h3 class="Sottotitolo"> Benvenuto nella sezione cancella categoria!</h3>
+<h3 class="Sottotitolo"> selezione la categoria e fai click su fatto</h3>
+
+<div>
+    <?= $this->cancellaCategoriaForm; ?>
+</div>
+<a href="<?= $this->url(array('controller' => 'admin',
+                                    'action' => 'gestionecategorie'), 
+                                    'default',true ); ?>"><button class="bottom">Indietro</button></a>
+

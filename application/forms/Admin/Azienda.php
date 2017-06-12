@@ -45,7 +45,7 @@ class Application_Form_Admin_Azienda extends App_Form_Abstract
         
         $this->categorie_select = new Zend_Form_Element_Select('Tipologia');
         $this->categorie_select->setLabel('Tipologia: ');
-         $this->categorie_select->setValue('---');
+        $this->categorie_select->setValue('---');
         $this->categorie_select->setDecorators($this->elementDecorators);
         $this->addElement($this->categorie_select);
         
