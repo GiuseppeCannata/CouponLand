@@ -88,6 +88,29 @@ class Application_Resource_Azienda extends Zend_Db_Table_Abstract
         $this->update($data, $where );
         
     }
+    
+    public function getAziendaByNameandID($Nome_Azienda, $id){
+        
+        /*Scrivo la stringa per fare la select*/
+	$select = $this->select()
+                       ->where('Nome=?',$Nome_Azienda)
+                       ->where('Id_azienda !=?',$id);
+        
+        $result = $this->fetchRow($select);
+        
+         if($result == NULL){
+             
+             return false;
+           
+        }else{
+            
+           return true;
+           
+       }
+        
+    }
+    
+    
        
 }
 

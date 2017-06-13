@@ -150,6 +150,17 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
         
     }
     
+    //metodo che, in seguito all eliminazione di una azienda, mette  tutte le promozioni con quella azienda a 
+    //Azienda: Nessuna azienda
+    public function aggiornaPromforAz($Nome_azienda){
+        
+        $data = array('Azienda' => 'Nessuna azienda');
+        $where=$this->getAdapter()->quoteInto('Azienda=?', $Nome_azienda);
+        
+        $this->update($data, $where);
+        
+    }
+    
     //metodo che, in seguito alla modifica di una categoria, mette  tutte le promozioni con quella categoria a 
     //Categoria: (nuova categoria selezionata dall admin)
     public function updatePromforCat($Nuovo_nome_cat,$Vecchio_nome_cat){
@@ -159,6 +170,17 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
         
         $this->update($data, $where);
         
-    }    
+    }  
+    
+    public function aggiornamentoPromforAz($Nome_vecchio, $Nome_Azienda){
+        
+        $data = array('Azienda' => $Nome_Azienda);
+        $where=$this->getAdapter()->quoteInto('Azienda=?', $Nome_vecchio);
+        
+        $this->update($data, $where);
+        
+    } 
+    
+    
 }
 

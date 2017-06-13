@@ -3,14 +3,15 @@
         <div><h1 class='Titolo'>Messaggio</h1></div>
         
         <div>
-            <p class='Testo' ><?= $this->msg; ?></p>
+            <p class='Testo' >Sei sicuro di voler cancellare l azienda: <?= $this->Nome_azienda; ?></p>
         </div>
         
         <?php 
         
             echo '<a href="'. $this->url(array('controller' => 'admin',
                                               'action'     => $this->actionSI,
-                                              'Id_azienda' => $this->Id_azienda ),
+                                              'Id_azienda' => $this->Id_azienda,
+                                              'Nome_azienda' =>$this->Nome_azienda ),
                                               'default',true ).'" >Si</a>';
             echo '<br><br>';   
             echo '<a href="'. $this->url(array('controller' => 'admin',

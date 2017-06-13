@@ -138,8 +138,22 @@ class Application_Model_Admin extends App_Model_Abstract {
         
     }
     
+    public function aggiornaPromforAz($Nome_azienda){
+       
+    	return $this->getResource('Promozione')->aggiornaPromforAz($Nome_azienda);
+        
+    }
     
+    public function getAziendaByNameandID($Nome_Azienda, $id){
+       
+    	return $this->getResource('Azienda')->getAziendaByNameandID($Nome_Azienda, $id);
+        
+    }
     
-   
+    public function aggiornamentoPromforAz($Nome_vecchio, $Nome_Azienda){
+       
+    	return $this->getResource('Promozione')->aggiornamentoPromforAz($Nome_vecchio, $Nome_Azienda);
+        
+    }
     
 }

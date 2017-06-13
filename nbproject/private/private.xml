@@ -3,17 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/admin/updateazienda.phtml</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/admin/nuovaazienda.phtml</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/forms/Admin/Staff.php</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/models/resources/Azienda.php</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/forms/Admin/Azienda.php</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/public/azienda.phtml</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/admin/azienda.phtml</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/models/resources/Categoria.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/models/Admin.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/forms/Admin/ModificaCategoria.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/models/resources/Promozione.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/admin/modificacategoria.phtml</file>
             <file>file:/C:/xampp/htdocs/CouponLand/application/controllers/AdminController.php</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/admin/listutenti.phtml</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/forms/Admin/ModificaUtente.php</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/admin/nuovafaq.phtml</file>
         </group>
     </open-files>
 </project-private>
