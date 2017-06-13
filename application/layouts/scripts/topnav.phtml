@@ -2,11 +2,12 @@
                     
     <li class="left"><a href=" <?php
                                     $livello = $this->authInfo('Livello');
+                                    
                                     if($livello == NULL){
                        
                                        echo $this->url(array('controller' => 'public',
-                                                         'action'     => 'index' ), 
-                                                         'default',true );
+                                                             'action'     => 'index' ), 
+                                                             'default',true );
                          
                                     }
                                     else{
