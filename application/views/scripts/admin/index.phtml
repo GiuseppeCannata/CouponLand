@@ -1,37 +1,51 @@
-<div>
-    <h1 class="Titolo">Benvenuto Amministratore</h1>
-    <h3 class="Sottotitolo">Come posso aiutarti oggi?<h3>
+<h1 class="Titolo">Benvenuto Amministratore</h1>
+<h3 class="Sottotitolo">Come posso aiutarti oggi?<h3>
     
+<div id="Livello3">   
     
-    <a href="<?= $this->url(array('controller' => 'admin',
-                                    'action' => 'statistiche'), 
-                                    'default',true ); ?>">
-        <img src="<?php echo $this->baseUrl('img/admin/statistiche.jpg');?>" alt="" width="920" height="343" border="0"> 
-    </a>
-    <br><br>
-    <a href="<?= $this->url(array('controller' => 'admin',
-                                    'action' => 'faq'), 
-                                    'default',true ); ?>">
-        <img src="<?php echo $this->baseUrl('img/admin/faq.jpg');?>" alt="" width="920" height="343" border="0"> 
-    </a>
-    <br><br>
-    <a href="<?= $this->url(array('controller' => 'admin',
-                                    'action' => 'listaziende'), 
-                                    'default',true ); ?>">
-        <img src="<?php echo $this->baseUrl('img/admin/aziende.jpg');?>" alt="" width="920" height="343" border="0"> 
-    </a>
-    <br><br>
-    <a href="<?= $this->url(array('controller' => 'admin',
-                                    'action' => 'listutenti'), 
-                                    'default',true ); ?>">
-        <img src="<?php echo $this->baseUrl('img/admin/gestUtenti.jpg');?>" alt="" width="920" height="343" border="0"> 
-    </a>
-    <br><br>
-    <a href="<?= $this->url(array('controller' => 'admin',
-                                    'action' => 'gestionecategorie'), 
-                                    'default',true ); ?>">
-        <img src="<?php echo $this->baseUrl('img/admin/gestCategorie.jpg');?>" alt="" width="920" height="343" border="0"> 
-    </a>
+    <ul>
+        <li>    
+        <a href="<?= $this->url(array('controller' => 'admin',
+                                        'action' => 'statistiche'), 
+                                        'default',true ); ?>">
+            <img src="<?php echo $this->baseUrl('img/admin/statistiche.jpg');?>" alt="" title="statistiche" width="300" height="200" border="0"> 
+        </a>
+        <br><br>
+        </li>
+        <li>
+        <a href="<?= $this->url(array('controller' => 'admin',
+                                        'action' => 'faq'), 
+                                        'default',true ); ?>">
+            <img src="<?php echo $this->baseUrl('img/admin/faq.jpg');?>" alt="" title="Gestione FAQ" width="300" height="200" border="0"> 
+        </a>
+        <br><br>
+        </li>
+        <li>
+        <a href="<?= $this->url(array('controller' => 'admin',
+                                        'action' => 'listaziende'), 
+                                        'default',true ); ?>">
+            <img src="<?php echo $this->baseUrl('img/admin/aziende.jpg');?>" alt="" title="Gestione Aziende" width="300" height="200" border="0"> 
+        </a>
+        <br><br>
+        </li>
+        <li>
+        <a href="<?= $this->url(array('controller' => 'admin',
+                                        'action' => 'listutenti'), 
+                                        'default',true ); ?>">
+            <img src="<?php echo $this->baseUrl('img/admin/gestUtenti.jpg');?>" alt="" title="Gestione Utenti" width="300" height="200" border="0"> 
+        </a>
+        <br><br>
+        </li>
+        <li>
+        <a href="<?= $this->url(array('controller' => 'admin',
+                                        'action' => 'gestionecategorie'), 
+                                        'default',true ); ?>">
+            <img src="<?php echo $this->baseUrl('img/admin/gestCategorie.jpg');?>" alt="" title="Gestione Categorie" width="300" height="200" border="0"> 
+        </a>
+        </li>  
+    </ul>
+    
+    <div class="clr"></div>
             
 </div>
 

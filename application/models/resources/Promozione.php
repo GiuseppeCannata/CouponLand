@@ -14,7 +14,9 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
         /*Definisco l oggetto stringa che raffigura il comando sql*/
         
         $select = $this->select()
-                       ->where('Fine_promozione >= CURDATE()');
+                       ->where('Fine_promozione >= CURDATE()')
+                       ->where('Categoria !=?','Nessuna categoria')
+                       ->where('Azienda !=?','Nessuna azienda');
         
         /*se eseguo questa istruzione significa che il risultato della query non lo voglio paginato
         e quidi ritorno i dati cosi come sono */
@@ -28,6 +30,8 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
         $select = $this->select()
                        ->where('Categoria =?' ,$NomeCat)
                        ->where('Fine_promozione >= CURDATE()')
+                       ->where('Categoria !=?','Nessuna categoria')
+                       ->where('Azienda !=?','Nessuna azienda')
                        ->order($order);
         
         if (null !== $paged) {
@@ -50,6 +54,8 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
         $select = $this->select()
                        ->where('Azienda =?' ,$NomeAz)
                        ->where('Fine_promozione >= CURDATE()')
+                       ->where('Categoria !=?','Nessuna categoria')
+                       ->where('Azienda !=?','Nessuna azienda')
                        ->order($order);
         
         if (null !== $paged) {
