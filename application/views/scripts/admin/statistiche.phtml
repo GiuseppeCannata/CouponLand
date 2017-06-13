@@ -25,31 +25,30 @@ $(function(){
                    setInfoUser(actionUrlUser,formNameUser); 
                    
                 });
-                
-                
-                
-                
 }); 
 <?php $this->headScript()->captureEnd() ?>
 
 <div>
     <h1 class="Titolo">Statistiche CouponLand.it</h1>
-    <h3>Monitora l andamento di CouponLand.it in pochi minuti!</h3>
+    <h3 class="Sottotitolo">Monitora l andamento di CouponLand.it in pochi minuti!</h3>
 </div>
 
 <div>
-   <h4>Coupon emessi totali: <?php echo $this->N_couponEmessi; ?> </h4>
+    
+   <h4 class="Sottotitolo">Coupon emessi totali: <?php echo $this->N_couponEmessi; ?> </h4>
+   <hr>
     <div>
-   
-   <?php echo $this->promselectForm ?>
-    <h4>Coupon emessi:<h1 id = "numcoupon"></h1> </h4>
-    <h4> Azienda: <h1 id = "azienda"></h1> </h4>
+        <?php echo $this->promselectForm ?>
+        <h4 class="Sottotitolo">Coupon emessi: <h1 id = "numcoupon"></h1> </h4>
+        <h4 class="Sottotitolo"> Azienda: <h1 id = "azienda"></h1> </h4>
+        <hr>
     </div>
 
-<div>
-    <?php echo $this->userselectForm ?>
-    <h4>Coupon emessi:<h1 id = "numcouponuser"></h1> </h4>
-</div>
+    <div>
+        <?php echo $this->userselectForm ?>
+        <h4 class="Sottotitolo">Coupon emessi:<h1 id = "numcouponuser"></h1> </h4>
+    </div>
+   
 </div>
 
 

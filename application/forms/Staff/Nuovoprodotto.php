@@ -9,10 +9,10 @@ class Application_Form_Staff_Nuovoprodotto extends App_Form_Abstract
     	$this->_staffModel = new Application_Model_Staff();
         $this->setMethod('post');
         $this->setName('addprom');
-        $this->setAction('');
+        $this->setAction(''); //la definirò in seguito
         $this->setAttrib('enctype', 'multipart/form-data');
-        $this->setAttrib('class', 'promform');
-        $this->setDescription('Inserisci una nuova promozione!');
+        $this->setAttrib('class', 'form');
+        
 
         $this->addElement('text', 'Nome', array(
             'label' => 'Nome',
@@ -55,12 +55,6 @@ class Application_Form_Staff_Nuovoprodotto extends App_Form_Abstract
             
         ));
         
-        
-        
-        
-        
-        
-
         $this->addElement('file', 'Immagine', array(
         	'label' => 'Immagine',
         	'destination' => APPLICATION_PATH . '/../public/img/promozioni',
@@ -118,16 +112,12 @@ class Application_Form_Staff_Nuovoprodotto extends App_Form_Abstract
             
         ));
 
-        $this->addElement('submit', 'addProm', array(
+        $this->addElement('submit', 'addProm', array('class' => 'bottom',
             'label' => 'Aggiungi Promozione',
         	'decorators' => $this->buttonDecorators
         ));
         
-        $this->setDecorators(array(
-            'FormElements',
-            array('HtmlTag', array('tag' => 'table')),
-        	array('Description', array('placement' => 'prepend', 'class' => 'formerror')),
-            'Form'
-        ));
+        $this->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'table')),
+        	array('Description', array('placement' => 'prepend', 'class' => 'formerror')),'Form'));
     }
 }

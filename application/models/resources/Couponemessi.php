@@ -50,7 +50,7 @@ class Application_Resource_Couponemessi extends Zend_Db_Table_Abstract {
         
         $select = $this->select();
         
-        return $this->fetchRow($select);
+        return $this->fetchAll($select);
         
     }   
 }

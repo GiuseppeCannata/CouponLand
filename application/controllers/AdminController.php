@@ -78,11 +78,7 @@ class AdminController extends Zend_Controller_Action{
         
        $N_couponEmessi = count($this->_ModelAdmin->numerocouponemessi());
        
-       $promTUTTE = $this->_ModelAdmin->promTutte();
-       
-       
-       
-       
+       $this->view->assign('N_couponEmessi', $N_couponEmessi);
        
     }
     
