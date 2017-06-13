@@ -89,3 +89,16 @@
     width: 50px;
     height: 30px;
 }
+
+/*errori*/
+ul.errors{
+    
+    color: #F00;
+}
+
+label{
+    
+    color:#336699;
+    font-size: 15px;
+    padding: 10px;
+}
