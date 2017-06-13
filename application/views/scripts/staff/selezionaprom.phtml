@@ -1,0 +1,36 @@
+<?php $this->headScript()
+        ->appendFile($this->baseUrl('js/jquery.js', 'text/javascript'))
+        ->appendFile($this->baseUrl('js/functions.js', 'text/javascript'))
+        ->captureStart(); ?>
+
+
+$(function(){
+
+	var actionUrlProm='<?= $this->url(array('controller' => 'staff', 'action' => 'segnalaprom',), 'default');  ?>';
+	var actionUrlAz='<?= $this->url(array('controller' => 'staff', 'action' => 'segnalaz',), 'default');  ?>';
+        var formName='<?= $this->selezionaProm->getName() ?>';
+                $('#selezCat').change(function (event) {
+                   $('#selezAz').find('option').remove();
+                   //$('#selezProm').append('<option>' +' -- Seleziona -- '+ '</option>');
+                    $('#selezAz').append('<option>' +' -- Seleziona -- '+ '</option>');
+                   setPromozioni(actionUrlProm, formName); 
+                   
+                });
+                $('#selezProm').change(function (event) {
+                   setAziende(actionUrlAz, formName); 
+                    
+                });
+                
+                
+});         
+
+
+
+
+<?php $this->headScript()->captureEnd() ?>
+
+<div class="static">
+ <h3>Gestisci promozioni</h3>
+ 
+ <?php echo $this->selezionaProm ?>
+</div>

@@ -1,0 +1,49 @@
+<div>
+    <img src="<?php echo $this->baseUrl('css/images/coper.png');?>" alt="" width="920" height="343" border="0"> 
+    <a href="#listTOP"><div id="button"></div></a>
+</div>
+
+<div id="listTOP">
+
+    <?php
+       //prendo tutte le categorie
+       foreach ($this->CatTOP as $Cat){     
+
+           $top=0;
+           $promozione=NULL;
+            //prendo tutti i prodotti
+            foreach ($this->PromozioniTOP as $promTOP){
+
+                if(($promTOP->Categoria === $Cat->Nome) && ($promTOP->Coupon_emessi > $top)){
+
+                     $promozione = $promTOP;
+                     $top=$promTOP->Coupon_emessi;
+
+                }    
+            }
+
+            if(!$promozione==NULL){
+                
+                echo '<div class="textarea">';
+                echo '<h2>'.$promozione->Categoria.'</h2>';
+                echo '<h4>'.$promozione->Nome.'</h4>';
+                echo '<p class="Testo">'.$promozione->Descrizione_estesa.'</p>';
+                echo '<a href='. $this->url(array('controller' => 'public',
+                                                'action'     => 'promozione',
+                                                'Id_prom'  => $promozione->Id_promozione,
+                                                'chiamante' => 'promCat'), 
+                                                'default', true). '><img src="'. $this->baseUrl('img/vaialprodotto.png') .'" alt="" width="150" height="150" border="0"/></a>';
+                echo '</div>';
+                echo $this->productImg($promozione->Immagine, 'prom', array('id' => 'prodotto'));
+                
+                echo '<hr>';
+                
+
+
+            }
+        }
+     ?>
+
+   </div>
+   <div class="clr"></div>
+</div>

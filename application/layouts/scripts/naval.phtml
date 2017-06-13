@@ -1,15 +1,19 @@
 <ul>
     
-    <?php if($this->authInfo('User') != 'admin' ) :?>
+    <?php 
     
-        <li><a href="<?= $this->url(array('controller' => 'user',
+      $livello = $this->authInfo('Livello');
+    
+      if($livello != 'admin' ) :?>
+    
+        <li><a href="<?= $this->url(array('controller' => $livello ,
                                          'action'     => 'areariservata'), 
                                          'default',true ); ?>"><span> Area Riservata </span></a></li>
         <li><label></label></li>
             
     <?php endif ?>
     
-    <li><a href="<?= $this->url(array('controller' => 'user',
+    <li><a href="<?= $this->url(array('controller' => $livello,
                                      'action'     => 'logout'), 
                                      'default',true ); ?>"><span> Logout </span></a></li>
 </ul>

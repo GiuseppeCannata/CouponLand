@@ -1,0 +1,29 @@
+<?php echo $this->doctype() ?>
+
+<html>
+    <head>
+    <?= $this->headMeta(); ?>
+    <?= $this->headTitle(); ?>
+     <link href="<?php echo $this->baseUrl('css/AccediRegistrati.css');?>" rel="stylesheet" type="text/css" />
+     <link href="<?php echo $this->baseUrl('css/Logo.css');?>" rel="stylesheet" type="text/css" />
+    
+        
+    </head>
+    <body>
+       
+        <div class="logo" >
+                 <h1>
+                 <a href=" <?= $this->url(array('controller' => 'public',
+                                                   'action'     => 'index', ), 
+                                                   'default',true ); ?>"><small>L'offerta che vuoi, quando vuoi!</small>Coupon<span>Land</span></a>
+                </h1>
+        </div>
+        <div class =regisform>
+        <?php echo $this->arearisForm ?>
+        </div>
+        
+        
+        
+        
+    </body>
+</html>

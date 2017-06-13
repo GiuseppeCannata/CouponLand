@@ -18,6 +18,9 @@ class AdminController extends Zend_Controller_Action{
     protected $_NuovaCategoriaForm;
     protected $_cancellaCategoriaForm;
     protected $_modificaCategoriaForm;
+    
+    protected $_selezprom;
+    protected $_selezuser;
 
 
     public function init(){
@@ -49,6 +52,10 @@ class AdminController extends Zend_Controller_Action{
         $this->view->nuovaCategoriaForm = $this->getNuovaCategoriaForm();
         $this->view->cancellaCategoriaForm = $this->getCancellaCategoriaForm();
         $this->view->modificaCategoriaForm = $this->getModificaCategoriaForm();
+        
+        
+        $this->view->promselectForm = $this->getpromForm();
+        $this->view->userselectForm = $this->getusersForm();
     }
 
     public function indexAction(){
@@ -75,8 +82,7 @@ class AdminController extends Zend_Controller_Action{
        
        
        
-       $this->view->assign(array( 'N_couponEmessi' => $N_couponEmessi,
-                                  'promTUTTE' => $promTUTTE));
+       
        
     }
     
@@ -783,6 +789,93 @@ class AdminController extends Zend_Controller_Action{
       $this->_ModelAdmin->deleteutente($id);
       $this->_helper->redirector('listutenti');
         
+    }
+    
+    
+    
+    ///////////////////////////////////////////////////
+    
+    
+        
+    
+    
+    
+    
+    
+    
+    private function getpromForm(){
+        
+        $urlHelper = $this->_helper->getHelper('url');
+        $this->_selezprom = new Application_Form_Admin_Prom();
+        $this->_selezprom->setAction($urlHelper->url(array('controller' => 'admin',
+                                                            'action' => ''),
+                                                            'default'));
+        return $this->_selezprom;
+    } 
+     
+    
+    private function getusersForm(){
+        
+        $urlHelper = $this->_helper->getHelper('url');
+        $this->_selezuser = new Application_Form_Admin_Utenti();
+        $this->_selezuser->setAction($urlHelper->url(array('controller' => 'admin',
+                                                            'action' => ''),
+                                                            'default'));
+        return $this->_selezuser;
+    } 
+    
+    
+    public function segnalacouponAction() 
+    {   
+            
+        
+            $this->_helper->viewRenderer->setNoRender();
+            $this->_helper->getHelper('layout')->disableLayout();
+                
+                
+                $idprom = $this->getRequest()->getPost();
+                $aziende = $this->_ModelAdmin->getPromozioneByID($idprom)->toArray();
+              
+                
+               $data = array();
+                
+            
+                    $data['Azienda'] = $aziende['Azienda'];
+                    $data['Coupon_emessi'] = $aziende['Coupon_emessi'];
+           
+
+             $json = Zend_Json::encode($data);
+            echo $json;
+            // a die here helps ensure a clean ajax call
+            die();
+    }
+    
+    
+    
+    
+    public function segnalacouponuserAction() 
+    {   
+            
+        
+            $this->_helper->viewRenderer->setNoRender();
+            $this->_helper->getHelper('layout')->disableLayout();
+                
+                
+                $iduser = $this->getRequest()->getPost();
+                $user = $this->_ModelAdmin->getUserByID($iduser)->toArray();
+              
+                
+               $data = array();
+                
+            
+                    
+                    $data['Coupon_emessi'] = $user['Coupon_emessi'];
+           
+
+             $json = Zend_Json::encode($data);
+            echo $json;
+            // a die here helps ensure a clean ajax call
+            die();
     }
        
 }

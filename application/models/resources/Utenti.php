@@ -13,6 +13,14 @@ class Application_Resource_Utenti extends Zend_Db_Table{
         
     }
     
+    public function allUsersfirstlevel(){
+            $select = $this->select()
+                     ->where('Livello =?', 'user')
+                     ->order('User');
+             return $this->fetchAll($select);
+
+    }
+    
     
     public function getUserByID($id){
         //questa funziona ritorna un oggetto

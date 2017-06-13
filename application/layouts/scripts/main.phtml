@@ -81,6 +81,11 @@
                         echo $this->render('topnav.phtml');
 
                     }
+                    if($livello == 'staff'){
+                        
+                        echo $this->render('navstaff.phtml');
+                        
+                    }
                     if($livello == 'admin'){
                         
                         echo $this->render('topnavadmin.phtml');

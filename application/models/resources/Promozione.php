@@ -188,5 +188,81 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
     } 
     
     
+     public function getPromByCat($cat){
+        $select = $this->select()
+                       ->where('Categoria =?',$cat)
+                       ->order('Nome');
+        
+         return $this->fetchAll($select);
+    }
+    
+    
+    
+    
+
+    /* insert prodotto */
+
+    public function insertPromozione($data) {
+
+        return $this->insert($data);
+//        return $this->find($this->insert($data))->current();
+        //return the primary key of the row inserted.
+    }
+
+    /* edit prodotto */
+
+    public function editPromozione($data, $id)
+    {
+
+        $where=$this->getAdapter()->quoteInto('Id_promozione = ?', $id);
+        $this->update($data,$where);
+    }
+
+    /* delete prodotto */
+
+    public function deletePromozione($id)
+    {
+        return $this->find($id)->current()->delete();
+    }
+
+    public function getAziendaByNomeProm($nomeProm) {
+        $select = $this->select()
+                       ->where('Nome =?',$nomeProm);
+        return $this->fetchAll($select);
+        
+    }
+    
+    
+    public function getPromByCatNomeAz($cat, $nome, $azienda){
+        $select = $this->select()
+                       ->where('Categoria =?', $cat)
+                       ->where('Nome =?', $nome)
+                       ->where('Azienda =?', $azienda);
+               
+        return $this->fetchRow($select);
+        }
+    
+
+        
+    public function getPromByNomeAz($nome, $azienda){
+        $select = $this->select()
+                       ->where('Nome =?', $nome)
+                       ->where('Azienda =?', $azienda);
+               
+        return $this->fetchRow($select);
+    }
+        
+        
+    public function estraiPrombyNameandIdandAz($id,$name,$az){
+        
+        $select= $this->select()->where('Id_promozione != ?',$id)
+                                ->where('Nome = ?', $name)
+                                ->where('Azienda = ?', $az);
+        
+        return $this->fetchRow($select);
+        
+    }   
+    
+    
 }
 

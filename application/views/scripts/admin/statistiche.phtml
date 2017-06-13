@@ -1,4 +1,36 @@
+<?php $this->headScript()
+        ->appendFile($this->baseUrl('js/jquery.js', 'text/javascript'))
+        ->appendFile($this->baseUrl('js/functions.js', 'text/javascript'))
+        ->captureStart(); ?>
 
+$(function(){
+
+	var actionUrlProm='<?= $this->url(array('controller' => 'admin', 'action' => 'segnalacoupon',), 'default');  ?>';
+        var actionUrlUser='<?= $this->url(array('controller' => 'admin', 'action' => 'segnalacouponuser',), 'default');  ?>';
+	var formNameProm='<?= $this->promselectForm->getName() ?>';
+        var formNameUser='<?= $this->userselectForm->getName() ?>';
+       
+                $('#prom').change(function (event) {
+                    $('#numcoupon').empty();
+                     $('#azienda').empty();
+                   setInfo(actionUrlProm,formNameProm); 
+                   
+                });
+                
+                
+                
+                $('#user').change(function (event) {
+                    $('#numcouponuser').empty();
+                     
+                   setInfoUser(actionUrlUser,formNameUser); 
+                   
+                });
+                
+                
+                
+                
+}); 
+<?php $this->headScript()->captureEnd() ?>
 
 <div>
     <h1 class="Titolo">Statistiche CouponLand.it</h1>
@@ -6,19 +38,22 @@
 </div>
 
 <div>
-   <h4>Coupon emessi: <?php echo $this->N_couponEmessi; ?> </h4>
-    <p>
-        <label>Scegli la promozione che ti interessa</label>
-        
-         <select name="promozione" size="1">
-         <?php foreach ($this->promTUTTE as $promozioni){
-                echo '<option>'. $promozioni->Nome .'</option>'; 
-             }
-          ?>
-         
-        </select>
-    </p>
+   <h4>Coupon emessi totali: <?php echo $this->N_couponEmessi; ?> </h4>
+    <div>
+   
+   <?php echo $this->promselectForm ?>
+    <h4>Coupon emessi:<h1 id = "numcoupon"></h1> </h4>
+    <h4> Azienda: <h1 id = "azienda"></h1> </h4>
+    </div>
+
+<div>
+    <?php echo $this->userselectForm ?>
+    <h4>Coupon emessi:<h1 id = "numcouponuser"></h1> </h4>
 </div>
+</div>
+
+
+
 
 
 
