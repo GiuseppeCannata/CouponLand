@@ -33,86 +33,68 @@ class Application_Form_Admin_ModificaUtente extends App_Form_Abstract {
                
                 $this->addElement('password', 'Pass', array(
                                   'label' => 'Nuova password', 
-                   
-                    'decorators' => $this->elementDecorators,
+                                  'decorators' => $this->elementDecorators,
                                   'placeholder' => 'Password',
                                   'filters' => array('StringTrim'),
                                   'required' => false ));
                 
                 
                 $this->addElement('text', 'Nome', array('label' => 'Nome',
-                    'placeholder'=> 'Nome',
-                    'decorators' => $this->elementDecorators,
-                                                        'filters' => array('StringTrim'),
-                                                        'required' => true,
-                                                        'validators' => array(array('StringLength',true, array(1,20))),
-                                                        /*'decorators' => $this->elementDecorators,*/));
-              
-              
-                 $this->addElement('text', 'Cognome', array(
-                                    'label' => 'Cognome',
-                     'placeholder'=> 'Cognome',
-                    'decorators' => $this->elementDecorators,
+                                  'placeholder'=> 'Nome',
+                                   'decorators' => $this->elementDecorators,
                                     'filters' => array('StringTrim'),
                                     'required' => true,
-                                    'validators' => array(array('StringLength',true, array(1,20))),
-                     /*'decorators' => $this->elementDecorators,*/));
+                                    'validators' => array(array('StringLength',true, array(1,20))),));
+              
+                $this->addElement('text', 'Cognome', array(
+                                   'label' => 'Cognome',
+                                   'placeholder'=> 'Cognome',
+                                   'decorators' => $this->elementDecorators,
+                                   'filters' => array('StringTrim'),
+                                   'required' => true,
+                                   'validators' => array(array('StringLength',true, array(1,20)))));
                 
-             
-		
-                
-                 $this->addElement('text', 'Email', array(
-                                    'label'      => 'Email',
-                     'placeholder'=> 'Email',
-                    'decorators' => $this->elementDecorators,
-                                    'required'   => true,
-                                    'filters'    => array('StringTrim'),
-                                    'validators' => array('EmailAddress',),
-                     /*'decorators' => $this->elementDecoratos*/));
+                $this->addElement('text', 'Email', array(
+                                   'label' => 'Email',
+                                   'placeholder'=> 'Email',
+                                   'decorators' => $this->elementDecorators,
+                                   'required'   => true,
+                                   'filters'    => array('StringTrim'),
+                                   'validators' => array('EmailAddress',),));
                 
                 
-               
                 $this->addElement('text', 'Telefono', array(
                                 'label' => 'Numero di telefono',
-                    'placeholder'=> 'Telofono',
-                    'decorators' => $this->elementDecorators,
+                                'placeholder'=> 'Telofono',
+                                'decorators' => $this->elementDecorators,
                                 'filters' => array('StringTrim'),
                                 'required' => true,
                                 'validators' => array(array('Float', true, 
-                                array('locale' => 'en_US')),array('StringLength',true, array(1,10))),
-                    /*'decorators' => $this->elementDecoratos*/));  
+                                array('locale' => 'en_US')),array('StringLength',true, array(1,10)))));  
                 
                 $this->addElement('select', 'Eta', array('label' => 'Età',
-                    
-                    'decorators' => $this->elementDecorators,
+                                  'decorators' => $this->elementDecorators,
                                   'required' => true,
-                                   'multiOptions'=> $etaposs,
-                    /*'decorators' => $this->elementDecoratos*/));
-                
-                   
+                                  'multiOptions'=> $etaposs));
                 
                 $this->addElement('select', 'Genere', array(
-                                    'label' => 'Genere',
-                    
-                    'decorators' => $this->elementDecorators,
-                                    'required' => true,
-                                    'multiOptions'=> $genere = array('M' => 'M','F' => 'F'),
-                   /* 'decorators' => $this->elementDecoratos*/));
+                                  'label' => 'Genere',
+                                  'decorators' => $this->elementDecorators,
+                                  'required' => true,
+                                  'multiOptions'=> $genere = array('M' => 'M','F' => 'F'),));
                                    
             
                 
                 
                 $this->addElement('submit', 'registra', array('id' => 'registra',
-                    'class' => 'bottom',
+                                  'class' => 'bottom',
                                   'label' => 'Fatto',
-                    'decorators' => $this->buttonDecorators));
+                                  'decorators' => $this->buttonDecorators));
                 
                 $this->addElement('hidden','Id_user',array(
-          /*  'value'=> $this->_id*/
-        ));
+                /*  'value'=> $this->_id*/
+                ));
 
-    
-                
                 $this->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'table', 'class' => 'zend_form')),
         		     array('Description', array('placement' => 'prepend', 'class' => 'formerror')),'Form'));   
                 

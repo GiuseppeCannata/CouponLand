@@ -27,10 +27,6 @@ class Application_Form_Staff_Selezionaprodotto extends App_Form_Abstract
             'decorators' => $this->elementDecorators
         ));
         
-        
-        
-        
-        
         $this->addElement('select', 'Nome', array(
             'label' => 'Promozione',
             'id' => 'selezProm',
@@ -39,11 +35,7 @@ class Application_Form_Staff_Selezionaprodotto extends App_Form_Abstract
             'decorators' => $this->elementDecorators
              ));
                 
-
-            
-        
-        
-         $this->addElement('select', 'Azienda', array(
+        $this->addElement('select', 'Azienda', array(
             'label' => 'Azienda',
             'id' => 'selezAz',
            // 'required' => true,
@@ -65,7 +57,7 @@ class Application_Form_Staff_Selezionaprodotto extends App_Form_Abstract
          
         $this->addElement('submit', 'cancella', array('class' =>'bottom',
                                                         'label' => 'Cancella',
-                                                         'value' => 'elimina',
+                                                        'value' => 'elimina',
                                                         'decorators' => $this->buttonDecorators));
        
           

@@ -8,6 +8,7 @@ class Application_Form_Admin_CancellaCategoria extends App_Form_Abstract
     {
         $this->setMethod('post');
         $this->setName('canccategoria');
+        $this->setAttrib('id', 'form');
         $this->setAction('');
         
         $this->categorie_select = new Zend_Form_Element_Select('Nome');

@@ -15,6 +15,7 @@ class Application_Form_Staff_modificaprodotto extends App_Form_Abstract
       
 
         $this->addElement('text', 'Nome', array(
+            'placeholder' => 'Nome',
             'label' => 'Nome',
             'filters' => array('StringTrim'),
             'required' => true,
@@ -48,6 +49,7 @@ class Application_Form_Staff_modificaprodotto extends App_Form_Abstract
         
         
         $this->addElement('select', 'Azienda', array(
+            'placeholder' => 'Azienda',
             'label' => 'Azienda',
             'required' => true,
         	'multiOptions' => $aziende,
@@ -56,11 +58,6 @@ class Application_Form_Staff_modificaprodotto extends App_Form_Abstract
         ));
         
         
-        
-        
-        
-        
-
         $this->addElement('file', 'Immagine', array(
         	'label' => 'Immagine',
         	'destination' => APPLICATION_PATH . '/../public/img/promozioni',
@@ -74,6 +71,7 @@ class Application_Form_Staff_modificaprodotto extends App_Form_Abstract
        
         
         $this->addElement('text', 'Offerta', array(
+            'placeholder' => 'Offerta',
             'label' => 'Offerta',
             'required' => true,
             'filters' => array('StringTrim'),
@@ -98,7 +96,6 @@ class Application_Form_Staff_modificaprodotto extends App_Form_Abstract
         
          $this->addElement('text', 'Fine_promozione', array(
             'label' => 'Fine promozione (aaaa-mm-gg)',
-             
             'required' => true,
             'filters' => array('StringTrim'),
             'validators' => array('Date'),  
@@ -110,6 +107,7 @@ class Application_Form_Staff_modificaprodotto extends App_Form_Abstract
         
 
         $this->addElement('textarea', 'Descrizione_estesa', array(
+            'placeholder' => 'Descrizione',
             'label' => 'Descizione promozione',
             'required' => true,
             'filters' => array('StringTrim'),
@@ -119,19 +117,17 @@ class Application_Form_Staff_modificaprodotto extends App_Form_Abstract
         ));
 
         $this->addElement('submit', 'addProm', array(
+            'class' => 'bottom',
             'label' => 'Modifica Promozione',
-        	'decorators' => $this->buttonDecorators
+            'decorators' => $this->buttonDecorators
         ));
         
         $this->addElement('hidden','Id_promozione',array(
           /*  'value'=> $this->_id*/
         ));
         
-        $this->setDecorators(array(
-            'FormElements',
-            array('HtmlTag', array('tag' => 'table')),
-        	array('Description', array('placement' => 'prepend', 'class' => 'formerror')),
-            'Form'
+        $this->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'table')),
+        	array('Description', array('placement' => 'prepend', 'class' => 'formerror')),'Form'
         ));
     }
 }

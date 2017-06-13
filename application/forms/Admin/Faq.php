@@ -52,9 +52,10 @@ class Application_Form_Admin_Faq extends App_Form_Abstract{
                         'decorators' => $this->elementDecorators));
         
 
-        $this->addElement('submit', 'ok', array(
-                         'label'    => 'ok',
-                         'decorators' => $this->buttonDecorators ));
+        $this->addElement('submit', 'submitInserisci', array(
+                          'class' => 'bottom',
+                          'label' => 'Fatto',
+                          'decorators' => $this->buttonDecorators));
         
 	$this->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'table', 'class' => 'zend_form')),
         		     array('Description', array('placement' => 'prepend', 'class' => 'formerror')),'Form'));

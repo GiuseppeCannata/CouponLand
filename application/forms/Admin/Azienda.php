@@ -54,7 +54,7 @@ class Application_Form_Admin_Azienda extends App_Form_Abstract
 
         $this->addElement('text', 'Nome', array(
             'label' => "Nome Azienda",
-            'filters' => array('StringTrim', 'StringToLower'),
+            'filters' => array('StringTrim'),
             'required' => true,
             /*'value' => $this->_nome,*/
             'placeholder' => 'Inserisci',
@@ -63,7 +63,7 @@ class Application_Form_Admin_Azienda extends App_Form_Abstract
 
         $this->addElement('text', 'Ragione_sociale', array(
             'label' => "Ragione sociale",
-            'filters' => array('StringTrim', 'StringToLower'),
+            'filters' => array('StringTrim'),
             'required' => true,
            /* 'value' => $this->_ragione,*/
             'placeholder' => 'Ragione sociale',
@@ -78,21 +78,21 @@ class Application_Form_Admin_Azienda extends App_Form_Abstract
                         'validators' => array( 
                                         array('Count', false, 1),
                                         array('Size', false, 102400),
-                                        array('Extension', false, array('jpg', 'gif'))),
+                                        array('Extension', false, array('jpg', 'gif','png'))),
                        'decorators' => $this->fileDecorators,));
 
         $this->addElement('text', 'Localizzazione', array(
             'label' => "Localizzazione",
-            'filters' => array('StringTrim', 'StringToLower'),
+            'filters' => array('StringTrim'),
             'required' => true,
            /* 'value' => $this->_localizzazione,*/
-            'placeholder' => 'Descrizione azienda',
+            'placeholder' => 'Localizzazione',
             'decorators' => $this->elementDecorators,
         ));
 
         $this->addElement('textarea', 'Descrizione', array(
             'label' => "Descrizione azienda",
-            'filters' => array('StringTrim', 'StringToLower'),
+            'filters' => array('StringTrim'),
             'required' => true,
            /* 'value' => $this->_descrizione,*/
             'placeholder' => 'Descrizione azienda',

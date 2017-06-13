@@ -16,6 +16,7 @@ class Application_Form_Staff_Nuovoprodotto extends App_Form_Abstract
 
         $this->addElement('text', 'Nome', array(
             'label' => 'Nome',
+            'placeholder' => 'Nome',
             'filters' => array('StringTrim'),
             'required' => true,
             'validators' => array(array('StringLength',true, array(1,25))),
@@ -48,6 +49,7 @@ class Application_Form_Staff_Nuovoprodotto extends App_Form_Abstract
         
         
         $this->addElement('select', 'Azienda', array(
+            'placeholder' => 'Azienda',
             'label' => 'Azienda',
             'required' => true,
         	'multiOptions' => $aziende,
@@ -68,6 +70,7 @@ class Application_Form_Staff_Nuovoprodotto extends App_Form_Abstract
        
         
         $this->addElement('text', 'Offerta', array(
+            'placeholder' => 'Offerta',
             'label' => 'Offerta',
             'required' => true,
             'filters' => array('StringTrim'),
@@ -76,7 +79,7 @@ class Application_Form_Staff_Nuovoprodotto extends App_Form_Abstract
             
         ));
         
-         $todays_date = date("Y-m-d");
+        $todays_date = date("Y-m-d");
         
         $this->addElement('text', 'Inizio_promozione', array(
             'label' => 'Inizio promozione (aaaa-mm-gg)',
@@ -100,10 +103,8 @@ class Application_Form_Staff_Nuovoprodotto extends App_Form_Abstract
             
         ));
 
-     
-        
-
         $this->addElement('textarea', 'Descrizione_estesa', array(
+            'placeholder' => 'Descrizione',
             'label' => 'Descizione promozione',
             'required' => true,
             'filters' => array('StringTrim'),
@@ -114,7 +115,7 @@ class Application_Form_Staff_Nuovoprodotto extends App_Form_Abstract
 
         $this->addElement('submit', 'addProm', array('class' => 'bottom',
             'label' => 'Aggiungi Promozione',
-        	'decorators' => $this->buttonDecorators
+            'decorators' => $this->buttonDecorators
         ));
         
         $this->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'table')),

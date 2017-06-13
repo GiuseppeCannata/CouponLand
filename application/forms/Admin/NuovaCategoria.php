@@ -2,10 +2,11 @@
 
 class Application_Form_Admin_NuovaCategoria extends App_Form_Abstract
 {
-    public function init()
-    {
+    public function init(){
+        
         $this->setMethod('post');
         $this->setName('nuovacategoria');
+        $this->setAttrib('id', 'form');
         $this->setAction('');
 
         $this->addElement('text','Nome',
@@ -18,6 +19,7 @@ class Application_Form_Admin_NuovaCategoria extends App_Form_Abstract
             ));
 
         $this->addElement('submit', 'submiteditsottocategoria', array(
+            'class' => 'bottom',
             'label' => 'Fatto',
             'decorators' => $this->buttonDecorators,
         ));

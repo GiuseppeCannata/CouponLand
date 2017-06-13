@@ -1,9 +1,11 @@
-
 <h1 class="Titolo">Inserisci nuova F.A.Q</h1>
 
 <div>
     <?= $this->creaFaqForm; ?>
 </div>
+<a href="<?= $this->url(array('controller' => 'admin',
+                                    'action' => 'faq'), 
+                                    'default',true ); ?>"><button class="bottom">Torna alla lista</button></a>
 
 
 

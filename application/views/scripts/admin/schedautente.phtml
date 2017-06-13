@@ -1,17 +1,18 @@
 <h1 class="Titolo">Scheda Utente<h1>
+    
+    <?php echo '<h3 class="Sottotitolo">Utente di livello: ' .$this->utente->Livello . '</h4><br><br>' ?>
+     
+    <div id="schedautente">
         
+        <?php echo '<h4>User: ' .$this->utente->User . '</h4>' ?>
+        <?php echo '<h4>Nome: ' . $this->utente->Nome . '</h4>' ?>
+        <?php echo '<h4>Cognome: ' .$this->utente->Cognome . '</h4>' ?>
+        <?php echo '<h4>Email: ' . $this->utente->Email . '</h4>' ?>
+        <?php echo '<h4>Telefono: ' . $this->utente->Telefono . '</h4>' ?>
+        <?php echo '<h4>Eta: ' . $this->utente->Eta. '</h4>' ?>
+        <?php echo '<h4>Genere: ' . $this->utente->Genere. '</h4>' ?>
         
-        
-        
-          <?php echo '<h3>Utente di livello: ' .$this->utente->Livello . '</h4><br><br>' ?>
-            
-          <?php echo '<h4>User: ' .$this->utente->User . '</h4>' ?>
-          <?php echo '<h4>Nome: ' . $this->utente->Nome . '</h4>' ?>
-          <?php echo '<h4>Cognome: ' .$this->utente->Cognome . '</h4>' ?>
-          <?php echo '<h4>Email: ' . $this->utente->Email . '</h4>' ?>
-          <?php echo '<h4>Telefono: ' . $this->utente->Telefono . '</h4>' ?>
-          <?php echo '<h4>Eta: ' . $this->utente->Eta. '</h4>' ?>
-          <?php echo '<h4>Genere: ' . $this->utente->Genere. '</h4>' ?>
+    </div>
         
 <a href="<?= $this->url(array('controller' => 'admin',
                                     'action' => 'updateutente',

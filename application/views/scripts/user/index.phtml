@@ -1,3 +1,33 @@
+<?php $this->headScript()
+        /*scriverà <script>src=......</script>*//*carico la libreria jquery*/
+	->appendFile('https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js')
+        /*scriverà <script>src=......</script>*/
+	->appendFile($this->baseUrl('js/functions.js'))
+        //mi permette di dire: da adesso in poi c è del codice jquery che devi aggiungere, questo finira quando definiro $this->headScript()->captureEnd()
+	->captureStart() ?>
+
+
+$(function() {
+                    
+        var UtenteLivello='<?php  
+                                if($this->authInfo('Livello')== null){
+            
+                                    echo 'nonregistrato';
+                                      
+                                }
+                                else{
+                                    
+                                    echo $this->authInfo('Livello');  
+                                }
+                            ?>';
+       
+        $('a#coupon').on('click', function(){ Validation(UtenteLivello); })
+    
+});
+
+<?php $this->headScript()->captureEnd() ?>
+
+
 <div>
     <img src="<?php echo $this->baseUrl('css/images/coper.png');?>" alt="" width="920" height="343" border="0"> 
     <a href="#listTOP"><div id="button"></div></a>
@@ -9,7 +39,7 @@
        //prendo tutte le categorie
        foreach ($this->CatTOP as $Cat){     
 
-           $top=0;
+           $top=-1;
            $promozione=NULL;
             //prendo tutti i prodotti
             foreach ($this->PromozioniTOP as $promTOP){
@@ -28,18 +58,27 @@
                 echo '<h2>'.$promozione->Categoria.'</h2>';
                 echo '<h4>'.$promozione->Nome.'</h4>';
                 echo '<p class="Testo">'.$promozione->Descrizione_estesa.'</p>';
-                echo '<a href='. $this->url(array('controller' => 'public',
-                                                'action'     => 'promozione',
-                                                'Id_prom'  => $promozione->Id_promozione,
-                                                'chiamante' => 'promCat'), 
-                                                'default', true). '><img src="'. $this->baseUrl('img/vaialprodotto.png') .'" alt="" width="150" height="150" border="0"/></a>';
+                echo '<h5>Azienda: ' . $promozione->Azienda . '</h5>' ;
+                echo '<h5>Dove ritirarlo: ' . $promozione->Localizzazione. '</h5>' ;
+                echo '<h5>Offerta: ' . $promozione->Offerta. '</h5>' ;
+                echo '<h5>Scadenza: ' . $promozione->Fine_promozione . '</h5>'; 
+                $Livello = $this->authInfo('Livello');
+                    
+                    if($Livello == null || $Livello == 'staff' || $Livello == 'admin'){
+
+                         echo '<a  id="coupon" >Coupon</a>';
+
+                    }else{
+
+                        echo '<a id="coupon" href="'.$this->url(array('controller' => 'user',
+                                                               'action'     => 'validatecoupon',
+                                                               'prom' => $promozione->Id_promozione), 
+                                                               'default',true ).'" >Coupon</a>';
+                    }
+                
                 echo '</div>';
                 echo $this->productImg($promozione->Immagine, 'prom', array('id' => 'prodotto'));
-                
-                echo '<hr>';
-                
-
-
+               
             }
         }
      ?>

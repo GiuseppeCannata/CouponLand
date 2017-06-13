@@ -1,10 +1,14 @@
 <div class="static">
- <h3>Modifica Promozione</h3>
+<h1 class="Titolo">Modifica Promozione</h1>
+<br>
+<br>
  
  <?php 
- $inseriscinfo = $this->elementipromForm;
- if ($inseriscinfo != null){
- $this->modificaProm->setDefaults($inseriscinfo);
- }
- echo $this->modificaProm ?>
+    $inseriscinfo = $this->elementipromForm;
+    
+    if ($inseriscinfo != null){
+        $this->modificaProm->setDefaults($inseriscinfo);
+    }
+    echo $this->modificaProm 
+ ?>
 </div>

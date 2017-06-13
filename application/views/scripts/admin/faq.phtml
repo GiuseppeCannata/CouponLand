@@ -1,7 +1,11 @@
 <div class="faq-content">
- 
-    
+   
     <h1 class="Titolo"> F.A.Q </h1><br>
+    <a href="<?= $this->url(array('controller' => 'admin',
+                                    'action' => 'nuovafaq'), 
+                                    'default',true ); ?>"><button>Inserisci nuova F.A.Q</button></a>
+    <br>
+    <br>
 
         <?php 
 
@@ -27,11 +31,5 @@
 
             }
         ?>
-    
-    
-    
-    <a href="<?= $this->url(array('controller' => 'admin',
-                                    'action' => 'nuovafaq'), 
-                                    'default',true ); ?>"><button class="bottom">Inserisci nuova F.A.Q</button></a>
-          
+            
 </div>

@@ -8,6 +8,7 @@ class Application_Form_Admin_ModificaCategoria extends App_Form_Abstract
     {
         $this->setMethod('post');
         $this->setName('modifcacategoria');
+        $this->setAttrib('id', 'form');
         $this->setAction('');
         
         $this->categorie_select = new Zend_Form_Element_Select('Nome_vecchio');
@@ -17,8 +18,7 @@ class Application_Form_Admin_ModificaCategoria extends App_Form_Abstract
         $this->addElement($this->categorie_select);
         
         $this->addElement('text','Nome_nuovo',
-            array(
-                'label' => 'Nome categoria',
+            array('label' => 'Nome categoria',
                 'required' => true,
                 'filters' => array('StringTrim'),
                 'validators' => array(array('StringLength', true, array(1, 50))),

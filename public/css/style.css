@@ -567,6 +567,19 @@ input{
 }
 
 
+/*schedautente*/
+div#schedautente{
+    
+    margin-left:10px;
+}
+
+/*errori*/
+ul.errors{
+    
+    color: #F00;
+}
+
+
 
 
 

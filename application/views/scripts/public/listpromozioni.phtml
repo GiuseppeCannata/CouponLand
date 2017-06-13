@@ -71,11 +71,15 @@ $(function() {
             
         }
         else{
+            
+        
             if(count($this->prom) == 0){
             
             echo '<h4>Spiacenti. Non ci sono ancora promozioni '. $this->word.'</h4>';
             
-        }
+            
+            }
+            else{
             
                 echo '<div id="ingrandita"></div><div id="sfondo"></div>';
                 foreach ($this->prom as $promozione) :?>
@@ -119,7 +123,8 @@ $(function() {
                        <hr class="separatore"> 
                     </li>
         <?php endforeach ?>
-        <?php } ?>
+        <?php } 
+              }?>
         
     </ul>
 	  
