@@ -110,6 +110,16 @@ class Application_Resource_Azienda extends Zend_Db_Table_Abstract
         
     }
     
+     public function getAziendaByNOME($Nome){
+        
+       /*Scrivo la stringa per fare la select*/
+	$select = $this->select()
+                       ->where('Nome=?',$Nome);
+        
+         return $this->fetchRow($select);
+        
+    }
+    
     
        
 }

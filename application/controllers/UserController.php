@@ -125,6 +125,10 @@ class UserController extends Zend_Controller_Action{
         
         $Id_prom = $this->_getParam('Id_promozione');
         $promozione = $this->_Modelbase->getPromozioneByID($Id_prom);
+        $nome_azienda = $promozione['Azienda'];
+        $azienda = $this->_ModelUser->getAziendaByNOME($nome_azienda);
+        $Localizzazione = $azienda['Localizzazione'];
+        
         
         $this->_helper->getHelper('layout')->disableLayout();
          
@@ -133,7 +137,7 @@ class UserController extends Zend_Controller_Action{
                                    'Offerta' => $promozione['Offerta'],
                                    'Fine_promozione' => $promozione['Fine_promozione'],
                                    'Azienda' => $promozione['Azienda'],
-                                   'Localizzazione' => $promozione['Localizzazione'],
+                                   'Localizzazione' => $Localizzazione ,
                                    'Id_coupon' => $this->_getParam('Id_coupon')));
     }
     

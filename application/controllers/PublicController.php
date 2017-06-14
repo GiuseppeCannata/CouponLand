@@ -101,7 +101,8 @@ class PublicController extends Zend_Controller_Action {
             $post = $this->getRequest()->getPost();
 
             if(!$this->_formricerca->isValid($post)){
-
+                 
+                $this->_helper->redirector('index');
             }
 
             $form = $this->_formricerca;

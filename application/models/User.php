@@ -64,5 +64,10 @@ class Application_Model_User extends App_Model_Abstract {
     }
     
     
+    public function getAziendaByNOME($nome_azienda){
+    	return $this->getResource('Azienda')->getAziendaByNOME($nome_azienda);
+    }
+    
+    
 }
 
