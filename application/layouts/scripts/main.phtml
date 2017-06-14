@@ -18,11 +18,11 @@
 
 <body>
     
-    <header class="header">
+    <header id="header">
       
-        <div class="header_resize">  
+        <div id="header_resize">  
             
-            <div class="logo">
+            <div id="logo">
                  <?php echo $this->authInfo('Livello') ?>
                 <?php echo $this->authInfo('User') ?>
                  <?php echo $this->authInfo('Pass') ?>
@@ -49,7 +49,7 @@
                 </h1>
             </div>
 
-            <nav class="accedi_registati">
+            <nav id="accedi_registati">
                 <?php  
                
                    if($livello == NULL){
@@ -66,7 +66,7 @@
                 ?>
             </nav>
             
-            <div class="search">
+            <div id="search">
                 
                 <?php echo $this->ricercaForm ?>
                 
@@ -124,9 +124,9 @@
                     echo $this->render('footer.phtml');
 
                 }
-                if($livello == 'admin'){
+                if($livello == 'admin' || $livello == 'staff' ){
 
-                    echo $this->render('footeradmin.phtml');
+                    echo $this->render('footerdue.phtml');
 
                 }
                 

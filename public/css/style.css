@@ -28,7 +28,7 @@ p.clr, .clr {
 */
 
 /*tutta la barra dell header*/
-.header {
+#header {
 	margin:0;
 	padding:0;
 	width: auto;
@@ -37,13 +37,13 @@ p.clr, .clr {
 }
 
 /*si riferisce alla parte cenytrale*/
-.header_resize {
+#header_resize {
 	margin:0 auto;
 	padding:0;
 	width:930px;
 }
 
-.logo {
+#logo {
 	width:524px;
 	margin:0 auto;
 	padding:0 6px;
@@ -52,7 +52,7 @@ p.clr, .clr {
 
 
 /*nav composta da accedi e registrati*/
-.accedi_registati {
+#accedi_registati {
 	padding-top: 10px;
 	padding-right: 0px;
 	padding-left: 0px;
@@ -62,7 +62,7 @@ p.clr, .clr {
 	float: right;
 }
 
-.accedi_registati ul{
+#accedi_registati ul{
 	padding:0;
 	margin:0;
 	list-style:none;
@@ -70,13 +70,13 @@ p.clr, .clr {
 	float:left;
 }
 
-.accedi_registati ul li {
+#accedi_registati ul li {
 	float:left;
 	margin:0;
 	padding:16px 6px;
 }
 
-.accedi_registati ul li a {
+#accedi_registati ul li a {
 	float:left;
 	margin:0;
 	padding:0 0 0 6px;
@@ -86,7 +86,7 @@ p.clr, .clr {
 	text-transform:uppercase;
 }
 
-.accedi_registati ul li label{
+#accedi_registati ul li label{
 	
     border-left:1px solid #777776;
     margin:0;
@@ -94,12 +94,12 @@ p.clr, .clr {
 	
 }
 
-.accedi_registati ul li a:hover {
+#accedi_registati ul li a:hover {
     color:#afc22b;
 }
 
 /*barra di ricerca*/
-.search {
+#search {
         
     float:left;
     margin: 0px;
@@ -107,7 +107,7 @@ p.clr, .clr {
        
 }
 
-.search ul.errors{
+#search ul.errors{
     
     display: none;
 }
@@ -133,7 +133,7 @@ input.button {
         
 }
 
-.search form #textfield {
+#search form #textfield {
     
     width:300px;
     line-height:14px;
@@ -147,7 +147,7 @@ input.button {
     border-radius: 3px;
 }
 
-.search select{
+#search select{
     margin-left:5px;
     padding:9px;
     margin: 0 0 0 5px;
@@ -337,13 +337,13 @@ img#bodyimg {
     float: left;
 }
 
-p.response {
+/*p.response {
 	text-align:center;
 	color:#F00;
 	font:normal 11px Georgia, "Times New Roman", Times, serif;
 	line-height:1.8em;
 	width:auto;
-}
+}*/
 
 /* ==========================================================================
    Paginatore

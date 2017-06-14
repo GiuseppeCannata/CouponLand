@@ -55,6 +55,11 @@ class UserController extends Zend_Controller_Action{
         return $this->_helper->redirector('index','public');	
     }
     
+    /*
+     * Metodo che controlla se l utente user puo' o meno ritirare il coupon.
+     * Infatti se l utente user ha gia ritirato il coupon per quel relativo proozioone
+     * sara dato un messaggio di errore; Altrimenti potra ritirare il suo coupon
+     */
     public function validatecouponAction(){
        
         $auth = Zend_Auth::getInstance()->getIdentity();
@@ -83,6 +88,12 @@ class UserController extends Zend_Controller_Action{
         
     }
     
+    /*
+     * Metodo che genera il coupon ed effettua i relativi aggiornamenti:
+     * 1)Aggiorna il numero di coupon emessi per la promozione
+     * 2)Aggiorna i coupon emessi per l utente
+     * 3)inserisce in coupon emessi l emissione del coupon
+     */
     public function couponAction(){
         
         $auth = Zend_Auth::getInstance()->getIdentity();
@@ -109,7 +120,8 @@ class UserController extends Zend_Controller_Action{
             'Inizio_promozione'=> $promozione['Inizio_promozione'],
             'Fine_promozione'=> $promozione['Fine_promozione']);
             
-            //inserisco l emissione del coupon
+        //inserisco l emissione del coupon
+        //Inoltre il metodo insertCouponEmessi($data) restituisce anche il codice univoco del coupon
         $r = $this->_ModelUser->insertCouponEmessi($data);
         
         $this->_helper->getHelper('layout')->disableLayout();
@@ -119,6 +131,7 @@ class UserController extends Zend_Controller_Action{
                                    'Offerta' => $promozione['Offerta'],
                                    'Fine_promozione' => $promozione['Fine_promozione'],
                                    'Azienda' => $promozione['Azienda'],
+                                   'Localizzazione' => $promozione['Localizzazione'],
                                    'Id_coupon' => $r['Id_coupon']));
     }
     
