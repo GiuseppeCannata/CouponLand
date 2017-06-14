@@ -13,10 +13,12 @@ class Application_Form_Staff_Selezionaprodotto extends App_Form_Abstract
         $this->setAttrib('enctype', 'multipart/form-data');
         
         $categories = array();
-        $cats = $this->_staffModel->getCategorie();
+        $categories['Seleziona'] = '-- Seleziona --';
+        $cats = $this->_staffModel->getCatsfromPromozioni();
         foreach ($cats as $cat) {
-        	$categories[$cat -> Nome] = $cat->Nome;       
+        	$categories[$cat -> Categoria] = $cat->Categoria;       
         }
+        array_unique($categories);
         
         
         $this->addElement('select', 'Categoria', array(

@@ -17,6 +17,7 @@ class Application_Form_Public_utenti_Registra extends App_Form_Abstract{
 
 
        //Array per la select età ( dai 18 ai 120 anni)
+        $etaposs['Età'] = 'Età';
         $etaposs[18] = 18;
         for ($i = 19; $i < 121; $i++){
             
@@ -79,7 +80,7 @@ class Application_Form_Public_utenti_Registra extends App_Form_Abstract{
 
         $this->addElement('select', 'Genere', array('title' => 'Genere',
                                                     'required' => true,
-                                                    'multiOptions'=> $genere = array('M' => 'M','F' => 'F')));
+                                                    'multiOptions'=> $genere = array('Genere' =>'Genere', 'M' => 'M','F' => 'F')));
        
         $this->addElement('submit', 'registra', array('id' => 'registra',
                                                       'label' => 'Registrati'));

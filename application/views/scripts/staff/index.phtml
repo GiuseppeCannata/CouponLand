@@ -66,18 +66,18 @@ $(function() {
                     
                     if($Livello == null || $Livello == 'staff' || $Livello == 'admin'){
 
-                         echo '<a  id="coupon" >Coupon</a>';
+                         echo '<a  id="coupon" ><img src=" '. $this->baseUrl('img/bottonc.png').' " alt="" width="150" height="50" /> </a>';
 
                     }else{
 
                         echo '<a id="coupon" href="'.$this->url(array('controller' => 'user',
                                                                'action'     => 'validatecoupon',
                                                                'prom' => $promozione->Id_promozione), 
-                                                               'default',true ).'" >Coupon</a>';
+                                                               'default',true ).'" ><img src=" '. $this->baseUrl('img/bottonc.png').' " alt="" width="150" height="50"/> </a>';
                     }
                 
                 echo '</div>';
-                echo $this->productImg($promozione->Immagine, 'prom', array('class' => 'prodotto'));
+                echo $this->productImg($promozione->Immagine, 'prom', array('id' => 'prodotto'));
                
             }
         }

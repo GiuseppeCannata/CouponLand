@@ -254,29 +254,21 @@ class StaffController extends Zend_Controller_Action{
        }
           
           
-          
-          
-          
-          
-          $values = $form->getValues();
+        $values = $form->getValues();
+         if($values['Immagine'] == null){
+            
+            $promozione = $this->_ModelStaff->getPromozioneByID($values['Id_promozione']);
+            $img = $promozione['Immagine'];
+            $values['Immagine'] =  $img ;
+                    
+        }
           $this->_ModelStaff->modificaPromozione($values, $values['Id_promozione']);
           $this->_helper->redirector('index');
           
           
         }
      
-     
-     
-     
-     
-        
-     
-     
-     
-     
-        
-        
-    // Validazione AJAX
+      // Validazione AJAX
 	public function segnalapromAction() 
     {   
             
@@ -299,8 +291,8 @@ class StaffController extends Zend_Controller_Action{
         }
 
     
-// Validazione AJAX
-	public function segnalazAction() 
+    // Validazione AJAX
+    public function segnalazAction() 
     {   
             
         
@@ -439,19 +431,6 @@ class StaffController extends Zend_Controller_Action{
         return $this->_formarearis;
     } 
      
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-    
-    
     public function areariservataAction(){
         $this->_helper->layout->disableLayout();
     }

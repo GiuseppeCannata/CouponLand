@@ -31,9 +31,10 @@ p.clr, .clr {
 #header {
 	margin:0;
 	padding:0;
-	width: auto;
+        width: 100%;
+	max-width: 100%;
         background-color:#cccccc;
-        background: url(images/header_bg.gif) repeat-x left;
+        background: url(images/header_bg.gif) repeat-x right;
 }
 
 /*si riferisce alla parte cenytrale*/
@@ -232,11 +233,15 @@ img#bodyimg {
 }
 
 #button{                             
-        width:100px;
-        height:50px;
-        background:url(images/freccia.png);
-        position: relative;
-        cursor:pointer;
+    
+    width: 100px;
+    height: 50px;
+    background: url(images/freccia.png);
+    position: relative;
+    cursor: pointer;
+    margin-top: -80px;
+    margin-left: 200px;
+
        
 }
 
@@ -245,17 +250,18 @@ img#bodyimg {
    ==========================================================================
 */
 
-.prodotto {
-	float:right;
-        width:435px; 
-        height:284px; 
-        border:0;
-	margin:0;
-	padding:30px 10px 0 0px;
+#prodotto {
+	
+    float:right;
+    width:435px; 
+    height: 320px; 
+    border:0;
+    margin:0;
+    padding: 220px 10px 0 0px;
+
 }
 
 .textarea {
-    
 	width:480px;
 	margin:0;
 	padding:20px 0 0 5px;
@@ -263,23 +269,47 @@ img#bodyimg {
 	background:top no-repeat;
 }
 
+
 .textarea h2 {
-    
 	font:bold 30px Arial, Helvetica, sans-serif;
-	color:#a9a9a9;
+	color: #8fbb1b;
 	padding:10px 0;
-	margin:0;
+        margin-top: 60px;
         text-align: center;
 }
 
-.textarea p {
+.textarea h4 {
+	font: bold 20px Arial, Helvetica, sans-serif;
+    color: #696969;
+    padding: 0px;
+    margin-top: 70px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+
+.textarea h5 {
+	font: bold 18px Arial, Helvetica, sans-serif;
+    margin-left: 50px; 
+    color: #89c4ce;
     
-	font:normal 14px Arial, Helvetica, sans-serif;
-	color:#696969;
-	padding:5px;
-	margin:0;
-	line-height:1.8em;
-        text-align: center;
+}
+
+
+.textarea p {
+	font: normal 14px Arial, Helvetica, sans-serif;
+    color: #696969;
+    padding: 5px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    line-height: 1.8em;
+    width: 400px;
+        
+}
+
+a#coupon{
+    cursor: pointer;
+    margin-left: 15px;
 }
 
 

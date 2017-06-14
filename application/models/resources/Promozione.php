@@ -267,6 +267,13 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
         
     }   
     
+    public function getCatsfromPromozioni(){
+        
+        $select = $this->select();
+        
+        return $this->fetchAll();
+    }
+    
     
 }
 

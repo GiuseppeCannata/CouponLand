@@ -91,7 +91,7 @@ class Application_Form_Staff_AreaRiser extends App_Form_Abstract
                 
                    $this->addElement('select', 'Eta', array(
             
-            'title' => 'Età',
+            'label' => 'Età',
             
             'required' => true,
             'multiOptions'=> $etaposs,
@@ -103,7 +103,7 @@ class Application_Form_Staff_AreaRiser extends App_Form_Abstract
                 
                 $this->addElement('select', 'Genere', array(
            
-            'title' => 'Genere',
+            'label' => 'Genere',
             'required' => true,
             'multiOptions'=> $genere = array('M' => 'M','F' => 'F'),
                     ))

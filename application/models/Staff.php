@@ -87,5 +87,13 @@ class Application_Model_Staff extends App_Model_Abstract {
     	return $this->getResource('Utenti')->modificaUtente($info,$id);
     }
     
-    
+    public function getPromozioneByID($id_promozione){
+         return $this->getResource('Promozione')->getPromozioneByID($id_promozione);
     }
+    
+    public function getCatsfromPromozioni(){
+        return $this->getResource('Promozione')->getCatsfromPromozioni();
+    }
+    
+    
+}

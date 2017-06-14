@@ -80,14 +80,14 @@ class Application_Form_User_AreaRiser extends App_Form_Abstract
                                 'validators' => array(array('Float', true, 
                                 array('locale' => 'en_US')),array('StringLength',true, array(1,10))),));  
                 
-                $this->addElement('select', 'Eta', array('title' => 'Età',
+                $this->addElement('select', 'Eta', array('label' => 'Età',
                                   'required' => true,
                                    'multiOptions'=> $etaposs,))->setDefault('Eta', $this->_authService->getIdentity()->Eta );
                 
                    
                 
                 $this->addElement('select', 'Genere', array(
-                                    'title' => 'Genere',
+                                    'label' => 'Genere',
                                     'required' => true,
                                     'multiOptions'=> $genere = array('M' => 'M','F' => 'F'),))
                                     ->setDefault('Genere', $this->_authService->getIdentity()->Genere );

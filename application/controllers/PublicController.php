@@ -175,7 +175,16 @@ class PublicController extends Zend_Controller_Action {
 
         }
         
+        
+        
         $values = $form->getValues();
+        
+        if($values['Eta'] == 'Età' || $values['Genere'] == 'Genere'){
+            $form->setDescription('Attenzione: Alcuni dati inseriti non sono corretti!');
+            $this->render('registrati');
+            return  $this->_helper->layout->disableLayout();
+        }
+        
         $values["Livello"] = 'user';        
         $this->_Modelbase->saveUtente($values);
         $this->_helper->redirector('index');
