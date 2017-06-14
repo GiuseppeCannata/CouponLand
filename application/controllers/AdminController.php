@@ -825,12 +825,12 @@ class AdminController extends Zend_Controller_Action{
     {   
             
         
-            $this->_helper->viewRenderer->setNoRender();
+             $this->_helper->viewRenderer->setNoRender();
             $this->_helper->getHelper('layout')->disableLayout();
                 
                 
-                $idprom = $this->getRequest()->getPost();
-                $aziende = $this->_ModelAdmin->getPromozioneByID($idprom)->toArray();
+            $idprom = $this->getRequest()->getPost();
+            $aziende = $this->_ModelAdmin->getPromozioneByID($idprom)->toArray();
               
                 
                $data = array();
@@ -839,7 +839,6 @@ class AdminController extends Zend_Controller_Action{
                     $data['Azienda'] = $aziende['Azienda'];
                     $data['Coupon_emessi'] = $aziende['Coupon_emessi'];
            
-
              $json = Zend_Json::encode($data);
             echo $json;
             // a die here helps ensure a clean ajax call

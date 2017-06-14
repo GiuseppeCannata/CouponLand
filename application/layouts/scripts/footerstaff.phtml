@@ -1,0 +1,41 @@
+<div id="Azienda">
+                
+    <h3>Azienda</h3>
+    <a href=" <?= $this->url(array('controller' => 'public',
+                                       'action'     => 'viewstatic',
+                                       'staticPage' => 'chisiamo'), 
+                                       'default',true ); ?>">Chi siamo</a>
+    <br><br>
+    <a href=" <?= $this->url(array('controller' => 'public',
+                                       'action'     => 'viewstatic',
+                                       'staticPage' => 'dovesiamo'                ), 
+                                       'default',true ); ?>">Dove siamo</a>
+    <br><br>
+    <a>Aiutaci a migliorare</a>
+                
+</div>
+            
+<div id="Ituoidiritti">
+                
+    <h3>I tuoi diritti</h3>
+    <a href=" <?= $this->url(array('controller' => 'public',
+                                   'action' => 'faq'), 
+                                   'default',true ); ?>"> FAQ </a>
+    <br><br>
+    <a href=" <?= $this->url(array('controller' => 'public',
+                                   'action' => 'listaziende',
+                                   'chiamante' => 'footer'), 
+                                   'default',true ); ?>"> Info Aziende </a>
+    
+                
+</div>
+
+            
+<div id="Documentazione">
+                
+    <h3>Documentazione</h3>
+    <a href=""></a>
+    <a href=""></a>
+                
+</div>
+

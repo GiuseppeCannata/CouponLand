@@ -9,7 +9,6 @@ class Application_Form_Admin_Prom extends App_Form_Abstract
         $this->setName('promform');
         $this->setAction('');
         $this->setAttrib('enctype', 'multipart/form-data');
-        $this->setAttrib('id', 'form');
         $this->setAttrib('class', 'statistiche');
       //  $this->setDescription('Scegli la promozione che ti interessa:');
         

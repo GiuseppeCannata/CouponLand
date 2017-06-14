@@ -124,11 +124,17 @@
                     echo $this->render('footer.phtml');
 
                 }
-                if($livello == 'admin' || $livello == 'staff' ){
+                if($livello == 'staff' ){
 
-                    echo $this->render('footerdue.phtml');
+                    echo $this->render('footerstaff.phtml');
 
                 }
+                if($livello == 'admin' ){
+
+                    echo $this->render('footeradmin.phtml');
+
+                }
+                
                 
             ?>
         </div>

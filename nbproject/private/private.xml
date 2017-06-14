@@ -3,18 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/controllers/UserController.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/forms/Public/Utenti/Login.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/models/Admin.php</file>
             <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/user/coupon.phtml</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/public/index.phtml</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/public/js/functions.js</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/forms/Admin/Staff.php</file>
             <file>file:/C:/xampp/htdocs/CouponLand/application/models/resources/Azienda.php</file>
             <file>file:/C:/xampp/htdocs/CouponLand/application/forms/Public/Ricerca/Ricerca.php</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/models/User.php</file>
             <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/staff/index.phtml</file>
             <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/user/index.phtml</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/layouts/scripts/main.phtml</file>
             <file>file:/C:/xampp/htdocs/CouponLand/public/css/style.css</file>
             <file>file:/C:/xampp/htdocs/CouponLand/application/models/resources/Couponemessi.php</file>
-            <file>file:/C:/xampp/htdocs/CouponLand/application/controllers/PublicController.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/layouts/scripts/footer.phtml</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/controllers/AdminController.php</file>
             <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/user/validatecoupon.phtml</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/forms/Admin/Prom.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/controllers/UserController.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/public/index.phtml</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/models/resources/Promozione.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/forms/Public/Utenti/Registra.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/models/User.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/controllers/PublicController.php</file>
+            <file>file:/C:/xampp/htdocs/CouponLand/application/views/scripts/admin/statistiche.phtml</file>
         </group>
     </open-files>
 </project-private>

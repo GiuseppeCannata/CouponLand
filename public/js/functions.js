@@ -58,12 +58,7 @@ function setAziende(actionUrl,formName){
                 $('#selezAz').append('<option value = "'+ val +'">' + val + '</option>');
                 });
                 }
-                    
-                    
-                         
-               
-
-                    });
+        });
 }
 
 
