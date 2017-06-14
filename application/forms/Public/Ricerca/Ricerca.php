@@ -37,7 +37,9 @@ class Application_Form_Public_Ricerca_Ricerca extends App_Form_Abstract{
                                                         'placeholder' => 'Ricordi alcune parole della descrizone?',
                                                         'filters' => array('StringTrim'),
                                                         'required' => false,
-                                                        'validators' => array(array('StringLength',true, array(1,200))),
+                                                        'validators' => array(array('StringLength',true, array(1,200)),array('regex', false, array(
+                                                        'pattern'   => '/[0-9a-zA-Z\s\'.-]+/',
+                                                        'messages'  =>  'Attenzione: No caratteri speciali'))),
                                                         'decorators' => $this->elementDecorators));
     
         $this->addElement('submit', 'Cerca', array('class' => 'button',

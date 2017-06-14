@@ -3,22 +3,12 @@
 body {
 	margin:0;
 	padding:0;
-	width:100%;
-        /*path relativo, mi trovo in css e salgo di livello*/
+	width:auto;
 }
 
 html {
 	padding:0;
 	margin:0;
-}
-
-li.bg, .bg {
-	clear:both;
-	padding:0;
-	margin:10px 0;
-	height:5px;
-	background:url(images/bg_img.gif);
-	list-style:none;
 }
 
 p.clr, .clr {
@@ -39,10 +29,11 @@ p.clr, .clr {
 
 /*tutta la barra dell header*/
 .header {
-	margin:0 auto;
+	margin:0;
 	padding:0;
-	width:100%;
-        background:url(images/header_bg.gif) top repeat-x;
+	width: auto;
+        background-color:#cccccc;
+        background: url(images/header_bg.gif) repeat-x left;
 }
 
 /*si riferisce alla parte cenytrale*/
@@ -58,12 +49,6 @@ p.clr, .clr {
 	padding:0 6px;
 	float:left;
 }
-
-
-
-/*seleziono la tag ancora, contenuta nella tag h1*/
-
-
 
 
 /*nav composta da accedi e registrati*/
@@ -110,15 +95,15 @@ p.clr, .clr {
 }
 
 .accedi_registati ul li a:hover {
-	color:#afc22b;
+    color:#afc22b;
 }
 
 /*barra di ricerca*/
 .search {
         
-        float:left;
-	margin: 0px;
-        width: 600px;
+    float:left;
+    margin: 0px;
+    width: 600px;
        
 }
 
@@ -128,18 +113,18 @@ p.clr, .clr {
 }
 
 input.button {
-        margin-left:5px;
-	padding:2px;
-        margin: 0 0 0 5px;
-        box-shadow: none;
-        font: 13.3333px Arial;
-        font-size: 16px;
-        height: 34px;
-        width: 58px;
-        border: 1px solid #ddd;
+    
+    margin-left:5px;                                   
+    padding:2px;
+    margin: 0 0 0 5px;
+    box-shadow: none;
+    font: 13.3333px Arial;
+    font-size: 16px;
+    height: 34px;
+    width: 58px;
+    border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #8fbb1b;
-        
     cursor: pointer;
     display: inline-block;
     letter-spacing: 0.5px;
@@ -149,44 +134,46 @@ input.button {
 }
 
 .search form #textfield {
-	width:300px;
-	line-height:14px;
-	height: 17px;
-	background:white;
-	padding:6px 2px;
-	margin-left:5px;
-	font:normal 15px Arial, Helvetica, serif;
-	color:black;
-       border: 1px solid #ddd;
-       border-radius: 3px;
+    
+    width:300px;
+    line-height:14px;
+    height: 17px;
+    background:white;
+    padding:6px 2px;
+    margin-left:5px;
+    font:normal 15px Arial, Helvetica, serif;
+    color:black;
+    border: 1px solid #ddd;
+    border-radius: 3px;
 }
 
 .search select{
     margin-left:5px;
-	padding:9px;
-        margin: 0 0 0 5px;
-        box-shadow: none;
-        font-size: 11px;
-        height: 32px;
-        width: 90px;
-        border: 1px solid #ddd;
-       border-radius: 3px;
+    padding:9px;
+    margin: 0 0 0 5px;
+    box-shadow: none;
+    font-size: 11px;
+    height: 32px;
+    width: 90px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
 }
 
 /*nav composta da home,categorie,aziende,contattaci*/
 .menu {
-	padding:0;
-	margin:0;
-	width:auto;
-	float:left;
+    padding:0;
+    margin:0;
+    width:auto;
+    float:left;
 }
 
 ul#Pricipale-a {
-	padding:0;
-	margin:0;
-	list-style:none;
-	border:0;
-	float:left;
+    
+    padding:0;
+    margin:0;
+    list-style:none;
+    border:0;
+    float:left;
 }
 
 li.left {
@@ -221,18 +208,20 @@ a#active {
 
 #bodyresize {
     
-	margin:0 auto;
-	padding:0px 0 20px 0px;
-	width:930px;
-        min-height: 500px;
-        background-color: white
+    margin:0 auto;
+    padding:0px 0 20px 0px;
+    width:930px;
+    min-height: 500px;
+    background-color: white
             
 }
 
 .body {
-	margin:0;
-        padding:40px 25px 40px 25px;
-        background:url(images/body-bg.jpg);
+    
+    margin:0;
+    padding:40px 25px 40px 25px;
+    background:url(images/body-bg.jpg);
+    
 }
 
 /*immagine di presentazione*/
@@ -242,7 +231,7 @@ img#bodyimg {
 	
 }
 
-#button{
+#button{                             
         width:100px;
         height:50px;
         background:url(images/freccia.png);
@@ -251,7 +240,12 @@ img#bodyimg {
        
 }
 
-#prodotto {
+/* ==========================================================================
+   Style corpo (PRODOTTI INDEX)
+   ==========================================================================
+*/
+
+.prodotto {
 	float:right;
         width:435px; 
         height:284px; 
@@ -259,14 +253,18 @@ img#bodyimg {
 	margin:0;
 	padding:30px 10px 0 0px;
 }
+
 .textarea {
+    
 	width:480px;
 	margin:0;
 	padding:20px 0 0 5px;
 	float:left;
 	background:top no-repeat;
 }
+
 .textarea h2 {
+    
 	font:bold 30px Arial, Helvetica, sans-serif;
 	color:#a9a9a9;
 	padding:10px 0;
@@ -274,8 +272,8 @@ img#bodyimg {
         text-align: center;
 }
 
-
 .textarea p {
+    
 	font:normal 14px Arial, Helvetica, sans-serif;
 	color:#696969;
 	padding:5px;
@@ -306,7 +304,7 @@ img#bodyimg {
         height:100%;
 	margin:0 auto 0 auto;
 	border-top:1px dotted #ccc;
-        background:url(images/footer.gif)  repeat-x;
+        background:url(images/footer.gif) repeat-x left top;
 }
 
 .footer a {
@@ -322,8 +320,10 @@ img#bodyimg {
 
 
 #Azienda{
+    
     float: left;
     padding: 0 50px 20px 0;
+    
 }
 
 #Ituoidiritti{
@@ -333,7 +333,7 @@ img#bodyimg {
     
 }
 
-#Seguici{
+#Documentazione{
     float: left;
 }
 
@@ -345,6 +345,22 @@ p.response {
 	width:auto;
 }
 
+/* ==========================================================================
+   Paginatore
+   ==========================================================================
+*/
+#pagination {
+	text-align :center;
+}
+
+#pagination a {
+	border-bottom:none
+}
+
+/* ==========================================================================
+   Classi generali utilizzate nel sito
+   ==========================================================================
+*/
 
 .Titolo {
     
@@ -370,23 +386,39 @@ p.response {
     
 }
 
-.imgs{
+/*errori*/
+ul.errors{
     
-   width:  200px;
-   height: 100px;
-   margin: 30px;
-   
+    color: #F00;
 }
 
-#pagination {
-	text-align :center;
+/*bottoni*/
+.bottom{
+    
+    color: white;
+    background-color: #8fbb1b;
+    margin: 5px;
+    
 }
 
-#pagination a {
-	border-bottom:none
+/*hr*/
+hr{
+    width:90%;
+    height: 2px;
 }
 
 
+/* ==========================================================================
+   Lista promozioni
+   ==========================================================================
+*/
+
+/*riferito alla lista promozioni*/
+.TestoLista{
+    
+    font-size: 17px;
+    text-transform: uppercase;
+}
 
 .imglist{
     
@@ -395,35 +427,6 @@ p.response {
     border: solid 1px #999;
     width: 200px;
     height: 150px;
-    
-    
-}
-
-
-.TestoLista{
-    
-    font-size: 17px;
-    text-transform: uppercase;
-}
-
-a.lista:visited {
-    
-    color: #cc00cc;
-   
-}
-
-div.promlist{
-    float:right;
-}
-
-
-
-.Desc_br{
-    
-    color: #75787b;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     
 }
 
@@ -434,43 +437,26 @@ li.prom{
     
 }
 
-.imgprom{
-    
-    align-content: center;
-    width: 100%;
-  
-    
-}
-
 div.info{
     
     margin: 0 auto;
     
 }
 
-
-ul.listaziende{
+.Desc_br{
     
-    float: left;
+    color: #75787b;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    
 }
 
-div#content{
-    
-    text-align: center;
+div.promlist{
+    float:right;
 }
 
-input#coupon{
-    
-    float:left;
-}
-
-
-
-
-
-
-
-
+/*css per l ingrandimento immagine*/
 #ingrandita {
   display: none;
   position: fixed;
@@ -482,6 +468,8 @@ input#coupon{
   min-width: 200px;
   color: #336699;
 }
+
+/*css per l ingrandimento immagine*/
 #sfondo{
     
   display: none;
@@ -496,26 +484,47 @@ input#coupon{
 }
 
 
+/* ==========================================================================
+   Aziende
+   ==========================================================================
+*/
 
-
-/*bottoni*/
-.bottom{
+/*in riferimento alla lista delle aziende*/
+ul.listaziende{
     
-    color: white;
-    background-color: #8fbb1b;
-    margin: 5px;
-    
+    float: left;
 }
 
-/*hr*/
-hr{
+/*in riferimento all immagine delle aziende*/
+.imgs{
     
-    width:90%;
-    height: 2px;
+   width:  200px;
+   height: 100px;
+   margin: 30px;
+   
 }
+
+
+.imgprom{
+    
+    align-content: center;
+    width: 100%;
+}
+
+
+div#content{
+    
+    text-align: center;
+}
+
+input#coupon{
+    
+    float:left;
+}
+
 
 /* ==========================================================================
-   Style form
+   Style generale per le form
    ==========================================================================
 */
 form{
@@ -536,15 +545,10 @@ input{
     padding:3px;
 }
 
-
-
-
 /* ==========================================================================
-   Style LIVELLO 3
+   Style particolare per LIVELLO 3 
    ==========================================================================
 */
-
-
 #Livello3 ul{
     
     list-style: none;
@@ -562,22 +566,17 @@ input{
     
    margin-left:80px;
    margin-right:80px;
-   
     
 }
 
-
-/*schedautente*/
+/*schedautente (riferito sempre al livello 3)*/
 div#schedautente{
     
     margin-left:10px;
+    
 }
 
-/*errori*/
-ul.errors{
-    
-    color: #F00;
-}
+
 
 
 

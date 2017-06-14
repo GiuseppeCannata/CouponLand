@@ -14,18 +14,19 @@ class Application_Form_Public_Utenti_Login extends App_Form_Abstract{
                                                 'placeholder' => 'Username',
                                                 'filters' => array('StringTrim'),
                                                 'required' => true,
-            
                                                 'validators' => array(array('StringLength',true, array(1,50)),
                                                                 array('regex', false, array(
-                  'pattern'   => '/[0-9a-zA-Z\s\'.;-]+/',
-                  'messages'  =>  'Non inserire caratteri speciali'))
-              )));
+                                                'pattern'   => '/[0-9a-zA-Z\s\'.-]+/',
+                                                'messages'  =>  'Attenzione: No caratteri speciali')))));
         
         $this->addElement('password', 'Pass', array('class' => 'inputform',
                                                     'placeholder' => 'Password',
                                                     'filters' => array('StringTrim'),
                                                     'required' => true,
-                                                    'validators' => array(array('StringLength',true, array(1,50)))));
+                                                    'validators' => array(array('StringLength',true, array(1,50)),
+                                                                array('regex', false, array(
+                                                    'pattern'   => '/[0-9a-zA-Z\s\'.-]+/',
+                                                    'messages'  =>  'Attenzione: No caratteri speciali')))));
                 
 
         $this->addElement('submit', 'Accedi', array('id' => 'registra',

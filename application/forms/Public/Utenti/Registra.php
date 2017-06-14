@@ -28,27 +28,37 @@ class Application_Form_Public_utenti_Registra extends App_Form_Abstract{
                                                 'placeholder' => 'Username',
                                                 'filters' => array('StringTrim'),
                                                 'required' => true,
-                                                'validators' => array(array('StringLength',true, array(1,50)))));
+                                                'validators' => array(array('StringLength',true, array(1,50)),
+                                                                array('regex', false, array(
+                                                'pattern'   => '/[0-9a-zA-Z\s\'.-]+/',
+                                                'messages'  =>  'Attenzione: No caratteri speciali')))));
 
 
         $this->addElement('password', 'Pass', array('class' => 'inputform',
                                                     'placeholder' => 'Password',
                                                     'filters' => array('StringTrim'),
                                                     'required' => true,
-                                                    'validators' => array(array('StringLength',true, array(1,50)))));
+                                                    'validators' => array(array('StringLength',true, array(1,50)),
+                                                                array('regex', false, array(
+                                                    'pattern'   => '/[0-9a-zA-Z\s\'.-]+/',
+                                                    'messages'  =>  'Attenzione: No caratteri speciali')))));
         
         $this->addElement('text', 'Nome', array('class' => 'inputform',
                                                 'placeholder' => 'Nome',
                                                 'filters' => array('StringTrim'),
                                                 'required' => true,
-                                                'validators' => array(array('StringLength',true, array(1,20)))));
+                                                'validators' => array(array('StringLength',true, array(1,20)),array('regex', false, array(
+                                                'pattern'   => '/[0-9a-zA-Z\s\'.-]+/',
+                                                'messages'  =>  'Attenzione: No caratteri speciali')))));
 
 
         $this->addElement('text', 'Cognome', array('class' => 'inputform',
                                                     'placeholder' => 'Cognome',
                                                     'filters' => array('StringTrim'),
                                                     'required' => true,
-                                                    'validators' => array(array('StringLength',true, array(1,20)))));
+                                                    'validators' => array(array('StringLength',true, array(1,20)),array('regex', false, array(
+                                                    'pattern'   => '/[0-9a-zA-Z\s\'.-]+/',
+                                                    'messages'  =>  'Attenzione: No caratteri speciali')))));
 
         $this->addElement('text', 'Email', array('class' => 'inputform',
                                                 'placeholder'  => 'Email',

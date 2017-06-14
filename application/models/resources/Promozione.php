@@ -93,6 +93,8 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
 
                $select = $this->select()
                            ->where('Fine_promozione >= CURDATE()')
+                           ->where('Categoria !=?','Nessuna categoria')
+                           ->where('Azienda !=?','Nessuna azienda')
                            ->where("Descrizione_estesa LIKE ?", "%".$textSearch."%")
                            ->order($order);
             }
@@ -101,6 +103,8 @@ class Application_Resource_Promozione extends Zend_Db_Table_Abstract
                 $select = $this->select()
                                ->where('Fine_promozione >= CURDATE()')
                                ->where("Categoria=?",$cat)
+                               ->where('Categoria !=?','Nessuna categoria')
+                               ->where('Azienda !=?','Nessuna azienda')
                                ->where("Descrizione_estesa LIKE ?", "%".$textSearch."%")
                                ->order($order);
             }
