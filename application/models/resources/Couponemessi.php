@@ -38,7 +38,7 @@ class Application_Resource_Couponemessi extends Zend_Db_Table_Abstract {
       
        $this->insert($data);
        
-       
+       //mi faccio ridare l id del coupon
        $select = $this->select()
                       ->where('Id_promozione=?',$data['Id_promozione']);
         

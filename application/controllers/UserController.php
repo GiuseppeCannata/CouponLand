@@ -79,25 +79,7 @@ class UserController extends Zend_Controller_Action{
                 . 'Le ricordiamo che è possibile ritirare un solo coupon per prodotto!')) ;
         }else{
             
-            $this->view->assign(array( 'response' => $results,
-                                       'Titolo' => 'Coupon', 
-                                       'msg' => 'Ecco a lei il suo coupon!',
-                                       'Id_promozione' => $Id_prom));
-        }
-        
-        
-    }
-    
-    /*
-     * Metodo che genera il coupon ed effettua i relativi aggiornamenti:
-     * 1)Aggiorna il numero di coupon emessi per la promozione
-     * 2)Aggiorna i coupon emessi per l utente
-     * 3)inserisce in coupon emessi l emissione del coupon
-     */
-    public function couponAction(){
-        
         $auth = Zend_Auth::getInstance()->getIdentity();
-        $Id_prom = $this->_getParam('Id_promozione');
         $User = $auth->User;
         $promozione = $this->_Modelbase->getPromozioneByID($Id_prom);
             
@@ -112,8 +94,7 @@ class UserController extends Zend_Controller_Action{
         $coupon_emessi = (int)$Utente['Coupon_emessi'];
         $N_coupon = $coupon_emessi +1;
         $this->_ModelUser->updateCouponUtente($User, $N_coupon);
-           
-            
+        
         $data = array('User'=> $User, 
             'Id_promozione'=> $promozione['Id_promozione'], 
             'Nome_promozione'=> $promozione['Nome'],
@@ -124,6 +105,27 @@ class UserController extends Zend_Controller_Action{
         //Inoltre il metodo insertCouponEmessi($data) restituisce anche il codice univoco del coupon
         $r = $this->_ModelUser->insertCouponEmessi($data);
         
+        $this->view->assign(array( 'response' => $results,
+                                    'Titolo' => 'Coupon', 
+                                    'msg' => 'Ecco a lei il suo coupon!',
+                                    'Id_promozione' => $Id_prom,
+                                    'Id_coupon' => $r['Id_coupon']));
+        }
+        
+        
+    }
+    
+    /*
+     * Metodo che genera il coupon ed effettua i relativi aggiornamenti:
+     * 1)Aggiorna il numero di coupon emessi per la promozione
+     * 2)Aggiorna i coupon emessi per l utente
+     * 3)inserisce in coupon emessi l emissione del coupon
+     */
+    public function couponAction(){
+        
+        $Id_prom = $this->_getParam('Id_promozione');
+        $promozione = $this->_Modelbase->getPromozioneByID($Id_prom);
+        
         $this->_helper->getHelper('layout')->disableLayout();
          
         $this->view->assign(array('Nome_promozione' => $promozione['Nome'] ,
@@ -132,7 +134,7 @@ class UserController extends Zend_Controller_Action{
                                    'Fine_promozione' => $promozione['Fine_promozione'],
                                    'Azienda' => $promozione['Azienda'],
                                    'Localizzazione' => $promozione['Localizzazione'],
-                                   'Id_coupon' => $r['Id_coupon']));
+                                   'Id_coupon' => $this->_getParam('Id_coupon')));
     }
     
     public function modificautenteAction(){

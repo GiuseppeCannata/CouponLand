@@ -38,7 +38,7 @@ class Application_Form_Public_Ricerca_Ricerca extends App_Form_Abstract{
                                                         'filters' => array('StringTrim'),
                                                         'required' => false,
                                                         'validators' => array(array('StringLength',true, array(1,200)),array('regex', false, array(
-                                                        'pattern'   => '/[0-9a-zA-Z\s\'.-]+/',
+                                                        'pattern'   => '/[0-9a-zA-Z\s\'.@;]+/',
                                                         'messages'  =>  'Attenzione: No caratteri speciali'))),
                                                         'decorators' => $this->elementDecorators));
     
