@@ -105,8 +105,6 @@ class PublicController extends Zend_Controller_Action {
 
             if(!$this->_formricerca->isValid($post)){
                  
-                
-                
                 $this->_helper->redirector('Index');
             }
 
@@ -118,13 +116,13 @@ class PublicController extends Zend_Controller_Action {
             
             //se è presente almeno un simbolo come carattere 0(iniziale)
             //della stringa di ricerca io faccio qualcosa
-            $re  = '/[0-9a-zA-Z\s\']+/';
+          //  $re  = '/[0-9a-zA-Z\s\']+/';
             
             
-            if(preg_match_all($re,$word)){
-                  print_r($word[0]); 
-                  $this->_helper->redirector('Index');
-            }
+          //  if(!preg_match_all($re,$word)){
+                 // print_r($word[0]); 
+          //        $this->_helper->redirector('Index');
+           // }
             
             
             
