@@ -21,7 +21,7 @@ $(function() {
                                 }
                             ?>';
        
-        $('a#coupon').on('click', function(){ Validation(UtenteLivello); })
+        $('a#coupon1').on('click', function(){ Validation(UtenteLivello); })
     
 });
 
@@ -58,19 +58,19 @@ $(function() {
                 echo '<h2>'.$promozione->Categoria.'</h2>';
                 echo '<h4>'.$promozione->Nome.'</h4>';
                 echo '<p class="Testo">'.$promozione->Descrizione_estesa.'</p>';
-                echo '<h5>Azienda: ' . $promozione->Azienda . '</h5>' ;
-                echo '<h5>Dove ritirarlo: ' . $promozione->Localizzazione. '</h5>' ;
-                echo '<h5>Offerta: ' . $promozione->Offerta. '</h5>' ;
-                echo '<h5>Scadenza: ' . $promozione->Fine_promozione . '</h5>'; 
+                echo '<h5 id="info">Azienda: ' . $promozione->Azienda . '</h5>' ;
+                echo '<h5 id="info">Dove ritirarlo: ' . $promozione->Localizzazione. '</h5>' ;
+                echo '<h5 id="info">Offerta: ' . $promozione->Offerta. '</h5>' ;
+                echo '<h5 id="info">Scadenza: ' . $promozione->Fine_promozione . '</h5>'; 
                 $Livello = $this->authInfo('Livello');
                     
                     if($Livello == null || $Livello == 'staff' || $Livello == 'admin'){
 
-                         echo '<a  id="coupon" ><img src=" '. $this->baseUrl('img/bottonc.png').' " alt="" width="150" height="50" /> </a>';
+                         echo '<a  id="coupon1" ><img src=" '. $this->baseUrl('img/bottonc.png').' " alt="" width="150" height="50" /></a>';
 
                     }else{
 
-                        echo '<a id="coupon" href="'.$this->url(array('controller' => 'user',
+                        echo '<a id="coupon1" href="'.$this->url(array('controller' => 'user',
                                                                'action'     => 'validatecoupon',
                                                                'prom' => $promozione->Id_promozione), 
                                                                'default',true ).'" ><img src=" '. $this->baseUrl('img/bottonc.png').' " alt="" width="150" height="50"/> </a>';
@@ -78,7 +78,7 @@ $(function() {
                 
                 echo '</div>';
                 echo $this->productImg($promozione->Immagine, 'prom', array('id' => 'prodotto'));
-               
+                echo '<div class="clr"></div><hr>';
             }
         }
      ?>

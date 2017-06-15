@@ -18,12 +18,12 @@ $(function() {
                                 }
                             ?>';
        
-        $('a#coupon').on('click', function(){ Validation(UtenteLivello); })
+        $('a#coupon1').on('click', function(){ Validation(UtenteLivello); })
         
         
         
 
-    $('img').on('click', function(e){
+    $('img.imglist').on('click', function(e){
     
         var img = $(this).closest('div.promlist').find('img');
         
@@ -95,10 +95,10 @@ $(function() {
                            <?php
                                 echo '<h1 class="TestoLista">'. $promozione->Nome .'</h1>' ;
                                 echo '<p class="Desc_br">' . $promozione->Descrizione_estesa . '</p>' ;
-                                echo '<p>Azienda:' . $promozione->Azienda . '</p>' ;
-                                echo '<p>Dove ritirarlo: ' .$this->Localizzazione($promozione->Azienda, $this->aziende) . '</p>' ;
-                                echo '<p>Offerta: ' . $promozione->Offerta. '</p>' ;
-                                echo '<p>Scadenza: ' . $promozione->Fine_promozione . '</p>'; 
+                                echo '<h5 id="info">Azienda:' . $promozione->Azienda . '</h5>' ;
+                                echo '<h5 id="info">Dove ritirarlo: ' .$this->Localizzazione($promozione->Azienda, $this->aziende) . '</h5>' ;
+                                echo '<h5 id="info">Offerta: ' . $promozione->Offerta. '</h5>' ;
+                                echo '<h5 id="info">Scadenza: ' . $promozione->Fine_promozione . '</h5>'; 
 
 
                                 $Livello = $this->authInfo('Livello');
@@ -106,14 +106,14 @@ $(function() {
 
                                 if($Livello == null || $Livello == 'staff' || $Livello == 'admin'){
 
-                                     echo '<a  id="coupon" >Coupon</a>';
+                                     echo '<a  id="coupon1" ><img src=" '. $this->baseUrl('img/bottonc.png').' " alt="" width="150" height="50" /> </a>';
 
                                 }else{
 
-                                    echo '<a id="coupon" href="'.$this->url(array('controller' => 'user',
+                                    echo '<a id="coupon1" href="'.$this->url(array('controller' => 'user',
                                                                            'action'     => 'validatecoupon',
                                                                            'prom' => $promozione->Id_promozione), 
-                                                                           'default',true ).'" >Coupon</a>';
+                                                                           'default',true ).'" ><img src=" '. $this->baseUrl('img/bottonc.png').' " alt="" width="150" height="50" /> </a>';
                                 }
 
 

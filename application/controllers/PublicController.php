@@ -102,13 +102,26 @@ class PublicController extends Zend_Controller_Action {
 
             if(!$this->_formricerca->isValid($post)){
                  
-                $this->_helper->redirector('index');
+                
+                
+                $this->_helper->redirector('Index');
             }
 
             $form = $this->_formricerca;
-
+            
+              
             $cat = $form->getValue('Categoria');
             $word = $form->getValue('boxricerca');
+            
+            //se è presente almeno un simbolo come carattere 0(iniziale)
+            //della stringa di ricerca io faccio qualcosa
+            $re  = '/[0-9a-zA-Z\s\']+/';
+            
+            
+            if(preg_match_all($re,$word)){
+                  print_r($word[0]); 
+                  $this->_helper->redirector('Index');
+            }
             
             
             
