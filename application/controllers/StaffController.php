@@ -41,8 +41,10 @@ class StaffController extends Zend_Controller_Action{
     public function indexAction(){
         
         $PromozioniTOP = $this->_Modelbase->getPromozioneTOP();
+        $aziende= $this->_Modelbase->getAziende();
         $this->view->assign(array('CatTOP' => $this->_cat,
-                                  'PromozioniTOP' => $PromozioniTOP));
+                                  'PromozioniTOP' => $PromozioniTOP,
+                                   'aziende' => $aziende));
     }
     
     private function getRicercaForm(){

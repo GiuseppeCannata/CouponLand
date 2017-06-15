@@ -65,7 +65,7 @@ $(function() {
                 echo '<h4>'.$promozione->Nome.'</h4>';
                 echo '<p class="Testo">'.$promozione->Descrizione_estesa.'</p>';
                 echo '<h5 id="info">Azienda: ' . $promozione->Azienda . '</h5>' ;
-                echo '<h5 id="info">Dove ritirarlo: ' . $promozione->Localizzazione. '</h5>' ;
+                echo '<h5 id="info">Dove ritirarlo: ' .$this->Localizzazione($promozione->Azienda, $this->aziende). '</h5>' ;
                 echo '<h5 id="info">Offerta: ' . $promozione->Offerta. '</h5>' ;
                 echo '<h5 id="info">Scadenza: ' . $promozione->Fine_promozione . '</h5>'; 
                 $Livello = $this->authInfo('Livello');
