@@ -108,6 +108,50 @@ function setInfoUser(actionUrl,formName){
     });
 }
 
+function showError(actionUrl,formName) {
+    
+	$.ajax({
+		type : 'POST',
+		url : actionUrl,
+		data : $("#" + formName).serialize(),
+		dataType : 'json',
+		success : function(data){
+                    
+                    if ($('.insertuser').length && data === null)
+                    {
+                        $('#insertuser').css({  "border" : "1px solid #ddd"});
+                        $('.insertuser').remove();
+                    }
+                    
+                    
+                    
+                     if ($('.insertuser').length)
+                    {
+                        return;
+                    }
+                    
+                    
+                    
+                     
+                    if (data !== null){
+                        $('#insertuser').css({  "border" : "1px solid #f50404"});
+                        
+                        $('#insertuser').after('<p class = "insertuser">Attenzione: utente giÃ  registrato!</p>');
+                        
+                   
+                       
+                        
+                    }
+                    
+                    
+                    
+                }
+	});
+        
+        
+        }
+
+
 
 
 

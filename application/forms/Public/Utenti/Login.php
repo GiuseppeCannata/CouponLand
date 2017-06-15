@@ -5,9 +5,9 @@ class Application_Form_Public_Utenti_Login extends App_Form_Abstract{
     public function init(){
             
         $this->setMethod('post');
-        $this->setName('login');
+        $this->setName('registraform');
         $this->setAction('');
-        $this->setAttrib('id', 'form');
+        
     	
           
         $this->addElement('text', 'User', array('class' => 'inputform',

@@ -11,9 +11,9 @@ class Application_Form_Public_utenti_Registra extends App_Form_Abstract{
         $this->_modelbaseModel = new Application_Model_Modelbase();
 
         $this->setMethod('post');
-        $this->setName('registra');
+        $this->setName('registraform');
         $this->setAction('');
-        $this->setAttrib('id', 'form');
+        
 
 
        //Array per la select età ( dai 18 ai 120 anni)
@@ -27,6 +27,7 @@ class Application_Form_Public_utenti_Registra extends App_Form_Abstract{
             
         $this->addElement('text', 'User', array( 'class' => 'inputform',
                                                 'placeholder' => 'Username',
+                                                'id' => 'insertuser',
                                                 'filters' => array('StringTrim'),
                                                 'required' => true,
                                                 'validators' => array(array('StringLength',true, array(1,50)),

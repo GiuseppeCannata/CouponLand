@@ -1,5 +1,5 @@
 
-#form{
+#registraform{
     position:relative;
     width: 400px;
     margin-left: 473px;
@@ -76,7 +76,10 @@
 	color:#afc22b;
 }
 
-
+.insertuser{
+    color: red;
+    font: 12px Arial;
+}
 
 .formerror{
     color: red;
@@ -90,15 +93,6 @@
     height: 30px;
 }
 
-/*errori*/
 ul.errors{
-    
-    color: #F00;
-}
-
-label{
-    
-    color:#336699;
-    font-size: 15px;
-    padding: 10px;
+    color: red;
 }

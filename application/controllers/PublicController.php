@@ -289,4 +289,19 @@ class PublicController extends Zend_Controller_Action {
         
     } 
     
+    //Ajax
+    public function verificausernameAction(){
+        
+        $this->_helper->viewRenderer->setNoRender();
+        $this->_helper->getHelper('layout')->disableLayout();
+        
+        $user = $this->getRequest()->getPost('User');
+        $controllauser = $this->_Modelbase->estraiUsersbyUsername($user);
+        $json = Zend_Json::encode($controllauser);
+            echo $json;
+            // a die here helps ensure a clean ajax call
+            die();
+        
+    }
+    
 }

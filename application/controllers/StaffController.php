@@ -218,12 +218,8 @@ class StaffController extends Zend_Controller_Action{
         }
         
         
-        $todays_date = date("Y-m-d");
-        $todays_date_converted = strtotime($todays_date);
-        $inizioProm_converted = strtotime($inizioProm);
-        $fineProm_converted = strtotime($fineProm);
         $form = $this->_modificaProm;
-        $post = $this->getRequest()->getPost();
+       $post = $this->getRequest()->getPost();
         
         if (!$form->isValid($post)) {
             
@@ -231,25 +227,30 @@ class StaffController extends Zend_Controller_Action{
         return  $this->render('modificaprom');
         
      }
+     
+      $todays_date = date("Y-m-d");
+       $inizioProm = $form->getValue('Inizio_promozione');
+       $fineProm = $form->getValue('Fine_promozione');
+       
+       $todays_date_converted = strtotime($todays_date);
+       $inizioProm_converted = strtotime($inizioProm);
+       $fineProm_converted = strtotime($fineProm);
     
         
         if($this->_ModelStaff->estraiPrombyNameandIdandAz($post['Id_promozione'], $post['Nome'], $post['Azienda']) != NULL){
         
             
-          $form->setDescription('Attenzione: Promozione relativa a questa azienda gi&agrave esistente!');
+          $form->setDescription('Attenzione: Promozione relativa a questa azienda già esistente!');
          return $this->render('modificaprom');
             
             
-          }if($todays_date_converted > $inizioProm_converted){
-           
-             $form->setDescription('Attenzione: La data di inizio promozione &egrave già passata!');
-           return $this->render('modificaprom');
-       }
+          }
+          
        
          
       if($inizioProm_converted > $fineProm_converted){
            
-             $form->setDescription('Attenzione: La data di inizio promozione &egrave più grande di quella finale!');
+             $form->setDescription('Attenzione: La data di inizio promozione è più grande di quella finale!');
           return  $this->render('modificaprom');
        }
           

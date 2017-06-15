@@ -1,7 +1,22 @@
 <?php echo $this->doctype() ?>
+<script type="text/javascript" src="<?= $this->baseUrl('js/jquery.js'); ?>"></script>
+<script type="text/javascript" src="<?= $this->baseUrl('js/functions.js'); ?>"></script>
+<script type="text/javascript">
 
-<html>
-    <head>
+$(function(){
+
+	var actionUrlReg='<?= $this->url(array('controller' => 'public', 'action' => 'verificausername',), 'default');  ?>';
+        var formNameReg='<?= $this->registraForm->getName() ?>';
+        
+       
+                $('#insertuser').on('blur', function(event) {
+                   showError(actionUrlReg,formNameReg);
+                   });
+               });
+</script>
+
+
+    
     <?= $this->headMeta(); ?>
     <?= $this->headTitle(); ?>
      <link href="<?php echo $this->baseUrl('css/AccediRegistrati.css');?>" rel="stylesheet" type="text/css" />

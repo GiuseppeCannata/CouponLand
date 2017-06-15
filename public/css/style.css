@@ -403,6 +403,18 @@ p.response {
    ==========================================================================
 */
 
+.formerror{
+    
+    color: black;
+    font: 18px Arial;
+    background-color: #ffcccc;
+    height: 40px;
+    border: 1px solid red;
+    text-align: center;
+    padding: 5px;
+    
+}
+
 .Titolo {
     
     font-family: Hind, sans-serif;
