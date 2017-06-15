@@ -122,9 +122,10 @@ class PublicController extends Zend_Controller_Action {
         $IBRIDO = $this->_getparam('IBRIDO');
         $paged = $this->_getParam('page',1);
         $promozioni = $this->_Modelbase->getPromozioniByIBRIDO($chiamante, $IBRIDO, $paged , $order=array('Fine_promozione'), $cat , $word );
-            
+        $aziende = $this->_Modelbase->getAziende();      
         $this->view->assign(array('prom' => $promozioni,
                                   'chiamante' => $chiamante,
+                                  'aziende' => $aziende,
                                   'IBRIDO' => $IBRIDO,
                                   'cat' => $cat,
                                   'word' => $word));
