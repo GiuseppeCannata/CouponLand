@@ -202,7 +202,7 @@ class PublicController extends Zend_Controller_Action {
         
         $values["Livello"] = 'user';        
         $this->_Modelbase->saveUtente($values);
-        $this->_helper->redirector('index');
+        $this->_helper->redirector('accedi');
         
     }
     

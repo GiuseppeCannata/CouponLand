@@ -200,7 +200,7 @@ class UserController extends Zend_Controller_Action{
         
         $this->_ModelUser->modificaUtente($values, $iduser_attuale);
         $this->_authService->authenticate($values);
-        $this->_helper->redirector('index');
+       
     }
     
     private function getAreaRisForm(){

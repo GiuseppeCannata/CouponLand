@@ -8,9 +8,15 @@
 
 
 $(function() {
-                    
+
+          $(window).load(function() {
+          $("#copertina").slideDown(2000);
+            //alert('Finestra caricata completamente, compresa la grafica');
+          });
+  
+          
         var UtenteLivello='<?php  
-                                if($this->authInfo('Livello')== null){
+                                if($this->authInfo('Livello') == null){
             
                                     echo 'nonregistrato';
                                       
@@ -29,7 +35,7 @@ $(function() {
 
 
 <div>
-    <img src="<?php echo $this->baseUrl('css/images/coper.png');?>" alt="" width="920" height="343" border="0"> 
+    <img id="copertina" src="<?php echo $this->baseUrl('css/images/coper.png');?>" alt="" width="920" height="343" border="0" hidden="true"> 
     <a href="#listTOP"><div id="button"></div></a>
 </div>
 

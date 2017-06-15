@@ -96,3 +96,7 @@
 ul.errors{
     color: red;
 }
+
+label{
+    color: blue;
+}

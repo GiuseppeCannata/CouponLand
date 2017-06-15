@@ -40,7 +40,7 @@ class StaffController extends Zend_Controller_Action{
      
     public function indexAction(){
         
-         $PromozioniTOP = $this->_Modelbase->getPromozioneTOP();
+        $PromozioniTOP = $this->_Modelbase->getPromozioneTOP();
         $this->view->assign(array('CatTOP' => $this->_cat,
                                   'PromozioniTOP' => $PromozioniTOP));
     }
@@ -59,7 +59,7 @@ class StaffController extends Zend_Controller_Action{
     } 
     
     
-     public function insertpromAction(){
+    public function insertpromAction(){
         
         if (!$this->getRequest()->isPost()) {
             
@@ -113,17 +113,8 @@ class StaffController extends Zend_Controller_Action{
         
         $values = $form->getValues();
         $this->_ModelStaff->inserisciPromozione($values);
-        $this->_helper->redirector('index');
-        
-        
-        
         
     }
-    
-    
-    
-    
-    
     
     private function getinsertpromForm(){
     		$urlHelper = $this->_helper->getHelper('url');
@@ -135,10 +126,6 @@ class StaffController extends Zend_Controller_Action{
 		));
 		return $this->_insertProm;
     } 
-    
-    
-    
-    
     
     public function selezionapromformAction(){
         
@@ -191,18 +178,9 @@ class StaffController extends Zend_Controller_Action{
        $prom_da_elim = $this->_ModelStaff->getPromByCatNomeAz($post['Categoria'], $post['Nome'], $post['Azienda'])->toArray(); 
        $id_prom_da_elim = $prom_da_elim['Id_promozione'];
        $this->_ModelStaff->cancellaPromozione($id_prom_da_elim);
-       $this->_helper->redirector('cancellaprom');
-        
+    
        
         }
-        
-        
-        
-      
-       
-        
-        
-        
         
     }
     
@@ -211,14 +189,14 @@ class StaffController extends Zend_Controller_Action{
     
      public function modificapromformAction(){
          
-          if (!$this->getRequest()->isPost()) {
+        if (!$this->getRequest()->isPost()) {
             
 	    $this->_helper->redirector('index');
             
         }
         
         
-        $form = $this->_modificaProm;
+       $form = $this->_modificaProm;
        $post = $this->getRequest()->getPost();
         
         if (!$form->isValid($post)) {
@@ -226,7 +204,7 @@ class StaffController extends Zend_Controller_Action{
             $form->setDescription('Attenzione: alcuni dati inseriti sono errati.');
         return  $this->render('modificaprom');
         
-     }
+        }
      
       $todays_date = date("Y-m-d");
        $inizioProm = $form->getValue('Inizio_promozione');
@@ -264,7 +242,7 @@ class StaffController extends Zend_Controller_Action{
                     
         }
           $this->_ModelStaff->modificaPromozione($values, $values['Id_promozione']);
-          $this->_helper->redirector('index');
+          
           
           
         }
@@ -293,8 +271,7 @@ class StaffController extends Zend_Controller_Action{
 
     
     // Validazione AJAX
-    public function segnalazAction() 
-    {   
+    public function segnalazAction(){   
             
         
             $this->_helper->viewRenderer->setNoRender();
@@ -419,7 +396,6 @@ class StaffController extends Zend_Controller_Action{
         
         $this->_ModelStaff->modificaUtente($values, $iduser_attuale);
         $this->_authService->authenticate($values);
-        $this->_helper->redirector('index');
     }
     
     private function getAreaRisForm(){

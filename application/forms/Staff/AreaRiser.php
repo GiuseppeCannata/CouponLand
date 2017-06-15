@@ -13,9 +13,8 @@ class Application_Form_Staff_AreaRiser extends App_Form_Abstract
                 $this->_ModelUser = new Application_Model_User();
                 $this->_authService = new Application_Service_Auth();
                 $this->setMethod('post');
-		$this->setName('registra');
+		$this->setName('registraform');
 		$this->setAction('');
-                $this->setAttrib('id', 'form');
                 $this->setDescription('Area riservata: puoi modificare i tuoi dati nei seguenti campi!');
                 
                 
