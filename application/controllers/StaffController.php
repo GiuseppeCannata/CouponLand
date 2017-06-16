@@ -315,7 +315,7 @@ class StaffController extends Zend_Controller_Action{
      private function getmodificaProm(){
         
         $urlHelper = $this->_helper->getHelper('url');
-		$this->_modificaProm = new Application_Form_Staff_modificaprodotto();
+		$this->_modificaProm = new Application_Form_Staff_Modificaprodotto();
     		$this->_modificaProm->setAction($urlHelper->url(array(
 			'controller' => 'staff',
 			'action' => 'modificapromform'),

@@ -22,7 +22,7 @@
 
             foreach ($this->listutenti as $utente) {
 
-                $ris = substr($utente->Nome, 0 , 1);
+                $ris = substr($utente->User, 0 , 1);
 
                 if($ris === 'a' || $ris === 'b' || $ris === 'c' || $ris === 'd' || $ris === 'e' || $ris === 'f' ||
                    $ris === 'A' || $ris === 'B' || $ris === 'C' || $ris === 'D' || $ris === 'E' || $ris === 'F'){
@@ -31,7 +31,7 @@
                                                        'action' => 'schedautente',
                                                        'Id_user'=> $utente->Id_user), 
                                                        'default', true) .'>'.
-                             $utente->Nome.'</a></li>';
+                             $utente->User.'</a></li>';
                 }
             }
             
@@ -48,16 +48,16 @@
     
         foreach ($this->listutenti as $utente) {
 
-            $ris = substr($utente->Nome, 0,1);
+            $ris = substr($utente->User, 0,1);
             
-            if($ris === 'g' || $ris === 'h' || $ris === 'i' || $ris === 'l' || $ris === 'm' || $ris === 'n'|| $ris === 'o'||
-               $ris === 'G' || $ris === 'H' || $ris === 'I' || $ris === 'L' || $ris === 'M' || $ris === 'N'|| $ris === 'O'){
+            if($ris === 'g' || $ris === 'h' || $ris === 'i' || $ris === 'j' || $ris === 'k'|| $ris === 'l' || $ris === 'm' || $ris === 'n'|| $ris === 'o'||
+               $ris === 'G' || $ris === 'H' || $ris === 'I' || $ris === 'J' || $ris === 'K'|| $ris === 'L' || $ris === 'M' || $ris === 'N'|| $ris === 'O'){
                 
                 echo '<li class="prom"><a href='. $this->url(array('controller' => 'admin',
                                                        'action' => 'schedautente',
                                                        'Id_user'=> $utente->Id_user), 
                                                        'default', true) .'>'.
-                             $utente->Nome.'</a></li>';
+                             $utente->User.'</a></li>';
             }
         }
     ?>
@@ -74,16 +74,16 @@
     
         foreach ($this->listutenti as $utente) {
 
-            $ris = substr($utente->Nome, 0,1);
+            $ris = substr($utente->User, 0,1);
             
-            if($ris === 'p' || $ris === 'q' || $ris === 'r' || $ris === 's' || $ris === 't' || $ris === 'u'|| $ris === 'v' || $ris==='z'||
-               $ris === 'P' || $ris === 'Q' || $ris === 'R' || $ris === 'S' || $ris === 'T' || $ris === 'U'|| $ris === 'V' || $ris==='Z'){
+            if($ris === 'p' || $ris === 'q' || $ris === 'r' || $ris === 's' || $ris === 't' || $ris === 'u'|| $ris === 'v'|| $ris === 'w'|| $ris === 'x' || $ris==='y'|| $ris==='z'||
+               $ris === 'P' || $ris === 'Q' || $ris === 'R' || $ris === 'S' || $ris === 'T' || $ris === 'U'|| $ris === 'V' || $ris === 'W'|| $ris === 'X' || $ris==='Y'|| $ris==='Z'){
                 
                echo '<li class="prom"><a href='. $this->url(array('controller' => 'admin',
                                                        'action' => 'schedautente',
                                                        'Id_user'=> $utente->Id_user), 
                                                        'default', true) .'>'.
-                             $utente->Nome.'</a></li>';
+                             $utente->User.'</a></li>';
             }
             
         }

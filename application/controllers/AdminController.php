@@ -122,11 +122,26 @@ class AdminController extends Zend_Controller_Action{
      */
     private function getModificafaqForm(){
 
-        $domanda=$this->getParam("domanda");
-        $risposta=$this->getParam("risposta");
+       /* $domanda=$this->getParam("domanda");
+        $risposta=$this->getParam("risposta");*/
         $id=$this->getParam("id");
+        $this->_modificaFaqForm = new Application_Form_Admin_Faq();
         
-        $this->_modificaFaqForm = new Application_Form_Admin_Faq($domanda,$risposta,$id);
+        if($id != null){
+            
+            $FAQ = $this->_Modelbase->getfaq();
+            foreach($FAQ as $faq){
+                
+                if($faq->Id_faq == $id){
+                    
+                    
+                    $this->_modificaFaqForm->setDefaults($faq->toArray());
+                    
+                }
+            }
+        }
+        
+        
         $this->_modificaFaqForm->setAction($this->_helper->getHelper('url')->url(array('controller' => 'admin',
                                                                                        'action' => 'verificamodificafaq'),
                                                                                        'default'));

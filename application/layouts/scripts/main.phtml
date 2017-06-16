@@ -10,8 +10,7 @@
     
     <!-- acquisisce il livello dell'utente -->
     <?php $livello = $this->authInfo('Livello');?>
-    <?php $user = $this->authInfo('User');?>
-    <?php $user = $this->authInfo('Pass');?>
+    
 
     
 </head>
@@ -23,9 +22,6 @@
         <div id="header_resize">  
             
             <div id="logo">
-                 <?php echo $this->authInfo('Livello') ?>
-                <?php echo $this->authInfo('User') ?>
-                 <?php echo $this->authInfo('Pass') ?>
 
                 <h1>
                     <a href=" <?php
